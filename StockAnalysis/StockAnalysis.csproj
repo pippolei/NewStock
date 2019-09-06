@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FA1E2C76-8F16-45DF-B02B-32F11AC1E098}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StockAnalysis.Panel.Panel</RootNamespace>
+    <AssemblyName>StockAnalysis</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="01_LoadData\StockDapan.cs" />
+    <Compile Include="02_Rule\RuleScore.cs" />
+    <Compile Include="03_AdvancedAnalysis\PanelCombineRuleList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="03_AdvancedAnalysis\PanelCombineRuleList.Designer.cs">
+      <DependentUpon>PanelCombineRuleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02_Rule\PanelRule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="02_Rule\PanelRule.Designer.cs">
+      <DependentUpon>PanelRule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="03_AdvancedAnalysis\PanelAnalysis2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="03_AdvancedAnalysis\PanelAnalysis2.Designer.cs">
+      <DependentUpon>PanelAnalysis2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="20_Rule\Buy\10_抄底\BuyIslandReverse.cs" />
+    <Compile Include="20_Rule\Buy\7Down5Rize\Buy7Down5Rize.cs" />
+    <Compile Include="20_Rule\Sell\SellPureDrop2.cs" />
+    <Compile Include="80_Panel\PanelCombineRule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="80_Panel\PanelCombineRule.Designer.cs">
+      <DependentUpon>PanelCombineRule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02_Rule\PanelRuleList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="02_Rule\PanelRuleList.Designer.cs">
+      <DependentUpon>PanelRuleList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="02_Rule\PanelCalcSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="02_Rule\PanelCalcSetting.Designer.cs">
+      <DependentUpon>PanelCalcSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="80_Panel\PanelDatabase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="80_Panel\PanelDatabase.Designer.cs">
+      <DependentUpon>PanelDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="20_Rule\Buy\10_抄底\BuyBelow35AVE10.cs" />
+    <Compile Include="20_Rule\Buy\90\Buy4Week.cs" />
+    <Compile Include="20_Rule\Buy\00_Mandatory_Test\BuyBigWin.cs" />
+    <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy6Rize.cs" />
+    <Compile Include="20_Rule\Buy\archive\BuyLong2.cs" />
+    <Compile Include="20_Rule\Buy\archive\BuyLong.cs" />
+    <Compile Include="20_Rule\Buy\Buy.cs" />
+    <Compile Include="20_Rule\Buy\10_抄底\BuyBelowAVE5.cs" />
+    <Compile Include="20_Rule\Sell\SellPureDrop.cs" />
+    <Compile Include="20_Rule\Sell\Sell.cs" />
+    <Compile Include="04_Simulate\StockSimulateSQL.cs" />
+    <Compile Include="03_AdvancedAnalysis\StockAnalysisSQL.cs" />
+    <Compile Include="02_Rule\StockRuleSQL.cs" />
+    <Compile Include="01_LoadData\StockKPI.cs" />
+    <Compile Include="80_Panel\PanelUtil.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="80_Panel\PanelUtil.Designer.cs">
+      <DependentUpon>PanelUtil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockItem.cs" />
+    <Compile Include="20_Rule\Rule.cs" />
+    <Compile Include="05_Search\PanelSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="05_Search\PanelSearch.Designer.cs">
+      <DependentUpon>PanelSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="04_Simulate\PanelSimulate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="04_Simulate\PanelSimulate.Designer.cs">
+      <DependentUpon>PanelSimulate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="80_Panel\PanelProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="80_Panel\PanelProgress.Designer.cs">
+      <DependentUpon>PanelProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockApp.cs" />
+    <Compile Include="04_Simulate\SimulateManager.cs" />
+    <Compile Include="01_LoadData\StockData.cs" />
+    <Compile Include="90_Util\DataManager.cs" />
+    <Compile Include="MainApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainApp.Designer.cs">
+      <DependentUpon>MainApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="01_LoadData\PanelLoadData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="01_LoadData\PanelLoadData.Designer.cs">
+      <DependentUpon>PanelLoadData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="01_LoadData\PanelStockList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="01_LoadData\PanelStockList.Designer.cs">
+      <DependentUpon>PanelStockList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="80_Panel\PanelUtil.resx">
+      <DependentUpon>PanelUtil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainApp.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03_AdvancedAnalysis\PanelCombineRuleList.resx">
+      <DependentUpon>PanelCombineRuleList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="02_Rule\PanelRule.resx">
+      <DependentUpon>PanelRule.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="03_AdvancedAnalysis\PanelAnalysis2.resx">
+      <DependentUpon>PanelAnalysis2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="80_Panel\PanelCombineRule.resx">
+      <DependentUpon>PanelCombineRule.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="02_Rule\PanelRuleList.resx">
+      <DependentUpon>PanelRuleList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="02_Rule\PanelCalcSetting.resx">
+      <DependentUpon>PanelCalcSetting.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="80_Panel\PanelDatabase.resx">
+      <DependentUpon>PanelDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01_LoadData\PanelLoadData.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PanelLoadData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="05_Search\PanelSearch.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PanelSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="04_Simulate\PanelSimulate.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PanelSimulate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="80_Panel\PanelProgress.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PanelProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="01_LoadData\PanelStockList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PanelStockList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="01_LoadData\StockAttribute.cs" />
+    <Compile Include="90_Util\Util.cs" />
+    <Compile Include="90_Util\UtilLog.cs" />
+    <Compile Include="90_Util\SQLMassImport.cs" />
+    <Compile Include="01_LoadData\StockSQL.cs" />
+    <Compile Include="90_Util\UtilPreference.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="99_Archive\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

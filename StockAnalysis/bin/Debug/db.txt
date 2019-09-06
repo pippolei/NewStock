@@ -1,0 +1,7 @@
+localhost
+Sample
+sa
+Welcome1!
+C:\StockAnalysis\sample
+20160101
+False
