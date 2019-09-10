@@ -43,9 +43,6 @@ namespace StockAnalysis
             NUM_KPIs = new string[] { 
                 MACD1, MACD2,
                 AVG_VOLUME,
-                //DAPAN_RIZE, //大盘平均涨幅
-                //DAPAN1, //大盘上涨家数比例
-                //DAPAN2, //大盘下跌家数比例
                 RIZE1,//今日最高点与收盘价的涨幅
                 RIZE2 //今日收盘价与最低点的涨幅
                 
@@ -93,10 +90,6 @@ namespace StockAnalysis
                 items[i].kpi[AVG_VOLUME] = Math.Round(Convert.ToDouble(items[i].attributes[StockAttribute.AVE_VOLUME20]),4);
                 items[i].kpi[RIZE1] = Math.Round((items[i].high - items[i].end) / items[i].end,4);
                 items[i].kpi[RIZE2] = Math.Round((items[i].end - items[i].low) / items[i].end,4);
-                //double[] dapan_kpi = StockDapan.GetDaPanStat(items[i].date);
-                //items[i].kpi[DAPAN_RIZE] = dapan_kpi[0];
-                //items[i].kpi[DAPAN1] = dapan_kpi[1];
-                //items[i].kpi[DAPAN2] = dapan_kpi[2];
             }
             
         }

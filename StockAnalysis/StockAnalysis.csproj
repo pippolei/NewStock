@@ -78,6 +78,7 @@
     <Compile Include="03_AdvancedAnalysis\PanelAnalysis2.Designer.cs">
       <DependentUpon>PanelAnalysis2.cs</DependentUpon>
     </Compile>
+    <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy6RizeWithEqual.cs" />
     <Compile Include="20_Rule\Buy\10_抄底\BuyIslandReverse.cs" />
     <Compile Include="20_Rule\Buy\7Down5Rize\Buy7Down5Rize.cs" />
     <Compile Include="20_Rule\Sell\SellPureDrop2.cs" />

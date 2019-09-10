@@ -51,21 +51,21 @@ namespace StockAnalysis
         public static readonly string[] DEFAULT_SELLs = new string[] {
             "DEF_SELL_SHORT_", "DEF_SELL_MEDIUM_", "DEF_SELL_LONG_", "DEF_SELL_END_"
         };
-        public static int MAX_HOLD_DAYS_LONG = 60;
-        public static double HIGH_THRESHOLD_LONG = 0.42;
-        public static double LOW_THRESHOLD_LONG = 0.25;
+        public static int MAX_HOLD_DAYS_LONG = 30;
+        public static double HIGH_THRESHOLD_LONG = 0.30;  //涨幅百分比
+        public static double LOW_THRESHOLD_LONG = 0.21;   //跌幅百分比
 
         public static int MAX_HOLD_DAYS_MEDIUM = 20;
-        public static double HIGH_THRESHOLD_MEDIUM = 0.31;
-        public static double LOW_THRESHOLD_MEDIUM = 0.18;
+        public static double HIGH_THRESHOLD_MEDIUM = 0.2;
+        public static double LOW_THRESHOLD_MEDIUM = 0.14;
         
-        public static int MAX_HOLD_DAYS_SHORT = 20;
-        public static double HIGH_THRESHOLD_SHORT = 2;
-        public static double LOW_THRESHOLD_SHORT = 0.93;
+        public static int MAX_HOLD_DAYS_SHORT = 10;
+        public static double HIGH_THRESHOLD_SHORT = 0.1;
+        public static double LOW_THRESHOLD_SHORT = 0.07;
 
-        public static int MAX_HOLD_DAYS_END = 600;
+        public static int MAX_HOLD_DAYS_END = 60;
         public static double HIGH_THRESHOLD_END = 100;
-        public static double LOW_THRESHOLD_END = 0.99;
+        public static double LOW_THRESHOLD_END = 1;
         #endregion
 
 
@@ -84,6 +84,7 @@ namespace StockAnalysis
             //****************************************
             //listbuy.Add(new BuyRandom());
             listbuy.Add(new Buy6Rize());
+            listbuy.Add(new Buy6RizeWithEqual());
             listbuy.Add(new BuyIslandReverse());
 
             //listbuy.Add(new Buy4Week());
