@@ -120,11 +120,12 @@ namespace StockAnalysis.Panel
                         attristrs[8] = stock.getGrade(rule.defaultSell, i).ToString();//grade
                         attristrs[9] = stock.getKPIs(i);
                         attristrs[10] = stock.getNumKPIs(i);
-                        attristrs[11] = StockDapan.GetDaPanGrade(item.date).ToString();   //dapan
+                        attristrs[11] = StockDapan.GetDaPanScore(item.date).ToString();   //dapan
                         attristrs[12] = item.kpi[StockApp.DEFAULT_SELLs[0] + StockKPI.default_price].ToString();   //short
                         attristrs[13] = item.kpi[StockApp.DEFAULT_SELLs[1] + StockKPI.default_price].ToString(); ;   //medium
                         attristrs[14] = item.kpi[StockApp.DEFAULT_SELLs[2] + StockKPI.default_price].ToString(); ;  //long
                         attristrs[15] = item.kpi[StockApp.DEFAULT_SELLs[3] + StockKPI.default_price].ToString();  //next4
+                        //发出买入信号后1~5天的表现,纯参考,未在任何地方使用
                         attristrs[16] = item.attributes[StockAttribute.POST1].ToString();
                         attristrs[17] = item.attributes[StockAttribute.POST2].ToString(); ;
                         attristrs[18] = item.attributes[StockAttribute.POST3].ToString(); ;
@@ -175,7 +176,8 @@ namespace StockAnalysis.Panel
                         attristrs[13] = "0";
                         attristrs[14] = "0";
                         attristrs[15] = "0";
-                        attristrs[16] = item.attributes[StockAttribute.POST1].ToString();
+                        //发出买入信号后1~5天的表现,纯参考,未在任何地方使用
+                        attristrs[16] = item.attributes[StockAttribute.POST1].ToString(); 
                         attristrs[17] = item.attributes[StockAttribute.POST2].ToString(); 
                         attristrs[18] = item.attributes[StockAttribute.POST3].ToString();
                         attristrs[19] = item.attributes[StockAttribute.POST4].ToString();
@@ -193,11 +195,12 @@ namespace StockAnalysis.Panel
         private void btn_sync_Click(object sender, EventArgs e)
         {
             db.RunSql("truncate table Rule_Buy");
-            string sql = @"insert into Rule_Buy select * 
-            from Rule_Buy0";
+            string sql = @"insert into Rule_Buy select * from Rule_Buy0";
             db.RunSql(sql);
 
-            string removelist = "('-1'";
+            ArrayList list = new ArrayList();
+
+            //移除filter
             foreach (Buy rule in GetAllBuy())
             {
                 string rulename = rule.ToString();
@@ -206,16 +209,28 @@ namespace StockAnalysis.Panel
                 {
                     if (!isfilter(rulename, items[i]) && items[i].type == Rule.STATUS_BUY)
                     {
-                        removelist += ",'" + items[i].id +"'";
+                        list.Add("delete from Rule_Buy where type = '" + Rule.STATUS_BUY + "' and id = '" + items[i].id + "';");
                     }
                 }
                 dapanlist = null;
                 filterlist = null; 
             }
-            removelist += ")";
+            
+            //移除sequence
+            sql = @"select [TYPE], ID from
+                (
+                select ROW_NUMBER() OVER (PARTITION BY [type], rulename, [date] order by pregrade) AS SEQUENCE,* from rule_buy0 
+                ) T1
+                where T1.SEQUENCE > 10 and [TYPE] > 0;";
+            DataTable dt = db.GetTable(sql);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DataRow dr = dt.Rows[i];
+                list.Add("delete from Rule_Buy where type = '" + dr["TYPE"] + "' and id = '" + dr["ID"] + "';");
+            }
+            db.RunSql(list);
 
-            sql = "delete from Rule_Buy where id in " + removelist;
-            db.RunSql(sql);
+            
             StockRuleSQL.SetAnalysis();
             MessageBox.Show("Done");
         }
@@ -228,7 +243,7 @@ namespace StockAnalysis.Panel
                 //初始化 得到该买卖法则filter的规则
                 dapanlist = StockRuleSQL.GetDapanFilter(rulename);
             }
-            string dapanstatus = StockDapan.GetDaPanGrade(item.date);
+            string dapanstatus = StockDapan.GetDaPanScore(item.date);
             if (dapanlist.Contains(dapanstatus))
             {
                 return false;

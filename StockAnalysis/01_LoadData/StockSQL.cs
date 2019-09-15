@@ -556,7 +556,7 @@ namespace StockAnalysis
 
 
 
-        #endregion
+        
         /*
         public static void SetStockScore()
         {
@@ -600,7 +600,7 @@ namespace StockAnalysis
 
 
         }
-        */        
+        */
         /*
         public static void SetStockAll()
         {
@@ -634,6 +634,7 @@ namespace StockAnalysis
 
         }
         */
+        #endregion
 
 
 

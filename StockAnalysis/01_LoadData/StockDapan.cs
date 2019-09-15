@@ -6,7 +6,7 @@ using System.Data;
 
 namespace StockAnalysis
 {
-    class overallitem
+    class DaPanItem
     {
         public int seq;
         public int date;
@@ -32,7 +32,7 @@ namespace StockAnalysis
             STATUS_BIG_GOOD, STATUS_GOOD, STATUS_NEUTRAL, STATUS_BAD, STATUS_BIG_BAD
         };
         //给出某一日大盘的评分
-        public static string GetDaPanGrade(int intdate)
+        public static string GetDaPanScore(int intdate)
         {
             string sql = "select * from [stock_DaPan] where [date] = " + intdate + ";";
             //object ret = db.GetOneValue(sql, "dapan");
@@ -42,26 +42,25 @@ namespace StockAnalysis
             double rize = Math.Round((double)dr["rize"],4);
             double up = Convert.ToDouble(dr["NUM_RIZE"]);
             double down = Convert.ToDouble(dr["NUM_DOWN"]);
+            double ave1 = Convert.ToDouble(dr["ave1"]);
+            double ave2 = Convert.ToDouble(dr["ave2"]);
+            double ave3 = Convert.ToDouble(dr["ave3"]);
+            double ave4 = Convert.ToDouble(dr["ave4"]);
+            double ave5 = Convert.ToDouble(dr["ave5"]);
             string kpis = rize.ToString();
             kpis+= StockApp.seperator.ToString() + Math.Round(up / (up + down),4);
-            kpis+= StockApp.seperator.ToString() + Math.Round(down / (up + down),4);            
+            kpis+= StockApp.seperator.ToString() + Math.Round(down / (up + down),4);
+            //kpis += StockApp.seperator.ToString() + Math.Round(ave1, 4);
+            //kpis += StockApp.seperator.ToString() + Math.Round(ave2, 4);
+            //kpis += StockApp.seperator.ToString() + Math.Round(ave3, 4);
+            //kpis += StockApp.seperator.ToString() + Math.Round(ave4, 4);
+            //kpis += StockApp.seperator.ToString() + Math.Round(ave5, 4);
+
 
             return kpis;//去除第一个"-"  
         }
 
-        //给出某一日大盘的评分
-        public static double[] GetDaPanStat(int intdate)
-        {
-            string sql = "select * from [stock_DaPan] where [date] = " + intdate + ";";
-            DataRow dr = db.GetFirstRow(sql);
-            double[] ret = new double[3];
-            ret[0] = Convert.ToDouble(dr["rize"]);
-            int num_rize = Convert.ToInt32(dr["num_rize"]);
-            int num_down = Convert.ToInt32(dr["num_down"]);
-            ret[1] = (num_rize + 0.00000001) / (num_rize + num_down + 0.00000001);
-            ret[2] = (num_down + 0.00000001) / (num_rize + num_down + 0.00000001);
-            return ret;
-        }
+        
         
         //设置所有股票的统计数据
         public static void InsertStockDaPan()
@@ -69,7 +68,7 @@ namespace StockAnalysis
             string sql = "IF OBJECT_ID('[stock_DaPan]', 'U') IS NOT NULL drop table [stock_DaPan];";
             db.RunSql(sql);
 
-            sql = "SELECT RANK() over(order by [date]) as seq,[date], (1 + AVG(RIZE))  as rize, ";
+            sql = "SELECT RANK() over(order by [date]) as seq,[date], isnull(1 + AVG(RIZE),0)  as rize, ";
             sql += " isnull(SUM(CASE [IS_RIZE] WHEN 1 THEN 1 END),0) AS NUM_RIZE, ";
             sql += " isnull(SUM(CASE [IS_RIZE] WHEN 0 THEN 1 END),0) AS NUM_DOWN, ";
             sql += StockApp.MIN_ZERO + " as ave1, " + StockApp.MIN_ZERO + " as ave2, " + StockApp.MIN_ZERO + " as ave3, " + StockApp.MIN_ZERO + " as ave4, " + +StockApp.MIN_ZERO + " as ave5,  '                       ' as dapan ";
@@ -89,15 +88,15 @@ namespace StockAnalysis
             string sql = "select * from [stock_DaPan] order by seq";
             System.Data.DataTable table = db.GetTable(sql);
             int size = table.Rows.Count;
-            overallitem[] header = new overallitem[size];
+            DaPanItem[] dapan_items = new DaPanItem[size];
             
             //初始化overallitem
             for (int i = 0; i < size; i++)
             {
                 DataRow row = table.Rows[i];
-                overallitem item = new overallitem();
+                DaPanItem item = new DaPanItem();
                 item.seq = Convert.ToInt32(row["seq"]);
-                item.grade = "";
+                item.grade = STATUS_NEUTRAL;
                 item.num_rize = Convert.ToInt32(row["num_rize"]);
                 item.num_down = Convert.ToInt32(row["num_down"]);
                 item.avg1 = 0; 
@@ -106,46 +105,39 @@ namespace StockAnalysis
                 item.avg4 = 0;
                 item.avg5 = 0;
 
-                try
-                {   
-                    item.date = Convert.ToInt32(row["date"]);
-                    item.rize = Convert.ToDouble(row["rize"]) + 1000 * StockApp.MIN_ZERO; //防止为0
-                }
-                catch
-                {
-                    item.date = Convert.ToInt32(row["date"]);
-                    item.rize = 0;
-                }
-                header[i] = item;                
+                item.date = Convert.ToInt32(row["date"]);
+                item.rize = Convert.ToDouble(row["rize"]) + 1000 * StockApp.MIN_ZERO; //防止为0
+                                
+                dapan_items[i] = item;                
             }
             //计算平均值
-            double[] avg1 = InitAverage(header, 5);
-            double[] avg2 = InitAverage(header, 10);
-            double[] avg3 = InitAverage(header, 30);
-            double[] avg4 = InitAverage(header, 60);
-            double[] avg5 = InitAverage(header, 100);
+            double[] avg1 = InitAverage(dapan_items, 5);
+            double[] avg2 = InitAverage(dapan_items, 10);
+            double[] avg3 = InitAverage(dapan_items, 30);
+            double[] avg4 = InitAverage(dapan_items, 60);
+            double[] avg5 = InitAverage(dapan_items, 100);
             for (int i = 0; i < size; i++)
             {
-                overallitem item = header[i];
+                DaPanItem item = dapan_items[i];
                 item.avg1 = avg1[i];
                 item.avg2 = avg2[i];
                 item.avg3 = avg3[i];
                 item.avg4 = avg4[i];
                 item.avg5 = avg5[i];
             }
-           
-            string[] grade = GetGrade(header);
+            //grade默认为NEUTRAL,此处许需要更新
+            /*string[] grade = new string[]{STATUS_NEUTRAL};
             for (int i = 0; i < size; i++)
             {
-                overallitem item = header[i];
+                DaPanItem item = dapan_items[i];
                 item.grade = grade[i];
-            }
+            }*/
 
             //准备导入数据
             for (int i = 0; i < size; i++)
             {
                 string[] filestrs = new string[11];
-                overallitem item = header[i];
+                DaPanItem item = dapan_items[i];
                 filestrs[0] = item.seq.ToString();
                 filestrs[1] = item.date.ToString();
                 filestrs[2] = item.rize.ToString(); //每日的涨幅
@@ -178,21 +170,10 @@ namespace StockAnalysis
             return ret;
             
         }
-        //得到基于均价的评分
-        private static string[] GetGrade(overallitem[] items)
-        {
-            string cur_status = STATUS_NEUTRAL;
-            int size = items.Length;
-            string[] ret = new string[size];
-            for (int i = 0; i < size; i++)
-            {
-                ret[i] = cur_status;
-            }
-            return ret;
-        }
+        
         //更新大盘均线
         //初始化平均值
-        private static double[] InitAverage(overallitem[] items, int days)
+        private static double[] InitAverage(DaPanItem[] items, int days)
         {
             int size = items.Length;
             double[] ret = new double[size];
@@ -226,5 +207,32 @@ namespace StockAnalysis
             int id = Convert.ToInt32(db.GetOneValue(sql));
             return id;
         }
+        #region not used
+        //没有使用,永远为NEUTRAL
+        private static string[] GetGrade(DaPanItem[] items)
+        {
+            string cur_status = STATUS_NEUTRAL;
+            int size = items.Length;
+            string[] ret = new string[size];
+            for (int i = 0; i < size; i++)
+            {
+                ret[i] = cur_status;
+            }
+            return ret;
+        }
+        //给出某一日大盘的评分
+        public static double[] GetDaPanStat(int intdate)
+        {
+            string sql = "select * from [stock_DaPan] where [date] = " + intdate + ";";
+            DataRow dr = db.GetFirstRow(sql);
+            double[] ret = new double[3];
+            ret[0] = Convert.ToDouble(dr["rize"]);
+            int num_rize = Convert.ToInt32(dr["num_rize"]);
+            int num_down = Convert.ToInt32(dr["num_down"]);
+            ret[1] = (num_rize + 0.00000001) / (num_rize + num_down + 0.00000001);
+            ret[2] = (num_down + 0.00000001) / (num_rize + num_down + 0.00000001);
+            return ret;
+        }
+        #endregion
     }
 }

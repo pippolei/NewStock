@@ -44,17 +44,9 @@ namespace StockAnalysis.Panel
             {
                 strs = new string[2];
                 
-                if (StockApp.isProductive)
-                {
-                    strs[0] = s.code;
-                    strs[1] = s.name;
-                }
-                else
-                {
-                    strs[0] = s.code;
-                    strs[1] = s.code;
-                }
-                
+                strs[0] = s.code;
+                strs[1] = s.code;
+                               
                 dg_list.Rows.Add(strs);
             }
         }

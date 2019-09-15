@@ -17,8 +17,25 @@ namespace StockAnalysis
             string sql = "IF OBJECT_ID('[Rule_Score]', 'U') IS NOT NULL drop table [Rule_Score];";
             db.RunSql(sql);
             sql = @"SELECT rulename, intdate, AVG(grade) as 'grade'  into Rule_Score FROM 
-                (select *, [DATE]/100 as intdate from Rule_Buy) T1 group by rulename,  intdate";
+                (select *, [DATE]/100 as intdate from Rule_Buy0) T1 group by rulename,  intdate";
             db.RunSql(sql);
+        }
+        public static void SetAllPreScore()
+        {
+            string sql = "select * from Rule_Buy0";
+            DataTable dt = db.GetTable(sql);
+            int size = dt.Rows.Count;
+            ArrayList sqls = new ArrayList();
+            for (int i = 0; i < size; i++)
+            {
+                DataRow dr = dt.Rows[i];
+                int id = Convert.ToInt32(dr["id"]);
+                int date = Convert.ToInt32(dr["date"]);
+                string rulename = (string)dr["rulename"];
+                double prescore = GetRuleScore(rulename, date);
+                sqls.Add("update [Rule_Buy0] set pregrade = '" + prescore + "' where id = " + id + " and [type] = '" + Rule.STATUS_BUY + "';");
+            }
+            db.RunSql(sqls);
         }
         public static double GetRuleScore(string rulename, int buymonth)
         {
@@ -31,10 +48,8 @@ namespace StockAnalysis
                 string sql = "select * from rule_score where rulename = '" + rulename + "' and intdate = " + newperiod + ";";
                 ret = db.GetOneValue(sql, "grade");
                 times++;
-                if (times > 3) break;
+                if (times > 30) break;
             }
-
-
             if (ret == null)
             {
                 return StockApp.MIN_ZERO;
@@ -42,22 +57,6 @@ namespace StockAnalysis
             return Convert.ToDouble(ret.ToString());
         }
 
-        public static void SetAllPreScore()
-        {
-            string sql = "select * from Rule_Buy";
-            DataTable dt = db.GetTable(sql);
-            int size = dt.Rows.Count;
-            ArrayList sqls = new ArrayList();
-            for (int i = 0; i < size; i++)
-            {
-                DataRow dr = dt.Rows[i];
-                int id = Convert.ToInt32(dr["id"]);
-                int date = Convert.ToInt32(dr["date"]);
-                string rulename = (string)dr["rulename"];
-                double prescore = GetRuleScore(rulename, date);
-                sqls.Add("update [Rule_Buy] set pregrade = '" + prescore + "' where id = " + id + ";");
-            }
-            db.RunSql(sqls);
-        }
+        
     }
 }

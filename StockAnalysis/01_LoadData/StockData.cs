@@ -77,7 +77,7 @@ namespace StockAnalysis
                     item.end = Convert.ToDouble(s[4]);
                     item.volume = (int)Convert.ToDouble(s[5]);
                     //股票数据有误
-                    if (item.volume < 100 || item.high < 0.01)
+                    if (item.volume < 100 || item.high < 0.3)
                     {
                         continue;
                     }
@@ -102,7 +102,7 @@ namespace StockAnalysis
                 return false;
             }
             //去除创业板
-            if (code.StartsWith("300") || code.StartsWith("000418"))
+            if (code.StartsWith("300"))
             {
                 return false;
             }
@@ -112,7 +112,7 @@ namespace StockAnalysis
                 return false;
             }
             //前复权后股价变为负值
-            if (this.min_value < 0.05)
+            if (this.min_value < 0.1)
             {
                 return false;
             }
@@ -153,9 +153,6 @@ namespace StockAnalysis
             db.RunSql(sql);
 
         }
-
-        
-
 
         //假设index日买入或者卖出股票, 得到股票之后的表现
         public double getGrade(string type, int index)
