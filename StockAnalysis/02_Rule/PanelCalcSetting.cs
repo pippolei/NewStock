@@ -270,6 +270,15 @@ namespace StockAnalysis.Panel
         }
         private void btn_calc_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < 3; i++)
+            {
+                DialogResult result = MessageBox.Show("Confirm re calculate rule !!!!!!? It'll take long time to regenerate", "Calc Rule", MessageBoxButtons.OKCancel);
+                if (result != DialogResult.OK)
+                {
+                    MessageBox.Show("Action Cancelled");
+                    return;
+                }
+            }
             //用于记录已分析股票进度(个数)
             analyse_total = StockApp.allstock.Count;
             analyse_now = 0;

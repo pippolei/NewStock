@@ -75,6 +75,16 @@ namespace StockAnalysis.Panel
         //2018-03-14 Reviewed
         private void btn_syncData_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < 3; i++)
+            {
+                DialogResult result = MessageBox.Show("Confirm resync data!!!!!!? It'll take long time to regenerate", "Calc Data", MessageBoxButtons.OKCancel);
+                if (result != DialogResult.OK)
+                {
+                    MessageBox.Show("Action Cancelled");
+                    return;
+                }    
+            }
+            
             pnl_list.Clear();
             filelist = GetFileList();
             prog = new PanelProgress("Importing Stock", filelist.Count);
