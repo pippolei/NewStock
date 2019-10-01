@@ -47,7 +47,7 @@ namespace StockAnalysis
         private static DataManager db = new DataManager();
         //2018-03-20
         //如果没有卖出数据,会把最后一天的价格强制卖出
-        public static StockOpeItem[] CalculateCombineAnalysisList(int startdate, int enddate, string buyname, string sellname, int buytype)
+        public static StockOpeItem[] CalculateSave2Analysis2(int startdate, int enddate, string buyname, string sellname, int buytype)
         {
             string sql;
             //tmp2得到所有的卖出信息以及最后一天的信息

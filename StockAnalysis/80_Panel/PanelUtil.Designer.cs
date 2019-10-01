@@ -32,6 +32,7 @@
             this.btn_rulefull = new System.Windows.Forms.Button();
             this.btn_stockdata = new System.Windows.Forms.Button();
             this.btn_importrule = new System.Windows.Forms.Button();
+            this.btn_rulesell = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_stockfull
@@ -46,11 +47,11 @@
             // 
             // btn_rulefull
             // 
-            this.btn_rulefull.Location = new System.Drawing.Point(47, 65);
+            this.btn_rulefull.Location = new System.Drawing.Point(47, 108);
             this.btn_rulefull.Name = "btn_rulefull";
             this.btn_rulefull.Size = new System.Drawing.Size(160, 23);
             this.btn_rulefull.TabIndex = 1;
-            this.btn_rulefull.Text = "Export Rule Full";
+            this.btn_rulefull.Text = "Export Buy Rull";
             this.btn_rulefull.UseVisualStyleBackColor = true;
             this.btn_rulefull.Click += new System.EventHandler(this.btn_rulefull_Click);
             // 
@@ -66,7 +67,7 @@
             // 
             // btn_importrule
             // 
-            this.btn_importrule.Location = new System.Drawing.Point(47, 123);
+            this.btn_importrule.Location = new System.Drawing.Point(47, 153);
             this.btn_importrule.Name = "btn_importrule";
             this.btn_importrule.Size = new System.Drawing.Size(160, 23);
             this.btn_importrule.TabIndex = 3;
@@ -74,10 +75,21 @@
             this.btn_importrule.UseVisualStyleBackColor = true;
             this.btn_importrule.Click += new System.EventHandler(this.btn_importrule_Click);
             // 
+            // btn_rulesell
+            // 
+            this.btn_rulesell.Location = new System.Drawing.Point(248, 108);
+            this.btn_rulesell.Name = "btn_rulesell";
+            this.btn_rulesell.Size = new System.Drawing.Size(160, 23);
+            this.btn_rulesell.TabIndex = 4;
+            this.btn_rulesell.Text = "Export Buy_Sell Rule";
+            this.btn_rulesell.UseVisualStyleBackColor = true;
+            this.btn_rulesell.Click += new System.EventHandler(this.btn_rulesell_Click);
+            // 
             // PanelUtil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_rulesell);
             this.Controls.Add(this.btn_importrule);
             this.Controls.Add(this.btn_stockdata);
             this.Controls.Add(this.btn_rulefull);
@@ -94,5 +106,6 @@
         private System.Windows.Forms.Button btn_rulefull;
         private System.Windows.Forms.Button btn_stockdata;
         private System.Windows.Forms.Button btn_importrule;
+        private System.Windows.Forms.Button btn_rulesell;
     }
 }

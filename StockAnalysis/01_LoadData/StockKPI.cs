@@ -10,6 +10,7 @@ namespace StockAnalysis
         public int sellindex;
         public double sellprice;
         public int selldate;
+
     }
     public class StockKPI
     {
@@ -22,6 +23,7 @@ namespace StockAnalysis
         public static readonly string default_index = "index";
         public static readonly string default_date = "date";
         public static readonly string default_price = "price";
+
 
         
         public StockKPI(StockData _stock)
@@ -64,6 +66,7 @@ namespace StockAnalysis
                 list.Add(StockApp.DEFAULT_SELLs[i] + default_index);
                 list.Add(StockApp.DEFAULT_SELLs[i] + default_date);
                 list.Add(StockApp.DEFAULT_SELLs[i] + default_price);
+
             }
 
             KPIs = list.ToArray();
@@ -171,6 +174,7 @@ namespace StockAnalysis
                 items[i].kpi[sellname + default_index] = sellitem.sellindex;
                 items[i].kpi[sellname + default_date] = sellitem.selldate;
                 items[i].kpi[sellname + default_price] = sellitem.sellprice;
+
             }
             for (int i = Math.Max(size - sellday, 0); i < size; i++)
             {

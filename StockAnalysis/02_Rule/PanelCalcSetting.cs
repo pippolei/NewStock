@@ -133,7 +133,7 @@ namespace StockAnalysis.Panel
                         attristrs[20] = item.attributes[StockAttribute.POST5].ToString(); ;
                         rulefile.AddRow(attristrs);
                     }
-                }
+                }//foreach
 
                 //UtilLog.AddInfo(TAG, rule.ToString() + " calculation finished. ");
             }
@@ -219,7 +219,7 @@ namespace StockAnalysis.Panel
             //ÒÆ³ýsequence
             sql = @"select [TYPE], ID from
                 (
-                select ROW_NUMBER() OVER (PARTITION BY [type], rulename, [date] order by pregrade) AS SEQUENCE,* from rule_buy0 
+                select ROW_NUMBER() OVER (PARTITION BY [type], rulename, [date] order by pregrade desc) AS SEQUENCE,* from rule_buy0 
                 ) T1
                 where T1.SEQUENCE > 10 and [TYPE] > 0;";
             DataTable dt = db.GetTable(sql);

@@ -30,23 +30,6 @@ namespace StockAnalysis.Panel
         {
             this.components = new System.ComponentModel.Container();
             this.dg_detail = new System.Windows.Forms.DataGridView();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Volume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_main_toptop = new System.Windows.Forms.Panel();
             this.btn_batch = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,6 +53,13 @@ namespace StockAnalysis.Panel
             this.label6 = new System.Windows.Forms.Label();
             this.pnl_main_bottom = new System.Windows.Forms.Panel();
             this.dg_overview = new System.Windows.Forms.DataGridView();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dapan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteSimulatRecordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dg_batch = new System.Windows.Forms.DataGridView();
@@ -78,13 +68,23 @@ namespace StockAnalysis.Panel
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dapan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Volume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dg_detail)).BeginInit();
             this.pnl_main_toptop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_interval)).BeginInit();
@@ -128,95 +128,6 @@ namespace StockAnalysis.Panel
             this.dg_detail.Size = new System.Drawing.Size(877, 224);
             this.dg_detail.TabIndex = 0;
             this.dg_detail.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dg_detail_MouseClick_1);
-            // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "Type";
-            this.Column21.Name = "Column21";
-            this.Column21.Width = 30;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Buyrule";
-            this.Column1.Name = "Column1";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Sellrule";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 50;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "stockcode";
-            this.Column7.Name = "Column7";
-            // 
-            // Column19
-            // 
-            this.Column19.HeaderText = "buydate";
-            this.Column19.Name = "Column19";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "buyindex";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 50;
-            // 
-            // Volume
-            // 
-            this.Volume.HeaderText = "buyprice";
-            this.Volume.Name = "Volume";
-            // 
-            // Column20
-            // 
-            this.Column20.HeaderText = "selldate";
-            this.Column20.Name = "Column20";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "sellprice";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 50;
-            // 
-            // Column26
-            // 
-            this.Column26.HeaderText = "sellprice";
-            this.Column26.Name = "Column26";
-            // 
-            // Column27
-            // 
-            this.Column27.HeaderText = "buyvolume";
-            this.Column27.Name = "Column27";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "stockvalue";
-            this.Column6.Name = "Column6";
-            // 
-            // Column22
-            // 
-            this.Column22.HeaderText = "winvalue";
-            this.Column22.Name = "Column22";
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "holdstocknum";
-            this.Column18.Name = "Column18";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "totalstockvalue";
-            this.Column2.Name = "Column2";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "leftmoney";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "totalamount";
-            this.Column10.Name = "Column10";
             // 
             // pnl_main_toptop
             // 
@@ -480,6 +391,41 @@ namespace StockAnalysis.Panel
             this.dg_overview.TabIndex = 2;
             this.dg_overview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dg_overview_MouseDoubleClick);
             // 
+            // type
+            // 
+            this.type.HeaderText = "type";
+            this.type.Name = "type";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "BuyRule";
+            this.Column8.Name = "Column8";
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "SellRule";
+            this.Column12.Name = "Column12";
+            // 
+            // Column23
+            // 
+            this.Column23.HeaderText = "startdate";
+            this.Column23.Name = "Column23";
+            // 
+            // Column24
+            // 
+            this.Column24.HeaderText = "enddate";
+            this.Column24.Name = "Column24";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Amount";
+            this.Column11.Name = "Column11";
+            // 
+            // Dapan
+            // 
+            this.Dapan.HeaderText = "DaPan";
+            this.Dapan.Name = "Dapan";
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -535,40 +481,94 @@ namespace StockAnalysis.Panel
             this.Column17.HeaderText = "amount";
             this.Column17.Name = "Column17";
             // 
-            // type
+            // Column21
             // 
-            this.type.HeaderText = "type";
-            this.type.Name = "type";
+            this.Column21.HeaderText = "Type";
+            this.Column21.Name = "Column21";
+            this.Column21.Width = 30;
             // 
-            // Column8
+            // Column1
             // 
-            this.Column8.HeaderText = "BuyRule";
-            this.Column8.Name = "Column8";
+            this.Column1.HeaderText = "Buyrule";
+            this.Column1.Name = "Column1";
             // 
-            // Column12
+            // Column3
             // 
-            this.Column12.HeaderText = "SellRule";
-            this.Column12.Name = "Column12";
+            this.Column3.HeaderText = "Sellrule";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 50;
             // 
-            // Column23
+            // Column7
             // 
-            this.Column23.HeaderText = "startdate";
-            this.Column23.Name = "Column23";
+            this.Column7.HeaderText = "stockcode";
+            this.Column7.Name = "Column7";
             // 
-            // Column24
+            // Column19
             // 
-            this.Column24.HeaderText = "enddate";
-            this.Column24.Name = "Column24";
+            this.Column19.HeaderText = "buydate";
+            this.Column19.Name = "Column19";
             // 
-            // Column11
+            // Column4
             // 
-            this.Column11.HeaderText = "Amount";
-            this.Column11.Name = "Column11";
+            this.Column4.HeaderText = "buyindex";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 50;
             // 
-            // Dapan
+            // Volume
             // 
-            this.Dapan.HeaderText = "DaPan";
-            this.Dapan.Name = "Dapan";
+            this.Volume.HeaderText = "buyprice";
+            this.Volume.Name = "Volume";
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "selldate";
+            this.Column20.Name = "Column20";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "sellindex";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 50;
+            // 
+            // Column26
+            // 
+            this.Column26.HeaderText = "sellprice";
+            this.Column26.Name = "Column26";
+            // 
+            // Column27
+            // 
+            this.Column27.HeaderText = "buyvolume";
+            this.Column27.Name = "Column27";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "stockvalue";
+            this.Column6.Name = "Column6";
+            // 
+            // Column22
+            // 
+            this.Column22.HeaderText = "winvalue";
+            this.Column22.Name = "Column22";
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "holdstocknum";
+            this.Column18.Name = "Column18";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "totalstockvalue";
+            this.Column2.Name = "Column2";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "leftmoney";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "totalamount";
+            this.Column10.Name = "Column10";
             // 
             // PanelSimulate
             // 
@@ -621,23 +621,6 @@ namespace StockAnalysis.Panel
         private System.Windows.Forms.Panel pnl_main_bg_bottom;
         private System.Windows.Forms.Button btn_simulate;
         private System.Windows.Forms.Label lbl_growth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Volume;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridView dg_batch;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
@@ -657,6 +640,23 @@ namespace StockAnalysis.Panel
         private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dapan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Volume;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
 
 
     }

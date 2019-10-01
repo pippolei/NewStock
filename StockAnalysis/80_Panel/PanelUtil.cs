@@ -64,5 +64,13 @@ namespace StockAnalysis
             db.RunSql(sql);
             MessageBox.Show("Done");
         }
+
+        private void btn_rulesell_Click(object sender, EventArgs e)
+        {
+            string sql = "select * from rule_buy0 where type in ('" + Rule.STATUS_BUY + "','" + Rule.STATUS_SELL + "') order by [id] ;";
+            Export_To_CSV(sql, "C:/StockAnalysis/py/rule_withsell.csv");
+        }
+
+
     }
 }

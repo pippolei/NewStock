@@ -63,7 +63,8 @@ namespace StockAnalysis.Panel
                     foreach (int buyrule in Rule.rulebuy_list)
                     {
                         //计算的时候可以看到并没有考虑止损， 但实际显示结果时都有考虑
-                        StockOpeItem[] rule_items = StockAnalysisSQL.CalculateCombineAnalysisList(startdate, enddate, buyitem.ToString(), sellitem.ToString(), buyrule);
+                        StockOpeItem[] rule_items = StockAnalysisSQL.CalculateSave2Analysis2(startdate, enddate, buyitem.ToString(), sellitem.ToString(), buyrule);
+                        
                         //计算当前分析进度
 
                         foreach (StockOpeItem rule_item in rule_items)
