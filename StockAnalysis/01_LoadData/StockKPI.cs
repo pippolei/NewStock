@@ -36,8 +36,12 @@ namespace StockAnalysis
         static StockKPI()
         {   
             PURE_KPIs = new string[] { 
-                ABOVE_AVE_0, //均线多头排列 
-                ABOVE_HIGH20_1, ABOVE_HIGH60_2, ABOVE_HIGH130_3, //突破前期高点
+                ABOVE_AVE_10, // 收盘价大于10日均线
+                ABOVE_AVE_20,
+                ABOVE_AVE_60,
+                A10_ABOVE_20,
+                A10_ABOVE_60,
+                A20_ABOVE_60,
                 ABOVE_HALF_130_4,  BELOW_HALF_130_5  //股价高于近期130高点的60%或者低于35%
                 //,GOOD_MACD
             };
@@ -107,16 +111,20 @@ namespace StockAnalysis
             Init_Default_Sell2(StockApp.DEFAULT_SELLs[1], StockApp.MAX_HOLD_DAYS_MEDIUM, StockApp.HIGH_THRESHOLD_MEDIUM, StockApp.LOW_THRESHOLD_MEDIUM);
             Init_Default_Sell2(StockApp.DEFAULT_SELLs[2], StockApp.MAX_HOLD_DAYS_LONG, StockApp.HIGH_THRESHOLD_LONG, StockApp.LOW_THRESHOLD_LONG);
             Init_Default_Sell2(StockApp.DEFAULT_SELLs[3], StockApp.MAX_HOLD_DAYS_END, StockApp.HIGH_THRESHOLD_END, StockApp.LOW_THRESHOLD_END);
-            //均线多头排列
-            Init_ABOVE_AVE();
+            //收盘价和均线比较
+            Init_ABOVE_AVE(ABOVE_AVE_10, StockAttribute.AVE10);
+            Init_ABOVE_AVE(ABOVE_AVE_20, StockAttribute.AVE20);
+            Init_ABOVE_AVE(ABOVE_AVE_60, StockAttribute.AVE60);
+            //均线之间比较
+            Init_ABOVE_AVE(A10_ABOVE_20, StockAttribute.AVE10, StockAttribute.AVE20);
+            Init_ABOVE_AVE(A10_ABOVE_60, StockAttribute.AVE10, StockAttribute.AVE60);
+            Init_ABOVE_AVE(A20_ABOVE_60, StockAttribute.AVE20, StockAttribute.AVE60);
             //突破近期高点
-            Init_ABOVE_VALUE(ABOVE_HIGH20_1, StockAttribute.HIGH20);
-            Init_ABOVE_VALUE(ABOVE_HIGH60_2, StockAttribute.HIGH60);
-            Init_ABOVE_VALUE(ABOVE_HIGH130_3, StockAttribute.HIGH130);
+
             //股价大于最高价的60%
             ABOVE_Half130High(0.60);
             //股价低于最高价的40%
-            BELOW_Half130High(0.35);
+            BELOW_Half130High(0.45);
             //MACD和均线属于好的趋势,好的趋势就是多头发散排列
             //Init_GOOD_TREND(GOOD_MACD);
             InitNUM_KPI();
@@ -125,22 +133,41 @@ namespace StockAnalysis
         #region 必选属性
         //均线多头排列
         //均线多头
-        public static readonly string ABOVE_AVE_0 = "0_ABOVE_AVE";  
-        private void Init_ABOVE_AVE()
+        public static readonly string ABOVE_AVE_10 = "0_ABOVE_AVE_10";
+        public static readonly string ABOVE_AVE_20 = "0_ABOVE_AVE_20";
+        public static readonly string ABOVE_AVE_60 = "0_ABOVE_AVE_60"; 
+        private void Init_ABOVE_AVE(string name, string attribute)
         {
             int size = stock.items.Length;
             for (int i = StockApp.START_ATTRIBUTE; i < size; i++)
             {
-                double ave120 = Convert.ToDouble(items[i].attributes[StockAttribute.AVE120]);
-                double ave20 = Convert.ToDouble(items[i].attributes[StockAttribute.AVE20]);
-                double ave60 = Convert.ToDouble(items[i].attributes[StockAttribute.AVE60]);
-                if (ave20 >= ave60 && ave60 >= ave120 && (ave20 - ave60) > (ave60 - ave120))
+                if (items[i].end > Convert.ToDouble(items[i].attributes[attribute]))
                 {
-                    items[i].kpi[ABOVE_AVE_0] = 1;
+                    items[i].kpi[name] = 1;
                 }
                 else
                 {
-                    items[i].kpi[ABOVE_AVE_0] = 0;
+                    items[i].kpi[name] = 0;
+                }
+
+            }
+        }
+        //均线之间的比较
+        public static readonly string A10_ABOVE_20 = "A10_ABOVE_20";
+        public static readonly string A10_ABOVE_60 = "A10_ABOVE_60";
+        public static readonly string A20_ABOVE_60 = "A20_ABOVE_60";
+        private void Init_ABOVE_AVE(string name, string attribute1, string attribute2)
+        {
+            int size = stock.items.Length;
+            for (int i = StockApp.START_ATTRIBUTE; i < size; i++)
+            {
+                if (Convert.ToDouble(items[i].attributes[attribute1]) > Convert.ToDouble(items[i].attributes[attribute2]))
+                {
+                    items[i].kpi[name] = 1;
+                }
+                else
+                {
+                    items[i].kpi[name] = 0;
                 }
 
             }
@@ -187,27 +214,7 @@ namespace StockAnalysis
                 items[i].kpi[sellname + default_price] = sellitem.sellprice;
             }
         }
-        //突破近期高点
-        public static readonly string ABOVE_HIGH20_1 = "1_BREAK_THROUGH20";
-        public static readonly string ABOVE_HIGH60_2 = "2_BREAK_THROUGH60";
-        public static readonly string ABOVE_HIGH130_3 = "3_BREAK_THROUGH130";
-        private void Init_ABOVE_VALUE(string kpiname, string attr)
-        {
-            int size = stock.items.Length;
-            for (int i = StockApp.START_ATTRIBUTE; i < size; i++)
-            {
-                double price = Convert.ToDouble(items[i - 1].attributes[attr]);
-                if (items[i].end > price && items[i - 1].end < price)
-                {
-                    items[i].kpi[kpiname] = 1;
-                }
-                else
-                {
-                    items[i].kpi[kpiname] = 0;
-                }
-
-            }
-        }
+        
         //大于130高价的60%
         public static readonly string ABOVE_HALF_130_4 = "4_ABOVE_HALF_120";
         private void ABOVE_Half130High(double percentage)
