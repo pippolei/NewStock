@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StockAnalysis
 {
-    class Buy6RizeWithEqual : Buy
+    class Buy6RizeAgStart : Buy
     {
         //连续6日小阳线
         //且这6日中小阳线产生金叉
@@ -19,13 +19,13 @@ namespace StockAnalysis
             StockItem yes6 = stock.items[index - 6];
             StockItem yes7 = stock.items[index - 7];
             
-            if (item.end >= yes1.end
-                && yes1.end >= yes2.end
-                && yes2.end >= yes3.end
-                && yes3.end >= yes4.end 
-                && yes4.end >= yes5.end
-                && yes5.end >= yes6.end
-                && yes6.end * 1.12 > item.end && yes6.end < yes7.end
+            if (item.end >= item.start
+                && yes1.end >= yes1.start
+                && yes2.end >= yes2.start
+                && yes3.end >= yes3.start
+                && yes4.end >= yes4.start
+                && yes5.end >= yes5.start
+                && yes6.end * 1.12 > item.end && yes6.end < yes6.start
                 )
             {
                 return true;
@@ -35,7 +35,7 @@ namespace StockAnalysis
         }
         public override string ToString()
         {
-            return "Buy6RizeWithEqual";
+            return "Buy6RizeAgStart";
         }
         
        

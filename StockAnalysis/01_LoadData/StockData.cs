@@ -102,7 +102,7 @@ namespace StockAnalysis
                 return false;
             }
             //È¥³ý´´Òµ°å
-            if (code.StartsWith("300"))
+            if (code.StartsWith("300") || code.StartsWith("s300"))
             {
                 return false;
             }
