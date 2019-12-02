@@ -69,8 +69,8 @@ namespace StockAnalysis
             db.RunSql(sql);
 
             sql = "SELECT RANK() over(order by [date]) as seq,[date], isnull(1 + AVG(RIZE),0)  as rize, ";
-            sql += " isnull(SUM(CASE [IS_RIZE] WHEN 1 THEN 1 END),0) AS NUM_RIZE, ";
-            sql += " isnull(SUM(CASE [IS_RIZE] WHEN 0 THEN 1 END),0) AS NUM_DOWN, ";
+            sql += " isnull(SUM(case when ([RIZE] > 0) THEN 1 END),0) AS NUM_RIZE, ";
+            sql += " isnull(SUM(case when ([RIZE] <= 0) THEN 1 END),0) AS NUM_DOWN, ";
             sql += StockApp.MIN_ZERO + " as ave1, " + StockApp.MIN_ZERO + " as ave2, " + StockApp.MIN_ZERO + " as ave3, " + StockApp.MIN_ZERO + " as ave4, " + +StockApp.MIN_ZERO + " as ave5,  '                       ' as dapan ";
             sql += " into stock_DaPan ";
             sql += " FROM [stock_Full] ";

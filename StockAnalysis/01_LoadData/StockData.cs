@@ -112,7 +112,7 @@ namespace StockAnalysis
                 return false;
             }
             //前复权后股价变为负值
-            if (this.min_value < 0.1)
+            if (this.min_value < 0.3)
             {
                 return false;
             }

@@ -41,8 +41,8 @@ namespace StockAnalysis
                 ABOVE_AVE_60,
                 A10_ABOVE_20,
                 A10_ABOVE_60,
-                A20_ABOVE_60,
-                ABOVE_HALF_130_4,  BELOW_HALF_130_5  //股价高于近期130高点的60%或者低于35%
+                A20_ABOVE_60
+                //ABOVE_HALF_130_4,  BELOW_HALF_130_5  //股价高于近期130高点的60%或者低于35%
                 //,GOOD_MACD
             };
 
@@ -122,9 +122,9 @@ namespace StockAnalysis
             //突破近期高点
 
             //股价大于最高价的60%
-            ABOVE_Half130High(0.60);
+            //ABOVE_Half130High(0.60);
             //股价低于最高价的40%
-            BELOW_Half130High(0.45);
+            //BELOW_Half130High(0.45);
             //MACD和均线属于好的趋势,好的趋势就是多头发散排列
             //Init_GOOD_TREND(GOOD_MACD);
             InitNUM_KPI();

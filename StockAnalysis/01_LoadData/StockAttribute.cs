@@ -14,42 +14,37 @@ namespace StockAnalysis
         {
             stock = _stock;
             items = stock.items;
-            ATTR_CALC_STARTINDEX = StockApp.START_ATTRIBUTE - 100;
+            ATTR_CALC_STARTINDEX = StockApp.START_ATTRIBUTE - 60;
         }
         private static ArrayList attrList = new ArrayList();
         static StockAttribute()
         {
-            attrList.Add(CANBUY);
-            attrList.Add(SELLPRICE);
-            attrList.Add(IS_RIZE);
-            attrList.Add(StockAttribute.RIZE);
-
-            attrList.Add(POST1);
-            attrList.Add(POST2);
-            attrList.Add(POST3);
-            attrList.Add(POST4);
-            attrList.Add(POST5);
-
+            attrList.Add(StockAttribute.RIZE);           
             attrList.Add(AVE5);
             attrList.Add(AVE10);
             attrList.Add(AVE20);
             attrList.Add(AVE30);
             attrList.Add(AVE60);
-            attrList.Add(AVE120);
 
-            attrList.Add(AVE_VOLUME10);
-            attrList.Add(AVE_VOLUME20);
+            //attrList.Add(AVE_VOLUME10);
+            //attrList.Add(AVE_VOLUME20);
 
             attrList.Add(LOW10);
             attrList.Add(LOW20);
-            attrList.Add(LOW130);
+
             attrList.Add(HIGH10);
             attrList.Add(HIGH20);
             attrList.Add(HIGH60);
-            attrList.Add(HIGH130);
+ 
 
             attrList.Add(EMA12);
             attrList.Add(EMA26);
+            attrList.Add(DEA);
+            attrList.Add(POST1);
+            attrList.Add(POST2);
+            attrList.Add(POST3);
+            attrList.Add(POST4);
+            attrList.Add(POST5);
         }
         //得到所有计算的股票技术属性
         public static string[] attributes
@@ -62,10 +57,7 @@ namespace StockAnalysis
         //CANBUY: 第二天是否能够买入
         //SELLPRICE:卖出价格
         public void InitAttribute()
-        {
-            //第二天能否买到,默认购买方式为第二天直接以当天的收盘价报价, 如果第二天最低价>今天的收盘价,则买不到
-            initCanBuy(CANBUY);
-            initSellPrice(SELLPRICE);
+        {   
             initRize();
             initPost(); //定义当前价之后的几天价格
             //必选属性
@@ -74,19 +66,17 @@ namespace StockAnalysis
             InitAverage(AVE20, 20);
             InitAverage(AVE30, 30);
             InitAverage(AVE60, 60);
-            InitAverage(AVE120, 120);
 
-            InitAveVolume(AVE_VOLUME10, 10);
-            InitAveVolume(AVE_VOLUME20, 20);
-
+            //InitAveVolume(AVE_VOLUME10, 10);
+            //InitAveVolume(AVE_VOLUME20, 20);
 
             InitLowEnd(LOW10, 10);
             InitLowEnd(LOW20, 20);
-            InitLowEnd(LOW130, 130);
+
             InitHighEnd(HIGH10, 10);
             InitHighEnd(HIGH20, 20);
             InitHighEnd(HIGH60, 60);
-            InitHighEnd(HIGH130, 130);
+
             //macd
             InitEMA(EMA12, 12);
             InitEMA(EMA26, 26);
@@ -118,25 +108,7 @@ namespace StockAnalysis
             }
             
         }
-        //如果第二天最低价高于当天收盘价,则按照策略这次没法买入
-        //因为默认是以当天收盘价买入
-        private void initCanBuy(string name)
-        {
-            int size = items.Length;
-            for (int i = ATTR_CALC_STARTINDEX; i < size - 1; i++)
-            {
-                StockItem item = items[i];
-                if (items[i+1].low > item.end)
-                {
-                    items[i].attributes[name] = 0;
-                }
-                else
-                {
-                    items[i].attributes[name] = 1;
-                }
-            }
-            items[size - 1].attributes[name] = 0;
-        }
+        
         //是否上升
         private void initRize()
         {
@@ -144,76 +116,28 @@ namespace StockAnalysis
             for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
             {
                 StockItem item = items[i];
-                item.attributes[IS_RIZE] = 0;
-                if (items[i - 1].end > 0.02)
-                {
-                    item.attributes[StockAttribute.RIZE] = (item.end - items[i - 1].end) / items[i - 1].end;
-                }
-                else
-                {
-                    item.attributes[StockAttribute.RIZE] = 0;
-                }
-                
-                //if (item.end > item.start && item.end > items[i - 1].end)
-                if (item.end > items[i-1].end) 
-                {
-                    item.attributes[IS_RIZE] = 1;
-                }
+                item.attributes[StockAttribute.RIZE] = (item.end - items[i - 1].end) / items[i - 1].end;
             }
         }
-        //默认第二天开盘价就卖,但是如果跌停,则计算卖出价格
-        private void initSellPrice(string name)
-        {
-            int size = items.Length;
-            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
-            {
-                StockItem item = items[i];
-                items[i].attributes[name] = item.end;
-                for (int j = i + 1; j < size; j++)
-                {
-                    if (items[j].start >= items[j - 1].end * 0.9 || items[j].high >= items[j - 1].end * 0.9)
-                    {
-                        items[i].attributes[name] = items[j].start;
-                        break;
-                    }
-                    
-                }
-            }
-        }
+        
         //初始化平均值
         private void InitAverage(string key, int days)
         {
             int size = stock.items.Length;
             double total = 0;
-
-            for (int i = StockApp.START_ATTRIBUTE - days; i < StockApp.START_ATTRIBUTE; i++)
+            
+            for (int i = ATTR_CALC_STARTINDEX - days; i < ATTR_CALC_STARTINDEX; i++)
             {
                 total = total + stock.items[i].end;
             }
 
-            for (int i = StockApp.START_ATTRIBUTE; i < size; i++)
+            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
             {
                 total = total + stock.items[i].end - stock.items[i - days].end;
                 stock.items[i].attributes[key] = (total / days).ToString();
             }
         }
-        //成交量均线
-        //值为今日成交量与过去N日均量之比
-        private void InitAveVolume(string key, int days)
-        {
-            int size = stock.items.Length;
-            double total = 0;
-            for (int i = StockApp.START_ATTRIBUTE - days; i < StockApp.START_ATTRIBUTE; i++)
-            {
-                total = total + stock.items[i].volume;
-            }
-
-            for (int i = StockApp.START_ATTRIBUTE; i < size; i++)
-            {
-                total = total + stock.items[i].volume - stock.items[i - days].volume;
-                stock.items[i].attributes[key] = (stock.items[i].volume * days / total).ToString();
-            }
-        }
+       
         //20日最高收盘价
         private void InitHighEnd(string key, int days)
         {
@@ -223,7 +147,7 @@ namespace StockAnalysis
             int highindex = 0;
             StockItem[] items = stock.items;
 
-            for (int i = StockApp.START_ATTRIBUTE - days; i < StockApp.START_ATTRIBUTE; i++)
+            for (int i = ATTR_CALC_STARTINDEX - days; i < ATTR_CALC_STARTINDEX; i++)
             {
                 if (high < items[i].end)
                 {
@@ -231,7 +155,7 @@ namespace StockAnalysis
                     highindex = i;
                 }
             }
-            for (int i = StockApp.START_ATTRIBUTE; i < items.Length; i++)
+            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
             {
                 //最高点过期
                 if (i == highindex + days)
@@ -268,7 +192,7 @@ namespace StockAnalysis
             int lowindex = 0;
             StockItem[] items = stock.items;
 
-            for (int i = StockApp.START_ATTRIBUTE - days; i < StockApp.START_ATTRIBUTE; i++)
+            for (int i = ATTR_CALC_STARTINDEX - days; i < ATTR_CALC_STARTINDEX; i++)
             {
                 if (low > items[i].end)
                 {
@@ -276,7 +200,7 @@ namespace StockAnalysis
                     lowindex = i;
                 }
             }
-            for (int i = StockApp.START_ATTRIBUTE; i < items.Length; i++)
+            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
             {
                 //最高点过期
                 if (i == lowindex + days)
@@ -305,10 +229,8 @@ namespace StockAnalysis
         }
         #endregion 
         
-        public static readonly string CANBUY = "CANBUY";
-        public static readonly string SELLPRICE = "SELLPRICE";
-        //收盘价>开盘价
-        public static readonly string IS_RIZE = "IS_RIZE";
+        
+
         public static readonly string RIZE = "RIZE";  //涨幅
         public static readonly string AVE5 = "AVE5";
         public static readonly string AVE10 = "AVE10";
@@ -316,7 +238,7 @@ namespace StockAnalysis
         public static readonly string AVE30 = "AVE30";
         public static readonly string AVE60 = "AVE60";
         public static readonly string AVE120 = "AVE120";
-        //public static readonly string AVE240 = "AVE240";   
+ 
         public static readonly string AVE_VOLUME10 = "AVE_VOLUME10";
         public static readonly string AVE_VOLUME20 = "AVE_VOLUME20";
         public static readonly string HIGH10 = "HIGH10";
@@ -343,27 +265,30 @@ namespace StockAnalysis
 
 
         private void InitEMA(string key, int days)
-        {
-            for (int i = ATTR_CALC_STARTINDEX; i < ATTR_CALC_STARTINDEX + 50; i++)
-            {
-                items[i].attributes[key] =  0.00;
-            }
+        {   
             int size = items.Length;
-            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
+            
+            double temp = 0;
+            for (int i = 0; i < days; i++)
             {
-   
-                items[i].attributes[key] = ((days - 1) * Convert.ToDouble(items[i - 1].attributes[key]) + 2 * items[i].end) / (days + 1);                
+                temp += items[i].end;
+            }
+            items[days - 1].attributes[key] = temp / days;
+            for (int i = days; i < size; i++)
+            {
+                double a = (days - 1) * Convert.ToDouble(items[i - 1].attributes[key]) + 2 * items[i].end;
+                items[i].attributes[key] = Math.Round(((days - 1) * Convert.ToDouble(items[i - 1].attributes[key]) + 2 * items[i].end) / (days + 1), 6);                
             }
         }
         private void InitMACD(string key1, string key2, int day)
         {
             int size = items.Length;
 
-            items[StockApp.START_ATTRIBUTE - 51].attributes[DEA] = 0;
-            for (int i = StockApp.START_ATTRIBUTE - 50; i < size; i++)
+            items[ATTR_CALC_STARTINDEX - 41].attributes[DEA] = 0;
+            for (int i = ATTR_CALC_STARTINDEX - 40; i < size; i++)
             {
                 items[i].attributes[DIF] = Convert.ToDouble(items[i].attributes[key1]) - Convert.ToDouble(items[i].attributes[key2]);
-                items[i].attributes[DEA] = ((day - 1) * Convert.ToDouble(items[i - 1].attributes[DEA]) + 2 * Convert.ToDouble(items[i].attributes[DIF])) / (day + 1);
+                items[i].attributes[DEA] = Math.Round(((day - 1) * Convert.ToDouble(items[i - 1].attributes[DEA]) + 2 * Convert.ToDouble(items[i].attributes[DIF])) / (day + 1), 6);
             }
         }
 
@@ -381,6 +306,42 @@ namespace StockAnalysis
             {
                 items[i].attributes[RS] = items[i].end - items[i - 1].end;
             }  
+        }
+         //成交量均线
+        //值为今日成交量与过去N日均量之比
+        private void InitAveVolume(string key, int days)
+        {
+            int size = stock.items.Length;
+            double total = 0;
+            for (int i = ATTR_CALC_STARTINDEX - days; i < ATTR_CALC_STARTINDEX; i++)
+            {
+                total = total + stock.items[i].volume;
+            }
+
+            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
+            {
+                total = total + stock.items[i].volume - stock.items[i - days].volume;
+                stock.items[i].attributes[key] = (stock.items[i].volume * days / total).ToString();
+            }
+        }
+        //默认第二天开盘价就卖,但是如果跌停,则计算卖出价格
+        private void initSellPrice(string name)
+        {
+            int size = items.Length;
+            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
+            {
+                StockItem item = items[i];
+                items[i].attributes[name] = item.end;
+                for (int j = i + 1; j < size; j++)
+                {
+                    if (items[j].start >= items[j - 1].end * 0.9 || items[j].high >= items[j - 1].end * 0.9)
+                    {
+                        items[i].attributes[name] = items[j].start;
+                        break;
+                    }
+                    
+                }
+            }
         }
         private void InitRSI(string key, int days)
         {

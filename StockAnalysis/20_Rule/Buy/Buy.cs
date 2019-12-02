@@ -27,7 +27,7 @@ namespace StockAnalysis
         public bool isBuy(StockData stock, int index)
         {
             //检查是否能够买入 当天涨停不能买入
-            if (Convert.ToInt32(stock.items[index].attributes[StockAttribute.CANBUY]) < 1)
+            if (Convert.ToDouble(stock.items[index].attributes[StockAttribute.RIZE]) > 0.09)
             {
                 return false;
             }
@@ -73,7 +73,7 @@ namespace StockAnalysis
         public Boolean isBuy(StockData stock, int index)
         {
             //检查是否能够买入
-            if (Convert.ToInt32(stock.items[index].attributes[StockAttribute.CANBUY]) < 1)
+            if (Convert.ToDouble(stock.items[index].attributes[StockAttribute.RIZE]) > 0.09)
             {
                 return false;
             }
