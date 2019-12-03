@@ -37,9 +37,11 @@ namespace StockAnalysis
             attrList.Add(HIGH60);
  
 
-            attrList.Add(EMA12);
-            attrList.Add(EMA26);
+            //attrList.Add(EMA12);
+            //attrList.Add(EMA26);
             attrList.Add(DEA);
+            attrList.Add(DIF);
+            //attrList.Add(MACD);
             attrList.Add(POST1);
             attrList.Add(POST2);
             attrList.Add(POST3);
@@ -252,6 +254,7 @@ namespace StockAnalysis
         private static readonly string EMA26 = "EMA26";
         public static readonly string DIF = "DIF";
         public static readonly string DEA = "DEA";
+        public static readonly string MACD = "MACD";
 
         public static readonly string POST1 = "POST1";
         public static readonly string POST2 = "POST2";
@@ -284,11 +287,16 @@ namespace StockAnalysis
         {
             int size = items.Length;
 
-            items[ATTR_CALC_STARTINDEX - 41].attributes[DEA] = 0;
-            for (int i = ATTR_CALC_STARTINDEX - 40; i < size; i++)
+            items[11].attributes[DEA] = 0;
+            for (int i = 12; i < size; i++)
             {
-                items[i].attributes[DIF] = Convert.ToDouble(items[i].attributes[key1]) - Convert.ToDouble(items[i].attributes[key2]);
-                items[i].attributes[DEA] = Math.Round(((day - 1) * Convert.ToDouble(items[i - 1].attributes[DEA]) + 2 * Convert.ToDouble(items[i].attributes[DIF])) / (day + 1), 6);
+                double diff, dea;
+                diff = Convert.ToDouble(items[i].attributes[key1]) - Convert.ToDouble(items[i].attributes[key2]);
+
+                dea = Math.Round(((day - 1) * Convert.ToDouble(items[i - 1].attributes[DEA]) + 2 * diff) / (day + 1), 6);
+                items[i].attributes[DIF] = diff;
+                items[i].attributes[DEA] = dea;
+                items[i].attributes[MACD] = 2 * (diff - dea);
             }
         }
 
