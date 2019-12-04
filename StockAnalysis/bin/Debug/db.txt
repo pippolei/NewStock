@@ -1,5 +1,5 @@
 localhost
-Test
+Sample
 sa
 Welcome1!
 C:\StockAnalysis\sample

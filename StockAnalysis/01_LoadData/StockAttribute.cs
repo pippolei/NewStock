@@ -36,12 +36,10 @@ namespace StockAnalysis
             attrList.Add(HIGH20);
             attrList.Add(HIGH60);
  
-
-            //attrList.Add(EMA12);
-            //attrList.Add(EMA26);
-            attrList.Add(DEA);
             attrList.Add(DIF);
+            attrList.Add(DEA);
             //attrList.Add(MACD);
+
             attrList.Add(POST1);
             attrList.Add(POST2);
             attrList.Add(POST3);
@@ -61,7 +59,11 @@ namespace StockAnalysis
         public void InitAttribute()
         {   
             initRize();
-            initPost(); //定义当前价之后的几天价格
+            initPost(POST1, 1); //定义当前价之后的几天价格
+            initPost(POST2, 2);
+            initPost(POST3, 3);
+            initPost(POST4, 4);
+            initPost(POST5, 5);
             //必选属性
             InitAverage(AVE5, 5);
             InitAverage(AVE10, 10);
@@ -87,26 +89,20 @@ namespace StockAnalysis
 
         #region reviewed
         //当前价格之后5日内的价格
-        private void initPost()
+        private void initPost(string key, int days)
         {
             int size = items.Length;
-            for (int i = ATTR_CALC_STARTINDEX; i < size - 5; i++)
+            for (int i = ATTR_CALC_STARTINDEX; i < size - days; i++)
             {
                 StockItem item = items[i];
-                items[i].attributes[POST1] = (items[i + 1].end - item.end) / item.end;
-                items[i].attributes[POST2] = (items[i + 2].end - item.end) / item.end;
-                items[i].attributes[POST3] = (items[i + 3].end - item.end) / item.end;
-                items[i].attributes[POST4] = (items[i + 4].end - item.end) / item.end;
-                items[i].attributes[POST5] = (items[i + 5].end - item.end) / item.end;
+                items[i].attributes[key] = (items[i + days].end - item.end) / item.end;
+                
             }
-            for (int i = size - 5; i < size; i++)
+            for (int i = size - days; i < size; i++)
             {
                 StockItem item = items[i];
-                items[i].attributes[POST1] = (items[size - 1].end - item.end) / item.end;
-                items[i].attributes[POST2] = (items[size - 1].end - item.end) / item.end;
-                items[i].attributes[POST3] = (items[size - 1].end - item.end) / item.end;
-                items[i].attributes[POST4] = (items[size - 1].end - item.end) / item.end;
-                items[i].attributes[POST5] = (items[size - 1].end - item.end) / item.end;
+                items[i].attributes[key] = (items[size - 1].end - item.end) / item.end;
+                
             }
             
         }

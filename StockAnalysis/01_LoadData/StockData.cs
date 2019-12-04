@@ -43,6 +43,7 @@ namespace StockAnalysis
                 
             }
             InitItem();
+            UtilLog.AddInfo(TAG, code + " init item completed.");
         }
         //初始化股票交易信息
         private void InitItem()
@@ -83,6 +84,7 @@ namespace StockAnalysis
                     }
                     list.Add(item);
                     index++;
+                    
                 }
                 catch 
                 {
