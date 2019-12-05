@@ -79,8 +79,11 @@
       <DependentUpon>PanelAnalysis2.cs</DependentUpon>
     </Compile>
     <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy6RizePreEnd.cs" />
+    <Compile Include="20_Rule\Buy\00_Mandatory_Test\BuyBigWinWithVolume.cs" />
+    <Compile Include="20_Rule\Buy\00_Mandatory_Test\BuyBigWin2.cs" />
     <Compile Include="20_Rule\Buy\10_抄底\BuyIslandReverse.cs" />
     <Compile Include="20_Rule\Buy\7Down5Rize\Buy7Down5Rize.cs" />
+    <Compile Include="20_Rule\Buy\Jason\BuyJason1.cs" />
     <Compile Include="20_Rule\Sell\SellPureDrop2.cs" />
     <Compile Include="80_Panel\PanelCombineRule.cs">
       <SubType>UserControl</SubType>
@@ -109,7 +112,7 @@
     <Compile Include="20_Rule\Buy\10_抄底\BuyBelow35AVE10.cs" />
     <Compile Include="20_Rule\Buy\90\Buy4Week.cs" />
     <Compile Include="20_Rule\Buy\00_Mandatory_Test\BuyBigWin.cs" />
-    <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy6RizeAgStart.cs" />
+    <Compile Include="20_Rule\Buy\archive\Buy6RizeAgStart.cs" />
     <Compile Include="20_Rule\Buy\archive\BuyLong2.cs" />
     <Compile Include="20_Rule\Buy\archive\BuyLong.cs" />
     <Compile Include="20_Rule\Buy\Buy.cs" />

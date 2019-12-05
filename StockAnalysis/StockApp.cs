@@ -51,19 +51,19 @@ namespace StockAnalysis
         public static readonly string[] DEFAULT_SELLs = new string[] {
             "DEF_SELL_SHORT_", "DEF_SELL_MEDIUM_", "DEF_SELL_LONG_", "DEF_SELL_END_"
         };
-        public static int MAX_HOLD_DAYS_LONG = 30;
-        public static double HIGH_THRESHOLD_LONG = 0.30;  //涨幅百分比
-        public static double LOW_THRESHOLD_LONG = 0.21;   //跌幅百分比
+        public static int MAX_HOLD_DAYS_LONG = 20;
+        public static double HIGH_THRESHOLD_LONG = 0.22;  //涨幅百分比
+        public static double LOW_THRESHOLD_LONG = 0.11;   //跌幅百分比
 
         public static int MAX_HOLD_DAYS_MEDIUM = 20;
-        public static double HIGH_THRESHOLD_MEDIUM = 0.2;
-        public static double LOW_THRESHOLD_MEDIUM = 0.14;
+        public static double HIGH_THRESHOLD_MEDIUM = 0.11;
+        public static double LOW_THRESHOLD_MEDIUM = 0.11;
         
-        public static int MAX_HOLD_DAYS_SHORT = 10;
+        public static int MAX_HOLD_DAYS_SHORT = 20;
         public static double HIGH_THRESHOLD_SHORT = 0.1;
-        public static double LOW_THRESHOLD_SHORT = 0.07;
+        public static double LOW_THRESHOLD_SHORT = 0.05;
 
-        public static int MAX_HOLD_DAYS_END = 60;
+        public static int MAX_HOLD_DAYS_END = 20;
         public static double HIGH_THRESHOLD_END = 100;
         public static double LOW_THRESHOLD_END = 1;
         #endregion
@@ -83,14 +83,19 @@ namespace StockAnalysis
             //****************************************
             //****************************************
             //listbuy.Add(new BuyRandom());
-            listbuy.Add(new Buy6RizeAgStart());
             listbuy.Add(new Buy6RizePreEnd());
+
+            listbuy.Add(new BuyBigWin());
+            listbuy.Add(new BuyBigWin2());
+            listbuy.Add(new BuyBigWinWithVolume());
+            listbuy.Add(new BuyJason1());
+
             //listbuy.Add(new BuyIslandReverse());
 
             //listbuy.Add(new Buy4Week());
             //listbuy.Add(new BuyBelowAVE5());
             //listbuy.Add(new BuyBelow35AVE10());
-            //listbuy.Add(new BuyBigWin());
+            
             
 
             //listbuy.Add(new Buy7Down5Rize());

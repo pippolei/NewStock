@@ -99,7 +99,7 @@ namespace StockAnalysis
         public bool IsValid()
         {
             //股票交易日期太少
-            if (items.Length < StockApp.START_ANALYSIS || items[0].end < 0)
+            if (items.Length < StockApp.START_ANALYSIS)
             {
                 return false;
             }
@@ -109,10 +109,10 @@ namespace StockAnalysis
                 return false;
             }
             //去掉ST
-            if (name.ToUpper().Contains("ST"))
-            {
-                return false;
-            }
+            //if (name.ToUpper().Contains("ST"))
+            //{
+            //    return false;
+            //}
             //前复权后股价变为负值
             if (this.min_value < 0.3)
             {

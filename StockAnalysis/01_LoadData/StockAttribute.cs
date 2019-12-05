@@ -26,8 +26,8 @@ namespace StockAnalysis
             attrList.Add(AVE30);
             attrList.Add(AVE60);
 
-            //attrList.Add(AVE_VOLUME10);
-            //attrList.Add(AVE_VOLUME20);
+            attrList.Add(AVE_VOLUME10);
+            attrList.Add(AVE_VOLUME20);
 
             attrList.Add(LOW10);
             attrList.Add(LOW20);
@@ -36,8 +36,8 @@ namespace StockAnalysis
             attrList.Add(HIGH20);
             attrList.Add(HIGH60);
  
-            attrList.Add(DIF);
-            attrList.Add(DEA);
+            //attrList.Add(DIF);
+            //attrList.Add(DEA);
             //attrList.Add(MACD);
 
             attrList.Add(POST1);
@@ -71,8 +71,8 @@ namespace StockAnalysis
             InitAverage(AVE30, 30);
             InitAverage(AVE60, 60);
 
-            //InitAveVolume(AVE_VOLUME10, 10);
-            //InitAveVolume(AVE_VOLUME20, 20);
+            InitAveVolume(AVE_VOLUME10, 10);
+            InitAveVolume(AVE_VOLUME20, 20);
 
             InitLowEnd(LOW10, 10);
             InitLowEnd(LOW20, 20);
@@ -82,9 +82,9 @@ namespace StockAnalysis
             InitHighEnd(HIGH60, 60);
 
             //macd
-            InitEMA(EMA12, 12);
-            InitEMA(EMA26, 26);
-            InitMACD(EMA12, EMA26, 9);
+            //InitEMA(EMA12, 12);
+            //InitEMA(EMA26, 26);
+            //InitMACD(EMA12, EMA26, 9);
         }
 
         #region reviewed
@@ -225,6 +225,24 @@ namespace StockAnalysis
             }
 
         }
+
+        //成交量均线
+        //值为今日成交量与过去N日均量之比
+        private void InitAveVolume(string key, int days)
+        {
+            int size = stock.items.Length;
+            double total = 0;
+            for (int i = ATTR_CALC_STARTINDEX - days; i < ATTR_CALC_STARTINDEX; i++)
+            {
+                total = total + stock.items[i].volume;
+            }
+
+            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
+            {
+                total = total + stock.items[i].volume - stock.items[i - days].volume;
+                stock.items[i].attributes[key] = total / days;//(stock.items[i].volume * days / total).ToString();
+            }
+        }
         #endregion 
         
         
@@ -246,8 +264,8 @@ namespace StockAnalysis
         public static readonly string LOW10 = "LOW10";
         public static readonly string LOW20 = "LOW20";
         public static readonly string LOW130 = "LOW130";
-        private static readonly string EMA12 = "EMA12";
-        private static readonly string EMA26 = "EMA26";
+        //private static readonly string EMA12 = "EMA12";
+        //private static readonly string EMA26 = "EMA26";
         public static readonly string DIF = "DIF";
         public static readonly string DEA = "DEA";
         public static readonly string MACD = "MACD";
@@ -257,9 +275,9 @@ namespace StockAnalysis
         public static readonly string POST3 = "POST3";
         public static readonly string POST4 = "POST4";
         public static readonly string POST5 = "POST5";
-        
-        
 
+
+        
 
 
 
@@ -311,23 +329,7 @@ namespace StockAnalysis
                 items[i].attributes[RS] = items[i].end - items[i - 1].end;
             }  
         }
-         //成交量均线
-        //值为今日成交量与过去N日均量之比
-        private void InitAveVolume(string key, int days)
-        {
-            int size = stock.items.Length;
-            double total = 0;
-            for (int i = ATTR_CALC_STARTINDEX - days; i < ATTR_CALC_STARTINDEX; i++)
-            {
-                total = total + stock.items[i].volume;
-            }
-
-            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
-            {
-                total = total + stock.items[i].volume - stock.items[i - days].volume;
-                stock.items[i].attributes[key] = (stock.items[i].volume * days / total).ToString();
-            }
-        }
+        
         //默认第二天开盘价就卖,但是如果跌停,则计算卖出价格
         private void initSellPrice(string name)
         {
