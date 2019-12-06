@@ -103,16 +103,6 @@ namespace StockAnalysis
             {
                 return false;
             }
-            //去除创业板
-            if (code.StartsWith("300") || code.StartsWith("s300"))
-            {
-                return false;
-            }
-            //去掉ST
-            //if (name.ToUpper().Contains("ST"))
-            //{
-            //    return false;
-            //}
             //前复权后股价变为负值
             if (this.min_value < 0.3)
             {

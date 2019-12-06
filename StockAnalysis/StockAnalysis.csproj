@@ -84,6 +84,7 @@
     <Compile Include="20_Rule\Buy\10_抄底\BuyIslandReverse.cs" />
     <Compile Include="20_Rule\Buy\7Down5Rize\Buy7Down5Rize.cs" />
     <Compile Include="20_Rule\Buy\Jason\BuyJason1.cs" />
+    <Compile Include="20_Rule\Buy\Jason\BuyJason2.cs" />
     <Compile Include="20_Rule\Sell\SellPureDrop2.cs" />
     <Compile Include="80_Panel\PanelCombineRule.cs">
       <SubType>UserControl</SubType>

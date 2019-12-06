@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StockAnalysis
 {
-    class BuyJason1 : Buy
+    class BuyJason2 : Buy
     {
         protected override Boolean GetBuy(StockData stock, int index)
         {
@@ -16,7 +16,7 @@ namespace StockAnalysis
             StockItem yes5 = stock.items[index - 5];
 
             //T日跳空大于3% 
-            if (item.start < yes1.end * 1.03) return false;
+            if (item.end < yes1.end * 1.03) return false;
             //T-1日被五日均线压制
             if (Convert.ToDouble(yes1.attributes[StockAttribute.AVE5]) < yes1.end) return false;
             double high = -100, low = 100;
@@ -32,7 +32,7 @@ namespace StockAnalysis
         }
         public override string ToString()
         {
-            return "BuyJason1";
+            return "BuyJason2";
         }
        
        

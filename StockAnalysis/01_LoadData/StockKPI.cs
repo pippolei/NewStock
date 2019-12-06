@@ -47,9 +47,9 @@ namespace StockAnalysis
             };
 
             NUM_KPIs = new string[] { 
-                MACD1, MACD2,
-                AVG_VOLUME,
-                RIZE1,//今日最高点与收盘价的涨幅
+                //MACD1, MACD2,
+                //AVG_VOLUME,
+                //RIZE1,//今日最高点与收盘价的涨幅
                 RIZE2 //今日收盘价与最低点的涨幅
                 
             };
@@ -92,11 +92,11 @@ namespace StockAnalysis
             int size = stock.items.Length;
             for (int i = StockApp.START_ATTRIBUTE; i < size; i++)
             {
-                items[i].kpi[MACD1] = Math.Round(Convert.ToDouble(items[i].attributes[StockAttribute.DEA]),4);
-                items[i].kpi[MACD2] = Math.Round(Convert.ToDouble(items[i].attributes[StockAttribute.DIF]),4);
-                items[i].kpi[AVG_VOLUME] = Math.Round(Convert.ToDouble(items[i].attributes[StockAttribute.AVE_VOLUME20]),4);
-                items[i].kpi[RIZE1] = Math.Round((items[i].high - items[i].end) / items[i].end,4);
-                items[i].kpi[RIZE2] = Math.Round((items[i].end - items[i].low) / items[i].end,4);
+                //items[i].kpi[MACD1] = Math.Round(Convert.ToDouble(items[i].attributes[StockAttribute.DEA]),4);
+                //items[i].kpi[MACD2] = Math.Round(Convert.ToDouble(items[i].attributes[StockAttribute.DIF]),4);
+                //items[i].kpi[AVG_VOLUME] = Math.Round(Convert.ToDouble(items[i].attributes[StockAttribute.AVE_VOLUME20]),4);
+                //items[i].kpi[RIZE1] = Math.Round((items[i].high - items[i].end) / items[i].end, 8);
+                items[i].kpi[RIZE2] = Math.Round((items[i].high - items[i].low) / items[i].end, 8);
             }
             
         }

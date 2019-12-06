@@ -51,17 +51,19 @@ namespace StockAnalysis
         public static readonly string[] DEFAULT_SELLs = new string[] {
             "DEF_SELL_SHORT_", "DEF_SELL_MEDIUM_", "DEF_SELL_LONG_", "DEF_SELL_END_"
         };
-        public static int MAX_HOLD_DAYS_LONG = 20;
-        public static double HIGH_THRESHOLD_LONG = 0.22;  //涨幅百分比
-        public static double LOW_THRESHOLD_LONG = 0.11;   //跌幅百分比
+
+        public static int MAX_HOLD_DAYS_SHORT = 5;
+        public static double HIGH_THRESHOLD_SHORT = 0.05;
+        public static double LOW_THRESHOLD_SHORT = 0.03;
 
         public static int MAX_HOLD_DAYS_MEDIUM = 20;
-        public static double HIGH_THRESHOLD_MEDIUM = 0.11;
-        public static double LOW_THRESHOLD_MEDIUM = 0.11;
-        
-        public static int MAX_HOLD_DAYS_SHORT = 20;
-        public static double HIGH_THRESHOLD_SHORT = 0.1;
-        public static double LOW_THRESHOLD_SHORT = 0.05;
+        public static double HIGH_THRESHOLD_MEDIUM = 0.10;
+        public static double LOW_THRESHOLD_MEDIUM = 0.07;
+
+        public static int MAX_HOLD_DAYS_LONG = 20;
+        public static double HIGH_THRESHOLD_LONG = 0.15;  //涨幅百分比
+        public static double LOW_THRESHOLD_LONG = 0.07;   //跌幅百分比
+
 
         public static int MAX_HOLD_DAYS_END = 20;
         public static double HIGH_THRESHOLD_END = 100;
