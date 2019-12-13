@@ -127,6 +127,10 @@ namespace StockAnalysis.Panel
                     UtilLog.AddInfo(TAG, statusNum + "/" + filelist.Count + "  " + stock.code + " initialization finished");
                 }      
                 int status = statusNum * 100 / filelist.Count;
+                if (statusNum % 100 == 0)
+                {
+                    GC.Collect();
+                }
                 prog.SetProgress(status);
             }
             StockData.SetStockFull();

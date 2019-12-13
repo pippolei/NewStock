@@ -141,7 +141,7 @@ namespace StockAnalysis
             int size = stock.items.Length;
             for (int i = StockApp.START_ATTRIBUTE; i < size; i++)
             {
-                if (items[i].end > Convert.ToDouble(items[i].attributes[attribute]))
+                if (items[i].end - Convert.ToDouble(items[i].attributes[attribute]) > StockApp.MIN_ZERO)
                 {
                     items[i].kpi[name] = 1;
                 }
@@ -161,7 +161,7 @@ namespace StockAnalysis
             int size = stock.items.Length;
             for (int i = StockApp.START_ATTRIBUTE; i < size; i++)
             {
-                if (Convert.ToDouble(items[i].attributes[attribute1]) > Convert.ToDouble(items[i].attributes[attribute2]))
+                if (Convert.ToDouble(items[i].attributes[attribute1]) - Convert.ToDouble(items[i].attributes[attribute2]) > StockApp.MIN_ZERO)
                 {
                     items[i].kpi[name] = 1;
                 }
@@ -189,8 +189,8 @@ namespace StockAnalysis
                 for (int j = i + 1; j < i + sellday; j++)
                 {
                     double later = items[j].end;
-                    if (later > now * (1 + high_threshold)
-                        || later < now * (1 - low_threshold))
+                    if (later - now * (1 + high_threshold) > StockApp.MIN_ZERO
+                        || now * (1 - low_threshold) - later > StockApp.MIN_ZERO )
                     {
                         sellitem.sellindex = j;
                         sellitem.sellprice = later;
