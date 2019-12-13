@@ -31,7 +31,7 @@ namespace StockAnalysis
         //定义最大最小数
         public static readonly int MAX_VALUE = 99999999;
         public static readonly int MIN_VALUE = -99999999;
-        public static readonly double MIN_ZERO = 0.00000001;        
+        public static readonly double MIN_ZERO = 0.0000001;        
         //最少交易日数, 不然忽略此股票
         //分析股票的起始交易日
         public static readonly int START_ANALYSIS = 160;
@@ -49,7 +49,7 @@ namespace StockAnalysis
         //交易最大天数,达到后自动卖出
         #region defaultSell设置
         public static readonly string[] DEFAULT_SELLs = new string[] {
-            "DEF_SELL_SHORT_", "DEF_SELL_MEDIUM_", "DEF_SELL_LONG_", "DEF_SELL_END_"
+            "DEF_SELL_SHORT_", "DEF_SELL_MEDIUM_", "DEF_SELL_LONG_","DEF_SELL_END_"
         };
 
         public static int MAX_HOLD_DAYS_SHORT = 5;
