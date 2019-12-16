@@ -71,6 +71,18 @@ namespace StockAnalysis
             Export_To_CSV(sql, "C:/StockAnalysis/py/rule_withsell.csv");
         }
 
+        private void btn_importStockFull_Click(object sender, EventArgs e)
+        {
+            string sql = "truncate table stock_Full;";
+            string filename = "stock_full_py.txt";
+            if (File.Exists(UtilLog.LOG_FOLDER + filename))
+            {   
+                sql += "BULK INSERT " + StockSQL.TABLE_STOCK_FULL + " FROM '" + UtilLog.LOG_FOLDER + filename + "';";
+            }
+            db.RunSql(sql);
+            MessageBox.Show("Done");
+        }
+
 
     }
 }

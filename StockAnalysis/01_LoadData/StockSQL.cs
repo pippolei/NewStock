@@ -10,6 +10,7 @@ namespace StockAnalysis
     {     
         private static DataManager db = new DataManager();
         //private static String TAG = "StockSQL";
+        public static readonly string TABLE_STOCK_FULL = "stock_Full";
         public static readonly string TABLE_RULE_BUY0 = "Rule_Buy0";
         public static readonly string TABLE_RULE_BUY = "Rule_Buy";
 
@@ -204,7 +205,7 @@ namespace StockAnalysis
                 items[i].high = (double)row["high"];
                 items[i].low = (double)row["low"];
                 items[i].end = (double)row["end"];
-                items[i].volume = (long)row["volume"];
+                items[i].volume = (double)row["volume"];
 
                 if (i >= StockApp.START_ATTRIBUTE)
                 {

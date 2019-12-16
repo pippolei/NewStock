@@ -33,6 +33,7 @@
             this.btn_stockdata = new System.Windows.Forms.Button();
             this.btn_importrule = new System.Windows.Forms.Button();
             this.btn_rulesell = new System.Windows.Forms.Button();
+            this.btn_importStockFull = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_stockfull
@@ -85,10 +86,21 @@
             this.btn_rulesell.UseVisualStyleBackColor = true;
             this.btn_rulesell.Click += new System.EventHandler(this.btn_rulesell_Click);
             // 
+            // btn_importStockFull
+            // 
+            this.btn_importStockFull.Location = new System.Drawing.Point(558, 24);
+            this.btn_importStockFull.Name = "btn_importStockFull";
+            this.btn_importStockFull.Size = new System.Drawing.Size(160, 23);
+            this.btn_importStockFull.TabIndex = 5;
+            this.btn_importStockFull.Text = "Import Stock Full";
+            this.btn_importStockFull.UseVisualStyleBackColor = true;
+            this.btn_importStockFull.Click += new System.EventHandler(this.btn_importStockFull_Click);
+            // 
             // PanelUtil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_importStockFull);
             this.Controls.Add(this.btn_rulesell);
             this.Controls.Add(this.btn_importrule);
             this.Controls.Add(this.btn_stockdata);
@@ -107,5 +119,6 @@
         private System.Windows.Forms.Button btn_stockdata;
         private System.Windows.Forms.Button btn_importrule;
         private System.Windows.Forms.Button btn_rulesell;
+        private System.Windows.Forms.Button btn_importStockFull;
     }
 }

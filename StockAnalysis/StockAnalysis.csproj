@@ -81,6 +81,8 @@
     <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy6RizePreEnd.cs" />
     <Compile Include="20_Rule\Buy\00_Mandatory_Test\BuyBigWinWithVolume.cs" />
     <Compile Include="20_Rule\Buy\00_Mandatory_Test\BuyBigWin2.cs" />
+    <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy6RizePreEndVolume.cs" />
+    <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy5RizePreEndVolume.cs" />
     <Compile Include="20_Rule\Buy\10_抄底\BuyIslandReverse.cs" />
     <Compile Include="20_Rule\Buy\7Down5Rize\Buy7Down5Rize.cs" />
     <Compile Include="20_Rule\Buy\Jason\BuyJason1.cs" />

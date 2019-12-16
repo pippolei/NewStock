@@ -13,7 +13,7 @@ namespace StockAnalysis
         public double high;
         public double low;
         public double end;
-        public long volume;
+        public double volume;
         public System.Collections.Hashtable attributes = new System.Collections.Hashtable();
         public System.Collections.Hashtable kpi = new System.Collections.Hashtable();
 

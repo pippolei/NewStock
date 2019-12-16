@@ -86,11 +86,13 @@ namespace StockAnalysis
             //****************************************
             //listbuy.Add(new BuyRandom());
             listbuy.Add(new Buy6RizePreEnd());
-
-            listbuy.Add(new BuyBigWin());
-            listbuy.Add(new BuyBigWin2());
-            listbuy.Add(new BuyBigWinWithVolume());
+            listbuy.Add(new Buy5RizePreEndVolume());
+            listbuy.Add(new Buy6RizePreEndVolume());
+            //listbuy.Add(new BuyBigWin());
+            //listbuy.Add(new BuyBigWin2());
+            //listbuy.Add(new BuyBigWinWithVolume());
             listbuy.Add(new BuyJason1());
+            listbuy.Add(new BuyJason2());
 
             //listbuy.Add(new BuyIslandReverse());
 

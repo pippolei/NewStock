@@ -41,7 +41,9 @@ namespace StockAnalysis
                 ABOVE_AVE_60,
                 A10_ABOVE_20,
                 A10_ABOVE_60,
-                A20_ABOVE_60
+                A20_ABOVE_60,
+                IS_BIG_RIZE,
+                IS_MEDIUM_RIZE
                 //ABOVE_HALF_130_4,  BELOW_HALF_130_5  //股价高于近期130高点的60%或者低于35%
                 //,GOOD_MACD
             };
@@ -119,8 +121,8 @@ namespace StockAnalysis
             Init_ABOVE_AVE(A10_ABOVE_20, StockAttribute.AVE10, StockAttribute.AVE20);
             Init_ABOVE_AVE(A10_ABOVE_60, StockAttribute.AVE10, StockAttribute.AVE60);
             Init_ABOVE_AVE(A20_ABOVE_60, StockAttribute.AVE20, StockAttribute.AVE60);
-            //突破近期高点
-
+            //其它KPI属性
+            Init_Other_Attribute();
             //股价大于最高价的60%
             //ABOVE_Half130High(0.60);
             //股价低于最高价的40%
@@ -173,7 +175,7 @@ namespace StockAnalysis
             }
         }
         //n日自动卖出,当初如果出现高点或者低点,则止盈或者止损
-  
+        
         //考虑止损
         public void Init_Default_Sell2(string sellname, int sellday, double high_threshold, double low_threshold)
         {
@@ -214,7 +216,35 @@ namespace StockAnalysis
                 items[i].kpi[sellname + default_price] = sellitem.sellprice;
             }
         }
-        
+
+
+        public static readonly string IS_BIG_RIZE = "IS_BIG_RIZE";
+        public static readonly string IS_MEDIUM_RIZE = "IS_MEDIUM_RIZE";
+        private void Init_Other_Attribute()
+        {
+            int size = stock.items.Length;
+            for (int i = StockApp.START_ATTRIBUTE; i < size; i++)
+            {
+                if (Convert.ToDouble(items[i].attributes[StockAttribute.RIZE]) - 0.03 > StockApp.MIN_ZERO)
+                {
+                    items[i].kpi[IS_BIG_RIZE] = 1;
+                }
+                else
+                {
+                    items[i].kpi[IS_BIG_RIZE] = 0;
+                }
+                if (Convert.ToDouble(items[i].attributes[StockAttribute.RIZE]) - 0.02 > StockApp.MIN_ZERO)
+                {
+                    items[i].kpi[IS_MEDIUM_RIZE] = 1;
+                }
+                else
+                {
+                    items[i].kpi[IS_MEDIUM_RIZE] = 0;
+                }
+
+            }
+        }
+
         //大于130高价的60%
         public static readonly string ABOVE_HALF_130_4 = "4_ABOVE_HALF_120";
         private void ABOVE_Half130High(double percentage)

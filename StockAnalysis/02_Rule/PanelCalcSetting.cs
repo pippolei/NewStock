@@ -124,7 +124,7 @@ namespace StockAnalysis.Panel
                         attristrs[12] = item.kpi[StockApp.DEFAULT_SELLs[0] + StockKPI.default_price].ToString();   //short
                         attristrs[13] = item.kpi[StockApp.DEFAULT_SELLs[1] + StockKPI.default_price].ToString(); ;   //medium
                         attristrs[14] = item.kpi[StockApp.DEFAULT_SELLs[2] + StockKPI.default_price].ToString(); ;  //long
-                        attristrs[15] = item.kpi[StockApp.DEFAULT_SELLs[3] + StockKPI.default_price].ToString();  //next4
+                        attristrs[15] = item.kpi[StockApp.DEFAULT_SELLs[3] + StockKPI.default_price].ToString();  //end
                         //发出买入信号后1~5天的表现,纯参考,未在任何地方使用
                         attristrs[16] = item.attributes[StockAttribute.POST1].ToString();
                         attristrs[17] = item.attributes[StockAttribute.POST2].ToString(); ;
