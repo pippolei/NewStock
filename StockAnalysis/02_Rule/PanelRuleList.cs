@@ -101,10 +101,14 @@ namespace StockAnalysis.Panel
             double post4Rate = 0;
             double post5Rate = 0;
 
+
+            if (items.Length == 0) return;
             for (int i = 0; i < items.Length; i++)
             {
                 //之前同类型的交易结果不理想, 则忽略当前的交易
                 if (items[i].pregrade < minimum_grade) continue;
+ 
+
                 //kpi相关
                 if (kpiindex > 0)
                 {

@@ -11,6 +11,7 @@ namespace StockAnalysis
         //global parameter
         public static int STOCK_START_DATE = 20070101;
         public static int STOCK_START_DATE_SHITE_MONTH = 15;
+        public static int BUY_STOCK_NUM = 5;
         //股票数据起始日       
         public static readonly int END_DATE = 99991231;
         public static int getAnalysisStartDate
@@ -56,13 +57,13 @@ namespace StockAnalysis
         public static double HIGH_THRESHOLD_SHORT = 0.05;
         public static double LOW_THRESHOLD_SHORT = 0.03;
 
-        public static int MAX_HOLD_DAYS_MEDIUM = 20;
-        public static double HIGH_THRESHOLD_MEDIUM = 0.10;
-        public static double LOW_THRESHOLD_MEDIUM = 0.07;
+        public static int MAX_HOLD_DAYS_MEDIUM = 10;
+        public static double HIGH_THRESHOLD_MEDIUM = 0.11;
+        public static double LOW_THRESHOLD_MEDIUM = 0.06;
 
         public static int MAX_HOLD_DAYS_LONG = 20;
         public static double HIGH_THRESHOLD_LONG = 0.15;  //涨幅百分比
-        public static double LOW_THRESHOLD_LONG = 0.07;   //跌幅百分比
+        public static double LOW_THRESHOLD_LONG = 0.08;   //跌幅百分比
 
 
         public static int MAX_HOLD_DAYS_END = 20;
@@ -85,14 +86,15 @@ namespace StockAnalysis
             //****************************************
             //****************************************
             //listbuy.Add(new BuyRandom());
-            listbuy.Add(new Buy6RizePreEnd());
-            listbuy.Add(new Buy5RizePreEndVolume());
-            listbuy.Add(new Buy6RizePreEndVolume());
+            //listbuy.Add(new Buy6RizePreEnd());
+            //listbuy.Add(new Buy5RizePreEndVolume());
+            //listbuy.Add(new Buy6RizePreEndVolume());
             //listbuy.Add(new BuyBigWin());
             //listbuy.Add(new BuyBigWin2());
             //listbuy.Add(new BuyBigWinWithVolume());
             listbuy.Add(new BuyJason1());
-            listbuy.Add(new BuyJason2());
+            listbuy.Add(new BuyJason1_2());
+            listbuy.Add(new BuyJason1_3());
 
             //listbuy.Add(new BuyIslandReverse());
 

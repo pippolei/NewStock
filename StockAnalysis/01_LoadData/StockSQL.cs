@@ -110,8 +110,6 @@ namespace StockAnalysis
             try
             {
                 db.RunSql("truncate table Stock_DaPan");
-                db.RunSql("truncate table Stock_Score");
-                db.RunSql("truncate table stock_score_period");
                 db.RunSql("truncate table Stock_Full");
             }
             catch (Exception e)

@@ -55,6 +55,7 @@ namespace StockAnalysis.Panel
             InitializeComponent();
             this.txt_fromdate.Value = Util.getDate(StockApp.getAnalysisStartDate).AddMonths(15); //从起始数据的下一年开始分析
             this.txt_todate.Value = new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, 1);
+            this.txt_num.Value = StockApp.BUY_STOCK_NUM;
         }
         //双击显示详细
         private void dg_overview_MouseDoubleClick(object sender, MouseEventArgs e)

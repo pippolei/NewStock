@@ -1,7 +1,7 @@
 localhost
-Test
+Train
 sa
 Welcome1!
 C:\StockAnalysis\sample
-20140101
+20150101
 False

@@ -30,6 +30,23 @@ namespace StockAnalysis.Panel
         {
             this.components = new System.ComponentModel.Container();
             this.dg_detail = new System.Windows.Forms.DataGridView();
+            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Volume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_main_toptop = new System.Windows.Forms.Panel();
             this.btn_batch = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,7 +58,6 @@ namespace StockAnalysis.Panel
             this.label1 = new System.Windows.Forms.Label();
             this.txt_fromdate = new System.Windows.Forms.DateTimePicker();
             this.pnl_main_top = new System.Windows.Forms.Panel();
-            this.pnl_buysell2 = new StockAnalysis.Panel.PanelCombineRule();
             this.pnl_main_top_bottom = new System.Windows.Forms.Panel();
             this.lbl_growth = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,23 +84,7 @@ namespace StockAnalysis.Panel
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Volume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnl_buysell2 = new StockAnalysis.Panel.PanelCombineRule();
             ((System.ComponentModel.ISupportInitialize)(this.dg_detail)).BeginInit();
             this.pnl_main_toptop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_interval)).BeginInit();
@@ -128,6 +128,95 @@ namespace StockAnalysis.Panel
             this.dg_detail.Size = new System.Drawing.Size(877, 224);
             this.dg_detail.TabIndex = 0;
             this.dg_detail.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dg_detail_MouseClick_1);
+            // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "Type";
+            this.Column21.Name = "Column21";
+            this.Column21.Width = 30;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Buyrule";
+            this.Column1.Name = "Column1";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Sellrule";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 50;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "stockcode";
+            this.Column7.Name = "Column7";
+            // 
+            // Column19
+            // 
+            this.Column19.HeaderText = "buydate";
+            this.Column19.Name = "Column19";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "buyindex";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 50;
+            // 
+            // Volume
+            // 
+            this.Volume.HeaderText = "buyprice";
+            this.Volume.Name = "Volume";
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "selldate";
+            this.Column20.Name = "Column20";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "sellindex";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 50;
+            // 
+            // Column26
+            // 
+            this.Column26.HeaderText = "sellprice";
+            this.Column26.Name = "Column26";
+            // 
+            // Column27
+            // 
+            this.Column27.HeaderText = "buyvolume";
+            this.Column27.Name = "Column27";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "stockvalue";
+            this.Column6.Name = "Column6";
+            // 
+            // Column22
+            // 
+            this.Column22.HeaderText = "winvalue";
+            this.Column22.Name = "Column22";
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "holdstocknum";
+            this.Column18.Name = "Column18";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "totalstockvalue";
+            this.Column2.Name = "Column2";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "leftmoney";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "totalamount";
+            this.Column10.Name = "Column10";
             // 
             // pnl_main_toptop
             // 
@@ -251,15 +340,6 @@ namespace StockAnalysis.Panel
             this.pnl_main_top.Size = new System.Drawing.Size(877, 214);
             this.pnl_main_top.TabIndex = 1;
             // 
-            // pnl_buysell2
-            // 
-            this.pnl_buysell2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_buysell2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_buysell2.Location = new System.Drawing.Point(0, 34);
-            this.pnl_buysell2.Name = "pnl_buysell2";
-            this.pnl_buysell2.Size = new System.Drawing.Size(877, 133);
-            this.pnl_buysell2.TabIndex = 2;
-            // 
             // pnl_main_top_bottom
             // 
             this.pnl_main_top_bottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -291,6 +371,7 @@ namespace StockAnalysis.Panel
             // 
             // txt_num
             // 
+            this.txt_num.Enabled = false;
             this.txt_num.Location = new System.Drawing.Point(16, 15);
             this.txt_num.Maximum = new decimal(new int[] {
             10,
@@ -303,6 +384,7 @@ namespace StockAnalysis.Panel
             0,
             0});
             this.txt_num.Name = "txt_num";
+            this.txt_num.ReadOnly = true;
             this.txt_num.Size = new System.Drawing.Size(36, 21);
             this.txt_num.TabIndex = 4;
             this.txt_num.Value = new decimal(new int[] {
@@ -481,94 +563,14 @@ namespace StockAnalysis.Panel
             this.Column17.HeaderText = "amount";
             this.Column17.Name = "Column17";
             // 
-            // Column21
+            // pnl_buysell2
             // 
-            this.Column21.HeaderText = "Type";
-            this.Column21.Name = "Column21";
-            this.Column21.Width = 30;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Buyrule";
-            this.Column1.Name = "Column1";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Sellrule";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 50;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "stockcode";
-            this.Column7.Name = "Column7";
-            // 
-            // Column19
-            // 
-            this.Column19.HeaderText = "buydate";
-            this.Column19.Name = "Column19";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "buyindex";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 50;
-            // 
-            // Volume
-            // 
-            this.Volume.HeaderText = "buyprice";
-            this.Volume.Name = "Volume";
-            // 
-            // Column20
-            // 
-            this.Column20.HeaderText = "selldate";
-            this.Column20.Name = "Column20";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "sellindex";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 50;
-            // 
-            // Column26
-            // 
-            this.Column26.HeaderText = "sellprice";
-            this.Column26.Name = "Column26";
-            // 
-            // Column27
-            // 
-            this.Column27.HeaderText = "buyvolume";
-            this.Column27.Name = "Column27";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "stockvalue";
-            this.Column6.Name = "Column6";
-            // 
-            // Column22
-            // 
-            this.Column22.HeaderText = "winvalue";
-            this.Column22.Name = "Column22";
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "holdstocknum";
-            this.Column18.Name = "Column18";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "totalstockvalue";
-            this.Column2.Name = "Column2";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "leftmoney";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "totalamount";
-            this.Column10.Name = "Column10";
+            this.pnl_buysell2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_buysell2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_buysell2.Location = new System.Drawing.Point(0, 34);
+            this.pnl_buysell2.Name = "pnl_buysell2";
+            this.pnl_buysell2.Size = new System.Drawing.Size(877, 133);
+            this.pnl_buysell2.TabIndex = 2;
             // 
             // PanelSimulate
             // 

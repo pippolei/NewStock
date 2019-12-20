@@ -80,6 +80,21 @@ namespace StockAnalysis
                 sql += "BULK INSERT " + StockSQL.TABLE_STOCK_FULL + " FROM '" + UtilLog.LOG_FOLDER + filename + "';";
             }
             db.RunSql(sql);
+            sql = "select * from Stock_header order by code";
+            System.Data.DataTable table = db.GetTable(sql);
+            int size = table.Rows.Count;
+            if (size == 0)
+            {
+                sql = @"
+                INSERT INTO STOCK_HEADER select T1.code, T2.code AS NAME, T1.[INDEX] AS LASTINDEX, [END] AS LASTPRICE from stock_full t1 
+                JOIN
+                (
+                SELECT DISTINCT CODE, MAX([index]) as [index] 
+                FROM stock_Full 
+                group by CODE
+                ) T2 ON T1.code = T2.code AND T1.[index] = T2.[INDEX]";
+                db.RunSql(sql);
+            }
             MessageBox.Show("Done");
         }
 
