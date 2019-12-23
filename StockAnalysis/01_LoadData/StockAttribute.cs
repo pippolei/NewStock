@@ -35,6 +35,8 @@ namespace StockAnalysis
             attrList.Add(HIGH10);
             attrList.Add(HIGH20);
             attrList.Add(HIGH60);
+            attrList.Add(TR);
+            attrList.Add(ATR);
  
             //attrList.Add(DIF);
             //attrList.Add(DEA);
@@ -77,9 +79,12 @@ namespace StockAnalysis
             InitLowEnd(LOW10, 10);
             InitLowEnd(LOW20, 20);
 
-            InitHighEnd(HIGH10, 10);
+            InitHighEnd(HIGH10, 10);  //n日最高, 包含当日的
             InitHighEnd(HIGH20, 20);
             InitHighEnd(HIGH60, 60);
+
+            InitTR();
+            InitATR(ATR, 10);
 
             //macd
             //InitEMA(EMA12, 12);
@@ -243,6 +248,34 @@ namespace StockAnalysis
                 stock.items[i].attributes[key] = total / days;//(stock.items[i].volume * days / total).ToString();
             }
         }
+        //真实波动幅度
+        private void InitTR()
+        {
+            int size = items.Length;
+            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
+            {
+                StockItem item = items[i];
+                StockItem last = items[i - 1];
+                items[i].attributes[TR] = Math.Max(item.high - item.low, Math.Max(Math.Abs(last.end - item.high), Math.Abs(last.end - item.low))) / item.end;
+            }
+
+        }
+        private void InitATR(string key, int days)
+        {
+            int size = stock.items.Length;
+            double total = 0;
+
+            for (int i = ATTR_CALC_STARTINDEX - days; i < ATTR_CALC_STARTINDEX; i++)
+            {
+                total = total + Convert.ToDouble(stock.items[i].attributes[StockAttribute.TR]);
+            }
+
+            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
+            {
+                total = total + Convert.ToDouble(stock.items[i].attributes[StockAttribute.TR]) - Convert.ToDouble(stock.items[i - days].attributes[StockAttribute.TR]);
+                stock.items[i].attributes[key] = (total / days).ToString();
+            }
+        }
         #endregion 
         
         
@@ -253,7 +286,7 @@ namespace StockAnalysis
         public static readonly string AVE20 = "AVE20";
         public static readonly string AVE30 = "AVE30";
         public static readonly string AVE60 = "AVE60";
-        public static readonly string AVE120 = "AVE120";
+
  
         public static readonly string AVE_VOLUME10 = "AVE_VOLUME10";
         public static readonly string AVE_VOLUME20 = "AVE_VOLUME20";
@@ -266,6 +299,8 @@ namespace StockAnalysis
         public static readonly string LOW130 = "LOW130";
         //private static readonly string EMA12 = "EMA12";
         //private static readonly string EMA26 = "EMA26";
+        public static readonly string TR = "TR";
+        public static readonly string ATR = "ATR";
         public static readonly string DIF = "DIF";
         public static readonly string DEA = "DEA";
         public static readonly string MACD = "MACD";
@@ -277,7 +312,6 @@ namespace StockAnalysis
         public static readonly string POST5 = "POST5";
 
 
-        
 
 
 

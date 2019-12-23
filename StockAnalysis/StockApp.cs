@@ -85,20 +85,19 @@ namespace StockAnalysis
         {
             //****************************************
             //****************************************
-            //listbuy.Add(new BuyRandom());
-            //listbuy.Add(new Buy6RizePreEnd());
+            //listbuy.Add(new Buy4Week());
+            listbuy.Add(new Buy6RizePreEnd());
+            listbuy.Add(new Buy6RizePreEnd_Post4());
+            listbuy.Add(new BuyJason1_3());
             //listbuy.Add(new Buy5RizePreEndVolume());
             //listbuy.Add(new Buy6RizePreEndVolume());
             //listbuy.Add(new BuyBigWin());
             //listbuy.Add(new BuyBigWin2());
             //listbuy.Add(new BuyBigWinWithVolume());
-            listbuy.Add(new BuyJason1());
-            listbuy.Add(new BuyJason1_2());
-            listbuy.Add(new BuyJason1_3());
+
+            
 
             //listbuy.Add(new BuyIslandReverse());
-
-            //listbuy.Add(new Buy4Week());
             //listbuy.Add(new BuyBelowAVE5());
             //listbuy.Add(new BuyBelow35AVE10());
             

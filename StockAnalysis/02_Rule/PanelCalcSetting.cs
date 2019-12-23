@@ -221,7 +221,7 @@ namespace StockAnalysis.Panel
                 (
                 select ROW_NUMBER() OVER (PARTITION BY [type], rulename, [date] order by pregrade desc) AS SEQUENCE,* from rule_buy0 
                 ) T1
-                where T1.SEQUENCE > " + StockApp.BUY_STOCK_NUM + " and [TYPE] > 0;";
+                where T1.SEQUENCE > " + (StockApp.BUY_STOCK_NUM * 2) + " and [TYPE] > 0;";
             DataTable dt = db.GetTable(sql);
             for (int i = 0; i < dt.Rows.Count; i++)
             {

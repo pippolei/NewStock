@@ -43,7 +43,8 @@ namespace StockAnalysis
                 A10_ABOVE_60,
                 A20_ABOVE_60,
                 IS_BIG_RIZE,
-                IS_MEDIUM_RIZE
+                IS_MEDIUM_RIZE,
+                ATR2,ATR3
                 //ABOVE_HALF_130_4,  BELOW_HALF_130_5  //股价高于近期130高点的60%或者低于35%
                 //,GOOD_MACD
             };
@@ -85,6 +86,9 @@ namespace StockAnalysis
         public static readonly string MACD1 = "MACD1";
         public static readonly string MACD2 = "MACD2";
         public static readonly string AVG_VOLUME = "AVG_VOLUME";
+        public static readonly string ATR2 = "ATR2"; //日波动>2%
+        public static readonly string ATR3 = "ATR3"; //日波动>3%
+
         public static readonly string RIZE1 = "RIZE1";
         public static readonly string RIZE2 = "RIZE2";
 
@@ -241,10 +245,30 @@ namespace StockAnalysis
                 {
                     items[i].kpi[IS_MEDIUM_RIZE] = 0;
                 }
+                if (Convert.ToDouble(items[i].attributes[StockAttribute.ATR]) - 0.02 > StockApp.MIN_ZERO)
+                {
+                    items[i].kpi[ATR2] = 1;
+                }
+                else
+                {
+                    items[i].kpi[ATR2] = 0;
+                }
+                if (Convert.ToDouble(items[i].attributes[StockAttribute.ATR]) - 0.03 > StockApp.MIN_ZERO)
+                {
+                    items[i].kpi[ATR3] = 1;
+                }
+                else
+                {
+                    items[i].kpi[ATR3] = 0;
+                }
 
             }
         }
 
+        private void Init_ATR(string key, double percentage)
+        {
+
+        }
         //大于130高价的60%
         public static readonly string ABOVE_HALF_130_4 = "4_ABOVE_HALF_120";
         private void ABOVE_Half130High(double percentage)

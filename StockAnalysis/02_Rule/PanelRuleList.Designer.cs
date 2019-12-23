@@ -30,19 +30,6 @@ namespace StockAnalysis.Panel
         {
             this.dg_detail = new System.Windows.Forms.DataGridView();
             this.dg_overview = new System.Windows.Forms.DataGridView();
-            this.pnl_header = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.num_grade = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtm_to = new System.Windows.Forms.DateTimePicker();
-            this.dtm_from = new System.Windows.Forms.DateTimePicker();
-            this.btn_exportAll = new System.Windows.Forms.Button();
-            this.cmb_dapan = new System.Windows.Forms.ComboBox();
-            this.cmb_kpi = new System.Windows.Forms.ComboBox();
-            this.lbl_kpi = new System.Windows.Forms.Label();
-            this.btn_export = new System.Windows.Forms.Button();
-            this.btn_getresult = new System.Windows.Forms.Button();
-            this.pnl_fill = new System.Windows.Forms.Panel();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +44,19 @@ namespace StockAnalysis.Panel
             this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnl_header = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.num_grade = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtm_to = new System.Windows.Forms.DateTimePicker();
+            this.dtm_from = new System.Windows.Forms.DateTimePicker();
+            this.btn_exportAll = new System.Windows.Forms.Button();
+            this.cmb_dapan = new System.Windows.Forms.ComboBox();
+            this.cmb_kpi = new System.Windows.Forms.ComboBox();
+            this.lbl_kpi = new System.Windows.Forms.Label();
+            this.btn_export = new System.Windows.Forms.Button();
+            this.btn_getresult = new System.Windows.Forms.Button();
+            this.pnl_fill = new System.Windows.Forms.Panel();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,6 +142,76 @@ namespace StockAnalysis.Panel
             this.dg_overview.Size = new System.Drawing.Size(1077, 468);
             this.dg_overview.TabIndex = 2;
             this.dg_overview.DoubleClick += new System.EventHandler(this.dg_overview_DoubleClick);
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Type";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Rulename";
+            this.Column8.Name = "Column8";
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "KPI";
+            this.Column16.Name = "Column16";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Count";
+            this.Column10.Name = "Column10";
+            // 
+            // Column19
+            // 
+            this.Column19.HeaderText = "grade";
+            this.Column19.Name = "Column19";
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "next_short";
+            this.Column15.Name = "Column15";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "next_medium";
+            this.Column9.Name = "Column9";
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "next_long";
+            this.Column17.Name = "Column17";
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "next20End";
+            this.Column20.Name = "Column20";
+            // 
+            // Column18
+            // 
+            this.Column18.HeaderText = "POST1";
+            this.Column18.Name = "Column18";
+            // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "POST2";
+            this.Column21.Name = "Column21";
+            // 
+            // Column22
+            // 
+            this.Column22.HeaderText = "POST3";
+            this.Column22.Name = "Column22";
+            // 
+            // Column23
+            // 
+            this.Column23.HeaderText = "POST4";
+            this.Column23.Name = "Column23";
+            // 
+            // Column24
+            // 
+            this.Column24.HeaderText = "POST5";
+            this.Column24.Name = "Column24";
             // 
             // pnl_header
             // 
@@ -282,76 +352,6 @@ namespace StockAnalysis.Panel
             this.pnl_fill.Size = new System.Drawing.Size(1077, 468);
             this.pnl_fill.TabIndex = 4;
             // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Type";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Rulename";
-            this.Column8.Name = "Column8";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "KPI";
-            this.Column16.Name = "Column16";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Count";
-            this.Column10.Name = "Column10";
-            // 
-            // Column19
-            // 
-            this.Column19.HeaderText = "grade";
-            this.Column19.Name = "Column19";
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "next_short";
-            this.Column15.Name = "Column15";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "next_medium";
-            this.Column9.Name = "Column9";
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "next_long";
-            this.Column17.Name = "Column17";
-            // 
-            // Column20
-            // 
-            this.Column20.HeaderText = "next20End";
-            this.Column20.Name = "Column20";
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "POST1";
-            this.Column18.Name = "Column18";
-            // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "POST2";
-            this.Column21.Name = "Column21";
-            // 
-            // Column22
-            // 
-            this.Column22.HeaderText = "POST3";
-            this.Column22.Name = "Column22";
-            // 
-            // Column23
-            // 
-            this.Column23.HeaderText = "POST4";
-            this.Column23.Name = "Column23";
-            // 
-            // Column24
-            // 
-            this.Column24.HeaderText = "POST5";
-            this.Column24.Name = "Column24";
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "type";
@@ -384,12 +384,12 @@ namespace StockAnalysis.Panel
             // 
             // dataGridViewTextBoxColumn2
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "pregrade";
+            this.dataGridViewTextBoxColumn2.HeaderText = "PreScore";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // next2
             // 
-            this.next2.HeaderText = "grade";
+            this.next2.HeaderText = "ThisGrade";
             this.next2.Name = "next2";
             // 
             // Column12

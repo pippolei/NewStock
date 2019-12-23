@@ -16,9 +16,28 @@ namespace StockAnalysis
         {
             string sql = "IF OBJECT_ID('[Rule_Score]', 'U') IS NOT NULL drop table [Rule_Score];";
             db.RunSql(sql);
-            sql = @"SELECT rulename, intdate, kpis, AVG(grade) as 'grade'  into Rule_Score FROM 
-                (select *, [DATE]/100 as intdate from Rule_Buy0) T1 group by rulename, kpis, intdate";
+            sql = @"SELECT rulename, intdate, AVG(grade) as 'grade'  into Rule_Score FROM 
+                (select *, [DATE]/100 as intdate from Rule_Buy0) T1 group by rulename, intdate";
             db.RunSql(sql);
+        }
+        public static double GetRuleScore(string rulename, int buymonth)
+        {
+            object ret = null;
+            int newperiod = buymonth;
+            int times = 0;
+            while (ret == null)
+            {
+                newperiod = Util.lastMonth(newperiod * 100 + 1);
+                string sql = "select * from rule_score where rulename = '" + rulename + "' and intdate = " + newperiod + ";";
+                ret = db.GetOneValue(sql, "grade");
+                times++;
+                if (times > 30) break;
+            }
+            if (ret == null)
+            {
+                return StockApp.MIN_ZERO;
+            }
+            return Convert.ToDouble(ret.ToString());
         }
         public static void SetAllPreScore()
         {
@@ -33,30 +52,12 @@ namespace StockAnalysis
                 int date = Convert.ToInt32(dr["date"]);
                 string kpis = dr["kpis"].ToString();
                 string rulename = (string)dr["rulename"];
-                double prescore = GetRuleScore(rulename, kpis, date);
+                double prescore = GetRuleScore(rulename, date);
                 sqls.Add("update [Rule_Buy0] set pregrade = '" + prescore + "' where id = " + id + " and [type] = '" + Rule.STATUS_BUY + "';");
             }
             db.RunSql(sqls);
         }
-        public static double GetRuleScore(string rulename, string kpis, int buymonth)
-        {
-            object ret = null;
-            int newperiod = buymonth;
-            int times = 0;
-            while (ret == null)
-            {
-                newperiod = Util.lastMonth(newperiod * 100 + 1);
-                string sql = "select * from rule_score where rulename = '" + rulename + "' and kpis = '" + kpis + "' and intdate = " + newperiod + ";";
-                ret = db.GetOneValue(sql, "grade");
-                times++;
-                if (times > 30) break;
-            }
-            if (ret == null)
-            {
-                return StockApp.MIN_ZERO;
-            }
-            return Convert.ToDouble(ret.ToString());
-        }
+        
 
         
     }
