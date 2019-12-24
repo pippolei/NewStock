@@ -232,7 +232,7 @@ namespace StockAnalysis.Panel
 
             
             StockRuleSQL.SetAnalysis();
-            MessageBox.Show("Done");
+            MessageBox.Show("Rule Sync Done!");
         }
        
         //Èç¹ûstockitem kpi±»filter

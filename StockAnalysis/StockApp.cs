@@ -10,7 +10,7 @@ namespace StockAnalysis
         #region 系统可设参数
         //global parameter
         public static int STOCK_START_DATE = 20070101;
-        public static int STOCK_START_DATE_SHITE_MONTH = 15;
+        public static int STOCK_START_DATE_SHITE_MONTH = 12;
         public static int BUY_STOCK_NUM = 5;
         //股票数据起始日       
         public static readonly int END_DATE = 99991231;
@@ -85,17 +85,13 @@ namespace StockAnalysis
         {
             //****************************************
             //****************************************
-            //listbuy.Add(new Buy4Week());
-            listbuy.Add(new Buy6RizePreEnd());
-            listbuy.Add(new Buy6RizePreEnd_Post4());
-            listbuy.Add(new BuyJason1_3());
-            //listbuy.Add(new Buy5RizePreEndVolume());
-            //listbuy.Add(new Buy6RizePreEndVolume());
-            //listbuy.Add(new BuyBigWin());
-            //listbuy.Add(new BuyBigWin2());
-            //listbuy.Add(new BuyBigWinWithVolume());
-
             
+            listbuy.Add(new Buy6RizePreEnd());
+            listbuy.Add(new Buy6RizePreEnd_Post4_4());
+            //listbuy.Add(new BuyJason1_3());
+            //listbuy.Add(new BuyBigWin());
+            //listbuy.Add(new Buy15Rize());
+           
 
             //listbuy.Add(new BuyIslandReverse());
             //listbuy.Add(new BuyBelowAVE5());

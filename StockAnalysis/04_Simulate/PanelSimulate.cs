@@ -53,7 +53,7 @@ namespace StockAnalysis.Panel
         public PanelSimulate()
         {
             InitializeComponent();
-            this.txt_fromdate.Value = Util.getDate(StockApp.getAnalysisStartDate).AddMonths(15); //从起始数据的下一年开始分析
+            this.txt_fromdate.Value = Util.getDate(StockApp.getAnalysisStartDate).AddMonths(StockApp.STOCK_START_DATE_SHITE_MONTH); //从起始数据的下一年开始分析
             this.txt_todate.Value = new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, 1);
             this.txt_num.Value = StockApp.BUY_STOCK_NUM;
         }
@@ -229,8 +229,8 @@ namespace StockAnalysis.Panel
 
         private void btn_batch_Click(object sender, EventArgs e)
         {
-            int[] startdates = new int[] {20120101,20140101,20160101,20130101,20140101,20150101,20160101,20170101 };
-            int[] enddated = new int[] { 20200101, 20200101, 20200101, 20140101, 20150101, 20160101, 20170101, 20180101 };
+            int[] startdates = new int[] { 20120101, 20140101, 20160101, 20130101, 20140101, 20150101, 20160101, 20170101, 20180101, 20190101 };
+            int[] enddated = new int[] { 20200101, 20200101, 20200101, 20140101, 20150101, 20160101, 20170101, 20180101, 20190101, 20200101 };
 
             for (int i = 0; i < startdates.Length; i++)
             {

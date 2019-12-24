@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StockAnalysis
 {
-    class Buy6RizePreEnd_Post4 : Buy
+    class Buy6RizePreEnd_Post4_4 : Buy
     {
         //连续6日小阳线
         //且这6日中小阳线产生金叉
@@ -27,6 +27,7 @@ namespace StockAnalysis
                 && yes4.end >= yes5.end
                 && yes5.end >= yes6.end
                 && yes6.end * 1.12 > item.end && yes6.end < yes7.end
+                && stock.items[index].end - item.end > StockApp.MIN_ZERO
                 )
             {
                 return true;
@@ -36,7 +37,7 @@ namespace StockAnalysis
         }
         public override string ToString()
         {
-            return "Buy6RizePreEnd_Post4";
+            return "Buy6RizePreEnd_Post4_4";
         }
         
        

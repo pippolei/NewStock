@@ -18,12 +18,13 @@ namespace StockAnalysis
             StockItem yes19 = stock.items[index - 19];
 
 
-            if (Convert.ToDouble(yes4.attributes[StockAttribute.RIZE]) > 0.03
+            if (Convert.ToDouble(yes4.attributes[StockAttribute.RIZE]) - 0.03 > StockApp.MIN_ZERO
                 && yes3.end < yes4.end 
                 && yes2.end < yes3.end
                 && yes1.end < yes2.end
-                && item.end > yes1.end && (item.end - yes1.end) > 0.7 * (yes4.end - yes1.end)
+                && item.end > yes1.end && (item.end - yes1.end) > 0.8 * (yes4.end - yes1.end)
                 && yes4.end > 1.1 * yes19.end
+                && item.end < yes19.end * 1.2
                 && yes19.end < Convert.ToDouble(yes4.attributes[StockAttribute.AVE10])
                )
             {
