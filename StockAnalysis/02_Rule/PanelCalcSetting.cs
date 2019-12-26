@@ -120,7 +120,7 @@ namespace StockAnalysis.Panel
                         attristrs[8] = stock.getGrade(rule.defaultSell, i).ToString();//grade
                         attristrs[9] = stock.getKPIs(i);
                         attristrs[10] = stock.getNumKPIs(i);
-                        attristrs[11] = StockDapan.GetDaPanScore(item.date).ToString();   //dapan
+                        attristrs[11] =  StockDapan.GetDaPanScore(item.date).ToString();   //dapan
                         attristrs[12] = item.kpi[StockApp.DEFAULT_SELLs[0] + StockKPI.default_price].ToString();   //short
                         attristrs[13] = item.kpi[StockApp.DEFAULT_SELLs[1] + StockKPI.default_price].ToString(); ;   //medium
                         attristrs[14] = item.kpi[StockApp.DEFAULT_SELLs[2] + StockKPI.default_price].ToString(); ;  //long
@@ -171,7 +171,7 @@ namespace StockAnalysis.Panel
                         attristrs[8] = "0";//grade
                         attristrs[9] = "0";
                         attristrs[10] = "0";
-                        attristrs[11] = "0";
+                        attristrs[11] = "0"; //stockdapan√ª”–”√
                         attristrs[12] = "0";
                         attristrs[13] = "0";
                         attristrs[14] = "0";

@@ -88,9 +88,9 @@ namespace StockAnalysis
             
             listbuy.Add(new Buy6RizePreEnd());
             listbuy.Add(new Buy6RizePreEnd_Post4_4());
-            //listbuy.Add(new BuyJason1_3());
-            //listbuy.Add(new BuyBigWin());
-            //listbuy.Add(new Buy15Rize());
+            listbuy.Add(new BuyJason1_3());
+            listbuy.Add(new BuyBigWin());
+            listbuy.Add(new Buy15Rize());
            
 
             //listbuy.Add(new BuyIslandReverse());

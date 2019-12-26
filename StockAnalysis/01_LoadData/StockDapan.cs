@@ -34,29 +34,32 @@ namespace StockAnalysis
         //给出某一日大盘的评分
         public static string GetDaPanScore(int intdate)
         {
+            string kpis = "";
             string sql = "select * from [stock_DaPan] where [date] = " + intdate + ";";
             //object ret = db.GetOneValue(sql, "dapan");
             /*return ret.ToString().Replace("\t","");*/
-            DataRow dr = db.GetFirstRow(sql);
-            
-            double rize = Math.Round((double)dr["rize"],4);
-            double up = Convert.ToDouble(dr["NUM_RIZE"]);
-            double down = Convert.ToDouble(dr["NUM_DOWN"]);
-            double ave1 = Convert.ToDouble(dr["ave1"]);
-            double ave2 = Convert.ToDouble(dr["ave2"]);
-            double ave3 = Convert.ToDouble(dr["ave3"]);
-            double ave4 = Convert.ToDouble(dr["ave4"]);
-            double ave5 = Convert.ToDouble(dr["ave5"]);
-            string kpis = rize.ToString();
-            kpis+= StockApp.seperator.ToString() + Math.Round(up / (up + down),4);
-            kpis+= StockApp.seperator.ToString() + Math.Round(down / (up + down),4);
-            //kpis += StockApp.seperator.ToString() + Math.Round(ave1, 4);
-            //kpis += StockApp.seperator.ToString() + Math.Round(ave2, 4);
-            //kpis += StockApp.seperator.ToString() + Math.Round(ave3, 4);
-            //kpis += StockApp.seperator.ToString() + Math.Round(ave4, 4);
-            //kpis += StockApp.seperator.ToString() + Math.Round(ave5, 4);
+            DataTable dt = db.GetTable(sql);
+            if (dt.Rows.Count > 0)
+            {
+                DataRow dr = db.GetFirstRow(sql);
 
-
+                double rize = Math.Round((double)dr["rize"], 4);
+                double up = Convert.ToDouble(dr["NUM_RIZE"]);
+                double down = Convert.ToDouble(dr["NUM_DOWN"]);
+                double ave1 = Convert.ToDouble(dr["ave1"]);
+                double ave2 = Convert.ToDouble(dr["ave2"]);
+                double ave3 = Convert.ToDouble(dr["ave3"]);
+                double ave4 = Convert.ToDouble(dr["ave4"]);
+                double ave5 = Convert.ToDouble(dr["ave5"]);
+                kpis = rize.ToString();
+                kpis += StockApp.seperator.ToString() + Math.Round(up / (up + down), 4);
+                kpis += StockApp.seperator.ToString() + Math.Round(down / (up + down), 4);
+                //kpis += StockApp.seperator.ToString() + Math.Round(ave1, 4);
+                //kpis += StockApp.seperator.ToString() + Math.Round(ave2, 4);
+                //kpis += StockApp.seperator.ToString() + Math.Round(ave3, 4);
+                //kpis += StockApp.seperator.ToString() + Math.Round(ave4, 4);
+                //kpis += StockApp.seperator.ToString() + Math.Round(ave5, 4);
+            }
             return kpis;//去除第一个"-"  
         }
 
