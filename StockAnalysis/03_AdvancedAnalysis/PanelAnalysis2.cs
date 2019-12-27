@@ -60,7 +60,7 @@ namespace StockAnalysis.Panel
             {
                 foreach (Sell sellitem in pnl_buysell.GetAllSell())
                 {
-                    foreach (int buyrule in Rule.rulebuy_list)
+                    foreach (int buyrule in Rule.rulebuy_type)
                     {
                         //计算的时候可以看到并没有考虑止损， 但实际显示结果时都有考虑
                         StockOpeItem[] rule_items = StockAnalysisSQL.CalculateSave2Analysis2(startdate, enddate, buyitem.ToString(), sellitem.ToString(), buyrule);

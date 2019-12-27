@@ -207,7 +207,7 @@ namespace StockAnalysis.Panel
                 StockRuleItem[] items = StockRuleSQL.GetRuleBuy0List(rulename, StockApp.STOCK_START_DATE, StockApp.END_DATE);
                 for (int i = 0; i < items.Length; i++)
                 {
-                    if (!isfilter(rulename, items[i]) && items[i].type == Rule.STATUS_BUY)
+                    if (!isfilter(rulename, items[i]) && (items[i].type == Rule.STATUS_BUY || items[i].type == Rule.STATUS_BUY_PY))
                     {
                         list.Add("delete from Rule_Buy where type = '" + Rule.STATUS_BUY + "' and id = '" + items[i].id + "';");
                     }

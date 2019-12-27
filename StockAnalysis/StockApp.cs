@@ -11,7 +11,7 @@ namespace StockAnalysis
         //global parameter
         public static int STOCK_START_DATE = 20070101;
         public static int STOCK_START_DATE_SHITE_MONTH = 12;
-        public static int BUY_STOCK_NUM = 5;
+        public static int BUY_STOCK_NUM = 5000;
         //股票数据起始日       
         public static readonly int END_DATE = 99991231;
         public static int getAnalysisStartDate
@@ -86,25 +86,14 @@ namespace StockAnalysis
             //****************************************
             //****************************************
             
-            listbuy.Add(new Buy6RizePreEnd());
+            //listbuy.Add(new Buy6RizePreEnd());
             listbuy.Add(new Buy6RizePreEnd_Post4_4());
-            listbuy.Add(new BuyJason1_3());
-            listbuy.Add(new BuyBigWin());
-            listbuy.Add(new Buy15Rize());
+            listbuy.Add(new BuyJason1_1());
+            //listbuy.Add(new BuyJason1_3());
+            //listbuy.Add(new BuyBigWin());
+            //listbuy.Add(new Buy15Rize());
            
 
-            //listbuy.Add(new BuyIslandReverse());
-            //listbuy.Add(new BuyBelowAVE5());
-            //listbuy.Add(new BuyBelow35AVE10());
-            
-            
-
-            //listbuy.Add(new Buy7Down5Rize());
-            //listbuy.Add(new Buy8Down4Rize());
-            //listbuy.Add(new Buy8Down5Rize());
-            //listbuy.Add(new Buy7Down5Rize_3());
-            //listbuy.Add(new Buy8Down4Rize_3());
-            //listbuy.Add(new Buy8Down5Rize_3());
                                   
             //****************************************
             //listsell.Add(new SellPureDrop());

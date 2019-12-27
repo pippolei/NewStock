@@ -59,6 +59,7 @@ namespace StockAnalysis.Panel
             double next1 = 0;
             double next1Rate = 0;
 
+            if (items.Length == 0) return;
             for (int i = 0; i < items.Length; i++)
             {
                 tradetimes++;
@@ -90,7 +91,7 @@ namespace StockAnalysis.Panel
             {
                 foreach (Sell sellitem in calcpanel.GetAllSell())
                 {
-                    foreach (int rulevalue in Rule.rulebuy_list)
+                    foreach (int rulevalue in Rule.rulebuy_type)
                     {
                         items = StockAnalysisSQL.GetAnalysis2List(rulevalue, startdate, enddate, buyitem.ToString(), sellitem.ToString(), (double)this.cmb_scorefilter.Value / 100
                         

@@ -46,31 +46,10 @@ namespace StockAnalysis
             Export_To_CSV(sql, "C:/StockAnalysis/py/rule_full.csv");
         }
 
-        private void btn_importrule_Click(object sender, EventArgs e)
-        {
-            string filename = "ml_rule.txt";
-            string sql = "";
-            if (File.Exists(UtilLog.LOG_FOLDER + filename))
-            {
-                sql += "delete from Rule_Buy0 where type = " + Rule.STATUS_BUY_ML + ";";
-                sql += "BULK INSERT " + StockSQL.TABLE_RULE_BUY0 + " FROM '" + UtilLog.LOG_FOLDER + filename + "';";
-            }
-            filename = "ml_rule_test.txt";
-            if (File.Exists(UtilLog.LOG_FOLDER + filename))
-            {
-                sql += "delete from Rule_Buy0 where type = " + Rule.STATUS_BUY_ML_TEST + ";";
-                sql += "BULK INSERT " + StockSQL.TABLE_RULE_BUY0 + " FROM '" + UtilLog.LOG_FOLDER + filename + "';";
-            }
-            db.RunSql(sql);
-            MessageBox.Show("Done");
-        }
+        
 
-        private void btn_rulesell_Click(object sender, EventArgs e)
-        {
-            string sql = "select * from rule_buy0 where type in ('" + Rule.STATUS_BUY + "','" + Rule.STATUS_SELL + "') order by [id] ;";
-            Export_To_CSV(sql, "C:/StockAnalysis/py/rule_withsell.csv");
-        }
 
+        #region completed
         private void btn_importStockFull_Click(object sender, EventArgs e)
         {
             string sql = "truncate table stock_Full;";
@@ -96,6 +75,26 @@ namespace StockAnalysis
                 db.RunSql(sql);
             }
             MessageBox.Show("Done");
+        }
+        #endregion
+        private void ImportRule(string filename, int ruleid)
+        {
+            string sql = "";
+            if (File.Exists(UtilLog.LOG_FOLDER + filename))
+            {
+                sql += "delete from Rule_Buy0 where type = " + ruleid + ";";
+                sql += "BULK INSERT " + StockSQL.TABLE_RULE_BUY0 + " FROM '" + UtilLog.LOG_FOLDER + filename + "';";
+            }
+            db.RunSql(sql);
+            
+        }
+       
+        private void btn_importrule_Click(object sender, EventArgs e)
+        {
+            ImportRule("py_rule.txt", Rule.STATUS_BUY_PY);
+            ImportRule("ml_rule.txt", Rule.STATUS_BUY_ML);
+            MessageBox.Show("Import Rule Done!");
+            
         }
 
 

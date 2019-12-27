@@ -374,7 +374,7 @@ namespace StockAnalysis.Panel
             this.txt_num.Enabled = false;
             this.txt_num.Location = new System.Drawing.Point(16, 15);
             this.txt_num.Maximum = new decimal(new int[] {
-            10,
+            100000,
             0,
             0,
             0});

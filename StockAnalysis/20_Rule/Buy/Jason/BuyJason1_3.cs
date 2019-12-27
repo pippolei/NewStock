@@ -29,11 +29,11 @@ namespace StockAnalysis
             //T-6日到T-1日最高价与最低价不大于5%
             for (int i = 1; i <= 6; i++)
             {
-                StockItem temp = stock.items[i];
+                StockItem temp = stock.items[index - i];
                 if (high < temp.high) high = temp.high;
                 if (low > temp.low) low = temp.low;
             }
-            if (high >= low * 1.08) return false;           
+            if (high - low * 1.08 > StockApp.MIN_ZERO) return false;           
             return true;
         }
         public override string ToString()

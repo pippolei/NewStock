@@ -102,14 +102,14 @@ namespace StockAnalysis.Panel
             this.dg_overview.Rows.Clear();
             //仓位股票数量
             holdstocknum = (int)txt_num.Value;
-            foreach (int buyvalue in Rule.rulebuy_list)
+            foreach (int buy_type in Rule.rulebuy_type)
             {   
                 for (int i = 0; i < pnl_buysell2.GetSelectedCombGroup().Length; i++)
                 {
                     sm = new SimulateManager(new_startdate, new_enddate, holdstocknum);
                     combineRule combinerule = pnl_buysell2.GetSelectedCombGroup()[i];
                     //得到所有符合买卖原则的数据
-                    StockOpeItem[] items = StockAnalysisSQL.GetAnalysis2List(buyvalue, new_startdate, new_enddate, combinerule.buy.ToString(), combinerule.sell.ToString(), -0.99,
+                    StockOpeItem[] items = StockAnalysisSQL.GetAnalysis2List(buy_type, new_startdate, new_enddate, combinerule.buy.ToString(), combinerule.sell.ToString(), -0.99,
                         true,  //apply default Sell 
                         true);
                     foreach (StockOpeItem item in items)
@@ -117,7 +117,7 @@ namespace StockAnalysis.Panel
                         sm.AddOpeItem(item);
                     }
                     sm.Simulate(new_startdate, new_enddate);
-                    sm.SaveToDB(buyvalue, combinerule.buy.ToString(), combinerule.sell.ToString());
+                    sm.SaveToDB(buy_type, combinerule.buy.ToString(), combinerule.sell.ToString());
                 }                
             }           
             
@@ -160,6 +160,7 @@ namespace StockAnalysis.Panel
             
             {
                 double value = StockSimulateSQL.GetFinalValue(type, new_startdate, new_enddate, buyrule, sellrule);
+                if (value < 100) return;
                 string[] s = new string[7];
                 s[0] = type.ToString();
                 s[1] = buyrule.ToString();

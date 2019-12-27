@@ -52,7 +52,7 @@ namespace StockAnalysis.Panel
         public void SyncList()
         {
             this.dg_overview.Rows.Clear();
-            StockRuleItem[] items = null;
+            StockRuleItem[] items = null, items2 = null;
             
              int selectedIndex = 0, selectedDaPan = 0;
              string selectedDaPanValue = "";
@@ -68,22 +68,28 @@ namespace StockAnalysis.Panel
              {   
                  items = StockRuleSQL.GetRuleBuyList(rule.ToString(), startdate, enddate, Rule.STATUS_BUY_ML);
                  AddList(items, Rule.STATUS_BUY_ML, rule.ToString(), selectedDaPanValue, 0, 0, minumum_grade);
+
                  items = StockRuleSQL.GetRuleBuyList(rule.ToString(), startdate, enddate, Rule.STATUS_BUY);
+                 items2 = StockRuleSQL.GetRuleBuyList(rule.ToString(), startdate, enddate, Rule.STATUS_BUY_PY);
                  if (selectedIndex > 0 )
                  {
                      AddList(items, Rule.STATUS_BUY, rule.ToString(), selectedDaPanValue, cmb_kpi.SelectedIndex, 0, minumum_grade); //第SelectedIndex个KPI值为0的数据
                      AddList(items, Rule.STATUS_BUY, rule.ToString(), selectedDaPanValue, cmb_kpi.SelectedIndex, 1, minumum_grade);//第SelectedIndex个KPI值为1的数据
+                     AddList(items2, Rule.STATUS_BUY_PY, rule.ToString(), selectedDaPanValue, cmb_kpi.SelectedIndex, 0, minumum_grade); //第SelectedIndex个KPI值为0的数据
+                     AddList(items2, Rule.STATUS_BUY_PY, rule.ToString(), selectedDaPanValue, cmb_kpi.SelectedIndex, 1, minumum_grade);//第SelectedIndex个KPI值为1的数据
+
                  }
                  else
                  {
                      AddList(items, Rule.STATUS_BUY, rule.ToString(), selectedDaPanValue, 0, 0, minumum_grade); //第一个0是大盘状态, 第0个KPI值为0
+                     AddList(items2, Rule.STATUS_BUY_PY, rule.ToString(), selectedDaPanValue, 0, 0, minumum_grade); //第一个0是大盘状态, 第0个KPI值为0
                  }
              }
-             foreach (Sell rule in StockApp.listsell)
+             /*foreach (Sell rule in StockApp.listsell)
              {
                  items = StockRuleSQL.GetRuleSellList(rule.ToString(), startdate, enddate);
                  AddList(items, -1, rule.ToString(), selectedDaPanValue, 0, 0, minumum_grade);
-             }
+             }*/
             
         }
         //添加列表

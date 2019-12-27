@@ -7,17 +7,18 @@ namespace StockAnalysis
     public abstract class Rule
     {
         public static readonly int STATUS_BUY = 1;
-        public static readonly int STATUS_BUY_ML = 2;
-        public static readonly int STATUS_BUY_ML_TEST = 3;
+        public static readonly int STATUS_BUY_PY = 2;
+        public static readonly int STATUS_BUY_ML = 3;
+        public static readonly int STATUS_BUY_ML_TEST = 4;
         public static readonly int STATUS_SELL = -1;
-        public static readonly int[] rulebuy_list = new int[] { STATUS_BUY, STATUS_BUY_ML };
+        public static readonly int[] rulebuy_type = new int[] { STATUS_BUY,STATUS_BUY_PY, STATUS_BUY_ML,STATUS_BUY_ML_TEST };
 
         public static bool contains(int type)
         {
-            int size = rulebuy_list.Length;
+            int size = rulebuy_type.Length;
             for (int i = 0; i < size; i++)
             {
-                if (rulebuy_list[i] == type) return true;
+                if (rulebuy_type[i] == type) return true;
             }
             return false;
         }

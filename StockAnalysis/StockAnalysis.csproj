@@ -83,7 +83,9 @@
     <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy15Rize.cs" />
     <Compile Include="20_Rule\Buy\10_抄底\BuyIslandReverse.cs" />
     <Compile Include="20_Rule\Buy\7Down5Rize\Buy7Down5Rize.cs" />
-    <Compile Include="20_Rule\Buy\00_Mandatory_Test\BuyJason1_3.cs" />
+    <Compile Include="20_Rule\Buy\Jason\BuyJason1_3.cs" />
+    <Compile Include="20_Rule\Buy\Jason\BuyJason1.cs" />
+    <Compile Include="20_Rule\Buy\Jason\BuyJason1_1.cs" />
     <Compile Include="20_Rule\Sell\SellPureDrop2.cs" />
     <Compile Include="80_Panel\PanelCombineRule.cs">
       <SubType>UserControl</SubType>
@@ -112,7 +114,6 @@
     <Compile Include="20_Rule\Buy\10_抄底\BuyBelow35AVE10.cs" />
     <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy4Week.cs" />
     <Compile Include="20_Rule\Buy\00_Mandatory_Test\BuyBigWin.cs" />
-    <Compile Include="20_Rule\Buy\archive\Buy6RizeAgStart.cs" />
     <Compile Include="20_Rule\Buy\archive\BuyLong2.cs" />
     <Compile Include="20_Rule\Buy\archive\BuyLong.cs" />
     <Compile Include="20_Rule\Buy\Buy.cs" />
@@ -276,7 +277,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="20_Rule\Buy\90\" />
-    <Folder Include="20_Rule\Buy\Jason\" />
     <Folder Include="99_Archive\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

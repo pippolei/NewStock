@@ -35,10 +35,7 @@ namespace StockAnalysis
 
             return false;
         }
-        public override string ToString()
-        {
-            return "Buy6RizePreEnd_Post4_4";
-        }
+        
         
        
     }

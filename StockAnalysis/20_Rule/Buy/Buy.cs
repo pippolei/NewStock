@@ -89,7 +89,10 @@ namespace StockAnalysis
         }
 
         protected abstract Boolean GetBuy(StockData stock, int index);
-        public abstract override string ToString();
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
         
     }
 
