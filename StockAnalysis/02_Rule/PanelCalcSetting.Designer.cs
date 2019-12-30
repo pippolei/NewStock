@@ -42,6 +42,7 @@ namespace StockAnalysis.Panel
             this.chkl_status = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_sync = new System.Windows.Forms.Button();
+            this.chk_limited = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.cmb_isKPI)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,7 +187,7 @@ namespace StockAnalysis.Panel
             // 
             // btn_sync
             // 
-            this.btn_sync.Location = new System.Drawing.Point(723, 6);
+            this.btn_sync.Location = new System.Drawing.Point(705, 6);
             this.btn_sync.Name = "btn_sync";
             this.btn_sync.Size = new System.Drawing.Size(75, 23);
             this.btn_sync.TabIndex = 37;
@@ -194,11 +195,24 @@ namespace StockAnalysis.Panel
             this.btn_sync.UseVisualStyleBackColor = true;
             this.btn_sync.Click += new System.EventHandler(this.btn_sync_Click);
             // 
+            // chk_limited
+            // 
+            this.chk_limited.AutoSize = true;
+            this.chk_limited.Checked = true;
+            this.chk_limited.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_limited.Location = new System.Drawing.Point(786, 10);
+            this.chk_limited.Name = "chk_limited";
+            this.chk_limited.Size = new System.Drawing.Size(54, 16);
+            this.chk_limited.TabIndex = 38;
+            this.chk_limited.Text = "Limit";
+            this.chk_limited.UseVisualStyleBackColor = true;
+            // 
             // PanelCalcSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.chk_limited);
             this.Controls.Add(this.btn_sync);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.chkl_status);
@@ -238,5 +252,6 @@ namespace StockAnalysis.Panel
         private System.Windows.Forms.CheckedListBox chkl_status;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_sync;
+        private System.Windows.Forms.CheckBox chk_limited;
     }
 }

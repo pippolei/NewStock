@@ -221,7 +221,18 @@ namespace StockAnalysis.Panel
                 (
                 select ROW_NUMBER() OVER (PARTITION BY [type], rulename, [date] order by pregrade desc) AS SEQUENCE,* from rule_buy0 
                 ) T1
-                where T1.SEQUENCE > " + (StockApp.BUY_STOCK_NUM * 2) + " and [TYPE] > 0;";
+                where ";
+            if (this.chk_limited.Checked)
+            {
+                sql += "T1.SEQUENCE > " + (StockApp.BUY_STOCK_NUM * 2) + " and ";
+            }
+            else
+            {
+                //如果没有选中"Limit"的情况
+                //保证SQL没有选出数据， 则不会被移除
+                sql += "T1.SEQUENCE > " + StockApp.MAX_VALUE + " and ";
+            }
+            sql += " [TYPE] > 0;";
             DataTable dt = db.GetTable(sql);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
