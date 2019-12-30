@@ -3,5 +3,5 @@ Train
 sa
 Welcome1!
 C:\StockAnalysis\sample
-20150101
+20110101
 False
