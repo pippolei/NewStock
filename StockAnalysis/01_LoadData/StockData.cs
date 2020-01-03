@@ -150,8 +150,9 @@ namespace StockAnalysis
         public double getGrade(string type, int index)
         { 
             StockItem item = items[index];
-            double sellprice = Convert.ToDouble(item.kpi[type + StockKPI.default_price]);
-            return (sellprice - item.end) / item.end;
+            //double sellprice = Convert.ToDouble(item.kpi[type + StockKPI.default_price]);
+            //return (sellprice - item.end) / item.end;
+            return Convert.ToDouble(items[index].attributes[StockAttribute.ATR]);
         }
         //得到当前股票的各种KPI数据
         public string getKPIs(int index)

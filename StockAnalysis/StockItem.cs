@@ -19,7 +19,7 @@ namespace StockAnalysis
 
         
         //长下影线
-        public bool longXiaoYing
+        public bool longXiaYing
         {
             get
             {
@@ -27,6 +27,21 @@ namespace StockAnalysis
                 double v2 = Math.Min(end, start) - low;
 
                 if (v2 > v1 && v2 / end > 0.02)                
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+        //长上影线
+        public bool longShangYing
+        {
+            get
+            {
+                double v1 = Math.Abs(end - start);
+                double v2 = high - Math.Max(end, start);
+
+                if (v2 > v1 && v2 / end > 0.02)
                 {
                     return true;
                 }

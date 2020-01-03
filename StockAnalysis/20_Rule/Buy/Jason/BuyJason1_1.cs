@@ -16,12 +16,21 @@ namespace StockAnalysis
             StockItem yes5 = stock.items[index - 5];
             StockItem yes6 = stock.items[index - 6];
 
-            if (index == 1084)
-            {
-                index = 1084;
-            }
             //跳空高开3%
             if (item.start - yes1.end * 1.03 < StockApp.MIN_ZERO) return false;
+            //收盘价需要大于开盘价
+            if (item.end - item.start < StockApp.MIN_ZERO) return false;
+            //涨幅不超过5%
+            if (Convert.ToDouble(item.attributes[StockAttribute.RIZE]) > 0.05) return false;
+
+
+            if (index + 1 < stock.items.Length)
+            {
+                if (Convert.ToInt32(stock.items[index + 1].attributes[StockAttribute.CANBUY]) == 0)
+                {
+                    return false;
+                }
+            }
             //T-1日被五日均线压制
             if (Convert.ToDouble(yes1.attributes[StockAttribute.AVE5]) - yes1.end < StockApp.MIN_ZERO) return false;
                         

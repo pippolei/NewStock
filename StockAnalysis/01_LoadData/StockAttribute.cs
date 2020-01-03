@@ -19,7 +19,8 @@ namespace StockAnalysis
         private static ArrayList attrList = new ArrayList();
         static StockAttribute()
         {
-            attrList.Add(StockAttribute.RIZE);           
+            attrList.Add(StockAttribute.RIZE);
+            attrList.Add(StockAttribute.CANBUY);  
             attrList.Add(AVE5);
             attrList.Add(AVE10);
             attrList.Add(AVE20);
@@ -119,7 +120,17 @@ namespace StockAnalysis
             for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
             {
                 StockItem item = items[i];
-                item.attributes[StockAttribute.RIZE] = (item.end - items[i - 1].end) / items[i - 1].end;
+                double rize  = (item.end - items[i - 1].end) / items[i - 1].end;
+                item.attributes[StockAttribute.RIZE] = rize;
+
+                if ((item.high == item.low && rize > 0.04) || item.low - items[i - 1].end > StockApp.MIN_ZERO)
+                {
+                    item.attributes[StockAttribute.CANBUY] = 0;
+                }
+                else
+                {
+                    item.attributes[StockAttribute.CANBUY] = 1;
+                }
             }
         }
         
@@ -281,6 +292,7 @@ namespace StockAnalysis
         
 
         public static readonly string RIZE = "RIZE";  //涨幅
+        public static readonly string CANBUY = "CANBUY";  //当天能否买入
         public static readonly string AVE5 = "AVE5";
         public static readonly string AVE10 = "AVE10";
         public static readonly string AVE20 = "AVE20";

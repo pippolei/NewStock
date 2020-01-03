@@ -27,7 +27,7 @@ namespace StockAnalysis
         public bool isBuy(StockData stock, int index)
         {
             //检查是否能够买入 当天涨停不能买入
-            if (Convert.ToDouble(stock.items[index].attributes[StockAttribute.RIZE]) > 0.09)
+            if (!Convert.ToBoolean(stock.items[index].attributes[StockAttribute.CANBUY]))
             {
                 return false;
             }
@@ -65,7 +65,7 @@ namespace StockAnalysis
     }
     public abstract class Buy
     {
-        public string defaultSell = StockApp.DEFAULT_SELLs[1];
+        public string defaultSell = StockApp.DEFAULT_SELLs[3];
         public double minumum_grade = -0.99;
         
 
@@ -73,7 +73,7 @@ namespace StockAnalysis
         public Boolean isBuy(StockData stock, int index)
         {
             //检查是否能够买入
-            if (Convert.ToDouble(stock.items[index].attributes[StockAttribute.RIZE]) > 0.09)
+            if (!Convert.ToBoolean(stock.items[index].attributes[StockAttribute.CANBUY]))
             {
                 return false;
             }
@@ -87,7 +87,12 @@ namespace StockAnalysis
         protected virtual void Prepare(StockData stock, int index)
         {
         }
-
+        //子类可以在判断前先使用此函数准备工作
+        public virtual double GetScore(StockData stock, int index)
+        {
+            StockItem item = stock.items[index];
+            return Convert.ToDouble(item.attributes[StockAttribute.ATR]);
+        }
         protected abstract Boolean GetBuy(StockData stock, int index);
         public override string ToString()
         {

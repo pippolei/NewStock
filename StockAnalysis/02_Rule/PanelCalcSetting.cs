@@ -117,7 +117,7 @@ namespace StockAnalysis.Panel
                         attristrs[5] = item.index.ToString();
                         attristrs[6] = item.end.ToString();
                         attristrs[7] = "0"; //pregrade
-                        attristrs[8] = stock.getGrade(rule.defaultSell, i).ToString();//grade
+                        attristrs[8] = rule.GetScore(stock, item.index).ToString();
                         attristrs[9] = stock.getKPIs(i);
                         attristrs[10] = stock.getNumKPIs(i);
                         attristrs[11] =  StockDapan.GetDaPanScore(item.date).ToString();   //dapan
@@ -219,12 +219,12 @@ namespace StockAnalysis.Panel
             //ÒÆ³ýsequence
             sql = @"select [TYPE], ID from
                 (
-                select ROW_NUMBER() OVER (PARTITION BY [type], rulename, [date] order by pregrade desc) AS SEQUENCE,* from rule_buy0 
+                select ROW_NUMBER() OVER (PARTITION BY [type], rulename, [date] order by grade desc) AS SEQUENCE,* from rule_buy0 
                 ) T1
                 where ";
             if (this.chk_limited.Checked)
             {
-                sql += "T1.SEQUENCE > " + (StockApp.BUY_STOCK_NUM * 2) + " and ";
+                sql += "T1.SEQUENCE > " + (StockApp.BUY_STOCK_NUM) + " and ";
             }
             else
             {
