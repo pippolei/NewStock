@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StockAnalysis
 {
-    class BuyJason1_1 : Buy
+    class BuyJason1_5 : Buy
     {
         protected override Boolean GetBuy(StockData stock, int index)
         {

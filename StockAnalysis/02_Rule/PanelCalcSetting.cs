@@ -224,7 +224,7 @@ namespace StockAnalysis.Panel
                 where ";
             if (this.chk_limited.Checked)
             {
-                sql += "T1.SEQUENCE > " + (StockApp.BUY_STOCK_NUM) + " and ";
+                sql += "T1.SEQUENCE > " + (StockApp.BUY_STOCK_NUM * 2) + " and ";
             }
             else
             {

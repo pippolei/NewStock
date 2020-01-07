@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StockAnalysis
 {
-    class BuyJason1_1 : Buy
+    class BuyJason1_10 : Buy
     {
         protected override Boolean GetBuy(StockData stock, int index)
         {
@@ -32,7 +32,7 @@ namespace StockAnalysis
                 }
             }
             //T-6日被五日均线压制
-            if (Convert.ToDouble(yes6.attributes[StockAttribute.AVE5]) - yes6.end < StockApp.MIN_ZERO) return false;
+            if (Convert.ToDouble(yes6.attributes[StockAttribute.AVE10]) - yes6.end < StockApp.MIN_ZERO) return false;
             
             //连续3天小阳线
             for (int i = 1; i <= 3; i++)

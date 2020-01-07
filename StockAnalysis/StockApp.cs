@@ -86,11 +86,13 @@ namespace StockAnalysis
             //****************************************
             //****************************************
             
-            //listbuy.Add(new Buy6RizePreEnd());
+            listbuy.Add(new Buy6RizePreEnd());
             listbuy.Add(new Buy6RizePreEnd_Post4_4());
-            listbuy.Add(new Buy6RizePreEnd_Post4_5());
-            listbuy.Add(new BuyJason1_1());
-            listbuy.Add(new BuyJason1_2());
+
+            //listbuy.Add(new BuyJason1_5());
+            //listbuy.Add(new BuyJason1_10());
+            //listbuy.Add(new BuyJason1_20());
+            //listbuy.Add(new BuyJason1_2());
             //listbuy.Add(new BuyJason1_3());
             //listbuy.Add(new BuyBigWin());
             //listbuy.Add(new Buy15Rize());

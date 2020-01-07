@@ -4,7 +4,7 @@ using System.Text;
 
 namespace StockAnalysis
 {
-    class BuyJason1_2 : Buy
+    class BuyJason1_20 : Buy
     {
         protected override Boolean GetBuy(StockData stock, int index)
         {
@@ -33,7 +33,7 @@ namespace StockAnalysis
                 }
             }
             //T-1日被五日均线压制
-            if (Convert.ToDouble(yes1.attributes[StockAttribute.AVE5]) - yes1.end < StockApp.MIN_ZERO) return false;
+            if (Convert.ToDouble(yes1.attributes[StockAttribute.AVE20]) - yes1.end < StockApp.MIN_ZERO) return false;
                         
             //double high = -100, low = 100;
             //T-6日到T-1日最高价与最低价不大于5%

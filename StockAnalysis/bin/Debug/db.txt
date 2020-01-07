@@ -1,7 +1,7 @@
 localhost
-Train
+houfu
 sa
 Welcome1!
 C:\StockAnalysis\sample
-20110101
+20100101
 False
