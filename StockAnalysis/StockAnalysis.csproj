@@ -83,6 +83,7 @@
     <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy15Rize.cs" />
     <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy6RizePreEnd_Post4_5.cs" />
     <Compile Include="20_Rule\Buy\10_抄底\BuyIslandReverse.cs" />
+    <Compile Include="20_Rule\Buy\20_均线上涨\BuyAveRize.cs" />
     <Compile Include="20_Rule\Buy\7Down5Rize\Buy7Down5Rize.cs" />
     <Compile Include="20_Rule\Buy\Jason\BuyJason1_1.cs" />
     <Compile Include="20_Rule\Buy\Jason\BuyJason1_20.cs" />

@@ -1,5 +1,5 @@
 localhost
-houfu
+train
 sa
 Welcome1!
 C:\StockAnalysis\sample
