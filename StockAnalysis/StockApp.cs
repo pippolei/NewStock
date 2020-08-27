@@ -23,21 +23,21 @@ namespace StockAnalysis
             }
         }
         //文本文件地址
-        public static string txtSrc = @"C:\StockAnalysis\test";
+        public static string txtSrc = @"C:\StockAnalysis\";
         //是否productive使用
         public static bool isProductive = false;
         #endregion
 
         #region 系统常数, 不可设
         //定义最大最小数
-        public static readonly int MAX_VALUE = 99999999;
-        public static readonly int MIN_VALUE = -99999999;
+        public static readonly int POSITIVE_INF = 99999999;
+        public static readonly int NEGATIVE_INF = -99999999;
         public static readonly double MIN_ZERO = 0.0000001;        
         //最少交易日数, 不然忽略此股票
         //分析股票的起始交易日
-        public static readonly int START_ANALYSIS = 160;
+        public static readonly int START_ANALYSIS = 200;
         //属性起始日
-        public static readonly int START_ATTRIBUTE = 130;  
+        public static readonly int START_ATTRIBUTE = 190;  
         //交易手续费
         public static readonly double FEE = 0.001;
         //初始金额
@@ -57,24 +57,19 @@ namespace StockAnalysis
         public static double HIGH_THRESHOLD_SHORT = 0.05;
         public static double LOW_THRESHOLD_SHORT = 0.03;
 
-        public static int MAX_HOLD_DAYS_MEDIUM = 10;
-        public static double HIGH_THRESHOLD_MEDIUM = 0.11;
-        public static double LOW_THRESHOLD_MEDIUM = 0.06;
+        public static int MAX_HOLD_DAYS_MEDIUM = 20;
+        public static double HIGH_THRESHOLD_MEDIUM = 100;
+        public static double LOW_THRESHOLD_MEDIUM = 1;
 
         public static int MAX_HOLD_DAYS_LONG = 20;
-        public static double HIGH_THRESHOLD_LONG = 0.15;  //涨幅百分比
+        public static double HIGH_THRESHOLD_LONG = 100;  //涨幅百分比
         public static double LOW_THRESHOLD_LONG = 0.08;   //跌幅百分比
 
-
-        public static int MAX_HOLD_DAYS_END = 20;
+        public static int MAX_HOLD_DAYS_END = 40;
         public static double HIGH_THRESHOLD_END = 100;
         public static double LOW_THRESHOLD_END = 1;
         #endregion
 
-
-
-
-        //所有股票列表
         public static System.Collections.Hashtable allstock = new System.Collections.Hashtable();       
         
         //买卖列表
@@ -85,25 +80,42 @@ namespace StockAnalysis
         {
             //****************************************
             //****************************************
+            //listbuy.Add(new BuyDefault());
+            listbuy.Add(new Buy6Rize());
+            //listbuy.Add(new BuyLong());
+            //listbuy.Add(new BuyRizeAgain());
+            listbuy.Add(new Buy6Rize2());
+            listbuy.Add(new Buy6Rize3());
+            //listbuy.Add(new Buy6Rize4());
+            //listbuy.Add(new BuyStartBigRize());
             
-            //listbuy.Add(new Buy6RizePreEnd());
-            //listbuy.Add(new Buy6RizePreEnd_Post4_4());
-            listbuy.Add(new BuyAveRize());
-            //listbuy.Add(new BuyJason1_5());
-            //listbuy.Add(new BuyJason1_10());
-            //listbuy.Add(new BuyJason1_20());
-            //listbuy.Add(new BuyJason1_2());
-            //listbuy.Add(new BuyJason1_3());
+            //listbuy.Add(new Buy6Rize_3());
+            //listbuy.Add(new Buy6Rize_4());
+
+            //listbuy.Add(new BuyAveRize());
+            //listbuy.Add(new Buy6Rize_1());
+            //listbuy.Add(new Buy6Rize_2());
+            //listbuy.Add(new Buy6Rize_3());
+            
+            
+
+
+
+            //listbuy.Add(new BuyAveRize2());
+            //listbuy.Add(new BuyAveRize3());
+
+            //listbuy.Add(new BuyJason2());
+
+            //listbuy.Add(new BuyBelow35AVE10());
+
             //listbuy.Add(new BuyBigWin());
             //listbuy.Add(new Buy15Rize());
-           
-
-                                  
             //****************************************
-            //listsell.Add(new SellPureDrop());
             listsell.Add(new SellDefault());
-            //listsell.Add(new SellBelowATR2());
-        }
+            //listsell.Add(new SellTrend());
+            //listsell.Add(new SellBelowAve());
+            //listsell.Add(new SellStartBigDrop());
+}
 
         public static Buy GetBuy(string name)
         {

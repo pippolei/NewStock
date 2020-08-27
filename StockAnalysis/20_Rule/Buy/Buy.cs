@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace StockAnalysis
 {
-    public class BuyGroup
+    /*public class BuyGroup
     {
         private ArrayList buys;
         public BuyGroup(ArrayList _buys)
@@ -63,17 +63,25 @@ namespace StockAnalysis
             return s;
         }
     }
+    */
+    
     public abstract class Buy
     {
-        public string defaultSell = StockApp.DEFAULT_SELLs[3];
+        public string defaultSell = StockApp.DEFAULT_SELLs[1];
         public double minumum_grade = -0.99;
+        public string defaultBuyPrice = StockAttribute.BUYPRICE1;
         
-
 
         public Boolean isBuy(StockData stock, int index)
         {
             //检查是否能够买入
-            if (!Convert.ToBoolean(stock.items[index].attributes[StockAttribute.CANBUY]))
+            double buyprice = Convert.ToDouble(stock.items[index].attributes[defaultBuyPrice]);
+            int size = stock.items.Length;
+            if ((index < size - 1) && stock.items[index + 1].low >= buyprice)
+            {
+                return false;
+            }
+            if ((index < size - 1) && stock.items[index + 1].start >= stock.items[index].end * 1.02)
             {
                 return false;
             }
@@ -91,7 +99,11 @@ namespace StockAnalysis
         public virtual double GetScore(StockData stock, int index)
         {
             StockItem item = stock.items[index];
-            return Convert.ToDouble(item.attributes[StockAttribute.ATR]);
+            double rize = (stock.items[index].start / stock.items[index - 1].end) - 1;
+
+            //double low60 =  Convert.ToDouble(item.attributes[StockAttribute.LOW60]);
+            //return low60 / (item.end - low60) + StockApp.MIN_ZERO ;
+            return rize;
         }
         protected abstract Boolean GetBuy(StockData stock, int index);
         public override string ToString()
@@ -102,24 +114,14 @@ namespace StockAnalysis
     }
 
     
-    public class BuyRandom : Buy
+    public class BuyDefault : Buy
     {
         
         protected override Boolean GetBuy(StockData stock, int index)
-        {
-            Random random = new Random(Util.GetRandomSeed());
-
-            int value = random.Next();
-            if (value % 17 == 0)
-            {
-                return true;
-            }
-            return false;
+        {   
+            return true;
         }
-        public override string ToString()
-        {
-            return "RandomBuy";
-        }
+        
 
     }
 

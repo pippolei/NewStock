@@ -1,7 +1,7 @@
 localhost
-train
+hs300
 sa
 Welcome1!
-C:\StockAnalysis\sample
-20100101
+C:\StockAnalysis\
+20110101
 False

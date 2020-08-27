@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace StockAnalysis
 {
-    public class SellGroup
+    /*public class SellGroup
     {
         private ArrayList sells;
         public SellGroup(ArrayList _sells)
@@ -68,6 +68,8 @@ namespace StockAnalysis
             return s;
         }
     }
+    */
+    
     public abstract class Sell
     {
         //public string defaultSell = StockApp.DEFAULT_SELLs[2];
@@ -80,7 +82,10 @@ namespace StockAnalysis
         {
         }
         protected abstract Boolean GetSell(StockData stock, int index);
-        public abstract override string ToString();
+        public override string ToString()
+        {
+            return this.GetType().Name;
+        }
     }
 
     public class SellDefault : Sell
@@ -90,10 +95,7 @@ namespace StockAnalysis
             if ((index + 1)== stock.items.Length) return true;
             return false;
         }
-        public override string ToString()
-        {
-            return "SellDefault";
-        }
+        
     }
    
 

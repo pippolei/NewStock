@@ -30,6 +30,7 @@ namespace StockAnalysis.Panel
             Control.CheckForIllegalCrossThreadCalls = false;
             this.pnl_database.Select();
             this.pnl_database.Focus();
+            this.truncateToolStripMenuItem.Enabled = !StockApp.isProductive;                
         }
 
         private void tab_main_SelectedIndexChanged(object sender, EventArgs e)
@@ -70,10 +71,11 @@ namespace StockAnalysis.Panel
 
         private void MainApp_Resize(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized && StockApp.isProductive)
+            //if (this.WindowState == FormWindowState.Minimized && StockApp.isProductive)
+            if (this.WindowState == FormWindowState.Minimized)
             {
-                this.Visible = false;
-                this.notifyIcon1.Visible = true;
+                //this.Visible = false;
+                //this.notifyIcon1.Visible = true;
             }
         }
 
@@ -89,7 +91,7 @@ namespace StockAnalysis.Panel
             Application.Exit();
         }
 
-        private void resetSimulateToolStripMenuItem_Click(object sender, EventArgs e)
+        public static void resetSimulate()
         {
             DialogResult result = MessageBox.Show("Confirm delete simulation!!!!!!? It'll take long time to regenerate", "Delete Stock", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
@@ -97,6 +99,15 @@ namespace StockAnalysis.Panel
                 StockSQL.DeleteSimulate();
                 MessageBox.Show("Reset Simulate Done!");
             }    
+        }
+        private void resetSimulateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            resetSimulate();
+        }
+
+        private void truncateToolStripMenuItem_VisibleChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("haha");
         }
 
         

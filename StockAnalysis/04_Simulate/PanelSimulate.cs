@@ -18,7 +18,7 @@ namespace StockAnalysis.Panel
         private SimulateManager sm;
         private int holdstocknum;
         private  int batch_interval = 36; //批量分析一次的时间间隔
-        
+        //private PanelProgress prog;
         private System.Collections.ArrayList list = new System.Collections.ArrayList();
 
         #region init stock not used
@@ -175,6 +175,7 @@ namespace StockAnalysis.Panel
         }
         private void btn_allresult_Click(object sender, EventArgs e)
         {
+            this.btn_allresult.Enabled = false;
             getAllResult();
         }
 
@@ -193,6 +194,7 @@ namespace StockAnalysis.Panel
                 string sellname = dr["sellrule"].ToString();
                 AddOverview(type, startdate, enddate, buyname, sellname);
             }
+            this.btn_allresult.Enabled = true;
         }
 
 
@@ -209,8 +211,12 @@ namespace StockAnalysis.Panel
             {
                 StockSimulateSQL.ClearDB(type, Convert.ToInt32(startdate), Convert.ToInt32(enddate), "buy", "sell");
                 MessageBox.Show("Delete Simulate Done!");
-            }    
-            
+            }
+            else
+            {
+                return;
+            }
+
             this.dg_detail.Rows.Clear();
             getAllResult();
         }
@@ -230,8 +236,12 @@ namespace StockAnalysis.Panel
 
         private void btn_batch_Click(object sender, EventArgs e)
         {
-            int[] startdates = new int[] { 20120101, 20140101, 20160101, 20130101, 20140101, 20150101, 20160101, 20170101, 20180101, 20190101 };
-            int[] enddated = new int[] { 20200101, 20200101, 20200101, 20140101, 20150101, 20160101, 20170101, 20180101, 20190101, 20200101 };
+            MainApp.resetSimulate();
+
+            this.btn_batch.Enabled = false;
+
+            int[] startdates = new int[] { 20120101, 20140101, 20170101, 20120101 };
+            int[] enddated = new int[] { 20140101, 20170101, 20210101, 20210101 };
 
             for (int i = 0; i < startdates.Length; i++)
             {
@@ -240,7 +250,7 @@ namespace StockAnalysis.Panel
             }
 
             MessageBox.Show("Done!");
-            
+            this.btn_batch.Enabled = true;
 
         }
 

@@ -48,72 +48,72 @@
             // Server
             // 
             this.Server.AutoSize = true;
-            this.Server.Location = new System.Drawing.Point(24, 32);
+            this.Server.Location = new System.Drawing.Point(24, 30);
             this.Server.Name = "Server";
-            this.Server.Size = new System.Drawing.Size(38, 13);
+            this.Server.Size = new System.Drawing.Size(41, 12);
             this.Server.TabIndex = 0;
             this.Server.Text = "Server";
             // 
             // txt_server
             // 
-            this.txt_server.Location = new System.Drawing.Point(76, 29);
+            this.txt_server.Location = new System.Drawing.Point(76, 27);
             this.txt_server.Name = "txt_server";
-            this.txt_server.Size = new System.Drawing.Size(100, 20);
+            this.txt_server.Size = new System.Drawing.Size(100, 21);
             this.txt_server.TabIndex = 1;
             // 
             // txt_db
             // 
-            this.txt_db.Location = new System.Drawing.Point(76, 64);
+            this.txt_db.Location = new System.Drawing.Point(76, 59);
             this.txt_db.Name = "txt_db";
-            this.txt_db.Size = new System.Drawing.Size(100, 20);
+            this.txt_db.Size = new System.Drawing.Size(100, 21);
             this.txt_db.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 67);
+            this.label2.Location = new System.Drawing.Point(24, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 2;
             this.label2.Text = "Database";
             // 
             // txt_user
             // 
-            this.txt_user.Location = new System.Drawing.Point(76, 100);
+            this.txt_user.Location = new System.Drawing.Point(76, 92);
             this.txt_user.Name = "txt_user";
-            this.txt_user.Size = new System.Drawing.Size(100, 20);
+            this.txt_user.Size = new System.Drawing.Size(100, 21);
             this.txt_user.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 103);
+            this.label3.Location = new System.Drawing.Point(24, 95);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 4;
             this.label3.Text = "User";
             // 
             // txt_password
             // 
-            this.txt_password.Location = new System.Drawing.Point(76, 138);
+            this.txt_password.Location = new System.Drawing.Point(76, 127);
             this.txt_password.Name = "txt_password";
-            this.txt_password.Size = new System.Drawing.Size(100, 20);
+            this.txt_password.Size = new System.Drawing.Size(100, 21);
             this.txt_password.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 141);
+            this.label4.Location = new System.Drawing.Point(24, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 6;
             this.label4.Text = "Password";
             // 
             // btn_update
             // 
-            this.btn_update.Location = new System.Drawing.Point(76, 267);
+            this.btn_update.Location = new System.Drawing.Point(76, 246);
             this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(75, 23);
+            this.btn_update.Size = new System.Drawing.Size(75, 21);
             this.btn_update.TabIndex = 8;
             this.btn_update.Text = "Update";
             this.btn_update.UseVisualStyleBackColor = true;
@@ -121,49 +121,50 @@
             // 
             // txt_dataurl
             // 
-            this.txt_dataurl.Location = new System.Drawing.Point(76, 174);
+            this.txt_dataurl.Enabled = false;
+            this.txt_dataurl.Location = new System.Drawing.Point(76, 161);
             this.txt_dataurl.Name = "txt_dataurl";
-            this.txt_dataurl.Size = new System.Drawing.Size(100, 20);
+            this.txt_dataurl.Size = new System.Drawing.Size(210, 21);
             this.txt_dataurl.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 177);
+            this.label1.Location = new System.Drawing.Point(24, 163);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(47, 12);
             this.label1.TabIndex = 9;
             this.label1.Text = "DataUrl";
             // 
             // txt_startdate
             // 
-            this.txt_startdate.Location = new System.Drawing.Point(76, 204);
+            this.txt_startdate.Location = new System.Drawing.Point(76, 188);
             this.txt_startdate.Name = "txt_startdate";
-            this.txt_startdate.Size = new System.Drawing.Size(100, 20);
+            this.txt_startdate.Size = new System.Drawing.Size(100, 21);
             this.txt_startdate.TabIndex = 12;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 207);
+            this.label5.Location = new System.Drawing.Point(24, 191);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.Size = new System.Drawing.Size(59, 12);
             this.label5.TabIndex = 11;
             this.label5.Text = "StartFrom";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 233);
+            this.label6.Location = new System.Drawing.Point(24, 215);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.Size = new System.Drawing.Size(71, 12);
             this.label6.TabIndex = 13;
-            this.label6.Text = "IsProductive";
+            this.label6.Text = "DataProtect";
             // 
             // chk_productive
             // 
             this.chk_productive.AutoSize = true;
-            this.chk_productive.Location = new System.Drawing.Point(97, 233);
+            this.chk_productive.Location = new System.Drawing.Point(97, 215);
             this.chk_productive.Name = "chk_productive";
             this.chk_productive.Size = new System.Drawing.Size(15, 14);
             this.chk_productive.TabIndex = 14;
@@ -171,9 +172,9 @@
             // 
             // PanelDatabase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 333);
+            this.ClientSize = new System.Drawing.Size(292, 307);
             this.Controls.Add(this.chk_productive);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt_startdate);

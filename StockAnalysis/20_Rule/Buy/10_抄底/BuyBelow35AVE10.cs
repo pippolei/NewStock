@@ -21,7 +21,7 @@ namespace StockAnalysis
             StockItem[] items = stock.items;
             for (int i = 0; i < 30; i++)
             {
-                if ((double)items[index - i].attributes[StockAttribute.AVE10] < (double)items[index - i].end)
+                if ((double)items[index - i].attributes[StockAttribute.AVE10] <= (double)items[index - i].end)
                 {
                     return false;
                 }
@@ -29,10 +29,7 @@ namespace StockAnalysis
             
             return true;
         }
-        public override string ToString()
-        {
-            return "BuyBelow35AVE10";
-        }
+        
         
     }
 }

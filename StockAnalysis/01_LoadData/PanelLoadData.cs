@@ -27,8 +27,9 @@ namespace StockAnalysis.Panel
             InitializeComponent();
             this.lbl_database.Text = DataManager.database;
             this.txt_date.Value = Util.getDate(StockApp.STOCK_START_DATE);
-            this.txt_stockfolder.Text = StockApp.txtSrc;
+            this.txt_stockfolder.Text = StockApp.txtSrc + this.lbl_database.Text;
             this.SyncList();
+            this.btn_syncData.Enabled = !StockApp.isProductive;
         }
         //得到需要分析的股票列表
         //2018-03-14 Reviewed
@@ -103,6 +104,8 @@ namespace StockAnalysis.Panel
 
             //删除已有股票
             StockSQL.DeleteStock();
+            this.btn_syncData.Enabled = false;
+
             foreach (object obj in filelist)
             {
                 statusNum++;
@@ -135,6 +138,7 @@ namespace StockAnalysis.Panel
             }
             StockData.SetStockFull();
             StockDapan.InsertStockDaPan();
+            this.btn_syncData.Enabled = true;
                         
         }
 
@@ -144,10 +148,9 @@ namespace StockAnalysis.Panel
             this.SyncList();
         }
 
-        private void btn_exportall_Click(object sender, EventArgs e)
-        {
-            pnl_list.exportAll();
-        }
+        
+
+
 
 
 

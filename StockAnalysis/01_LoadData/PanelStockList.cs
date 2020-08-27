@@ -111,8 +111,9 @@ namespace StockAnalysis.Panel
         {   
             Util.ExportCSV(this.dg_detail);
         }
-        
-        public void exportAll()
+
+        #region not used
+        /*public void exportAll()
         {
             int size = this.dg_list.Rows.Count;
             dg_detail.Rows.Clear();
@@ -143,7 +144,8 @@ namespace StockAnalysis.Panel
             }
             Util.ExportCSV(this.dg_detail, "StockAll.csv", false);
             MessageBox.Show("done");
-        }
+        }*/
+        #endregion
 
     }
 }

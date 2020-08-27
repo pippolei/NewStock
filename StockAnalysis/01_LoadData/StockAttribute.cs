@@ -9,6 +9,8 @@ namespace StockAnalysis
     {
         private StockData stock;
         private StockItem[] items;
+
+
         private int ATTR_CALC_STARTINDEX;
         public StockAttribute(StockData _stock)
         {
@@ -19,23 +21,37 @@ namespace StockAnalysis
         private static ArrayList attrList = new ArrayList();
         static StockAttribute()
         {
-            attrList.Add(StockAttribute.RIZE);
-            attrList.Add(StockAttribute.CANBUY);  
+            attrList.Add(StockAttribute.RIZERATE);
+            //attrList.Add(StockAttribute.CANBUY);
+            attrList.Add(StockAttribute.BUYPRICE1);
+            attrList.Add(StockAttribute.BUYPRICE2);
+            attrList.Add(StockAttribute.BUYPRICE3);
+            attrList.Add(StockAttribute.BUYPRICE4);
+
             attrList.Add(AVE5);
             attrList.Add(AVE10);
+            attrList.Add(AVE13);
             attrList.Add(AVE20);
             attrList.Add(AVE30);
             attrList.Add(AVE60);
 
             attrList.Add(AVE_VOLUME10);
             attrList.Add(AVE_VOLUME20);
+            attrList.Add(AVE_VOLUME60);
 
+            attrList.Add(LOW5);
             attrList.Add(LOW10);
+            attrList.Add(LOW13);
             attrList.Add(LOW20);
+            attrList.Add(LOW60);
+            attrList.Add(LOW130);
 
+            attrList.Add(HIGH5);
             attrList.Add(HIGH10);
+            attrList.Add(HIGH13);
             attrList.Add(HIGH20);
             attrList.Add(HIGH60);
+            attrList.Add(HIGH130);
             attrList.Add(TR);
             attrList.Add(ATR);
  
@@ -70,19 +86,28 @@ namespace StockAnalysis
             //必选属性
             InitAverage(AVE5, 5);
             InitAverage(AVE10, 10);
+            InitAverage(AVE13, 13);
             InitAverage(AVE20, 20);
             InitAverage(AVE30, 30);
             InitAverage(AVE60, 60);
 
             InitAveVolume(AVE_VOLUME10, 10);
             InitAveVolume(AVE_VOLUME20, 20);
+            InitAveVolume(AVE_VOLUME60, 60);
 
+            InitLowEnd(LOW5, 5);
             InitLowEnd(LOW10, 10);
+            InitLowEnd(LOW13, 13);
             InitLowEnd(LOW20, 20);
+            InitLowEnd(LOW60, 60);
+            InitLowEnd(LOW130, 130);
 
+            InitHighEnd(HIGH5, 5);
             InitHighEnd(HIGH10, 10);  //n日最高, 包含当日的
+            InitHighEnd(HIGH13, 13);
             InitHighEnd(HIGH20, 20);
             InitHighEnd(HIGH60, 60);
+            InitHighEnd(HIGH130, 130);
 
             InitTR();
             InitATR(ATR, 10);
@@ -117,21 +142,22 @@ namespace StockAnalysis
         private void initRize()
         {
             int size = items.Length;
-            for (int i = ATTR_CALC_STARTINDEX; i < size; i++)
+            for (int i = ATTR_CALC_STARTINDEX; i < size - 1; i++)
             {
                 StockItem item = items[i];
                 double rize  = (item.end - items[i - 1].end) / items[i - 1].end;
-                item.attributes[StockAttribute.RIZE] = rize;
+                item.attributes[StockAttribute.RIZERATE] = rize;
 
-                if ((item.high == item.low && rize > 0.04) || item.low - items[i - 1].end > StockApp.MIN_ZERO)
-                {
-                    item.attributes[StockAttribute.CANBUY] = 0;
-                }
-                else
-                {
-                    item.attributes[StockAttribute.CANBUY] = 1;
-                }
+                item.attributes[StockAttribute.BUYPRICE1] = item.end;
+                item.attributes[StockAttribute.BUYPRICE2] = items[i + 1].start;
+                item.attributes[StockAttribute.BUYPRICE3] = items[i].end * 0.98;
+                item.attributes[StockAttribute.BUYPRICE4] = items[i].end * 0.99;
             }
+            items[size - 1].attributes[StockAttribute.RIZERATE] = (items[size - 1].end - items[size - 2].end) / items[size - 2].end;
+            items[size - 1].attributes[StockAttribute.BUYPRICE1] = items[size - 1].end;
+            items[size - 1].attributes[StockAttribute.BUYPRICE2] = items[size - 1].end;
+            items[size - 1].attributes[StockAttribute.BUYPRICE3] = items[size - 1].end * 0.98;
+            items[size - 1].attributes[StockAttribute.BUYPRICE4] = items[size - 1].end * 0.99;
         }
         
         //初始化平均值
@@ -202,7 +228,7 @@ namespace StockAnalysis
         {
 
             int size = stock.items.Length;
-            double low = StockApp.MAX_VALUE;
+            double low = StockApp.POSITIVE_INF;
             int lowindex = 0;
             StockItem[] items = stock.items;
 
@@ -219,7 +245,7 @@ namespace StockAnalysis
                 //最高点过期
                 if (i == lowindex + days)
                 {
-                    low = StockApp.MAX_VALUE;
+                    low = StockApp.POSITIVE_INF;
                     for (int j = lowindex + 1; j <= i; j++)
                     {
                         if (low > items[j].end)
@@ -267,7 +293,7 @@ namespace StockAnalysis
             {
                 StockItem item = items[i];
                 StockItem last = items[i - 1];
-                items[i].attributes[TR] = Math.Max(item.high - item.low, Math.Max(Math.Abs(last.end - item.high), Math.Abs(last.end - item.low))) / item.end;
+                items[i].attributes[TR] = Math.Max(item.high - item.low, Math.Max(Math.Abs(last.end - item.high), Math.Abs(last.end - item.low)));
             }
 
         }
@@ -291,10 +317,18 @@ namespace StockAnalysis
         
         
 
-        public static readonly string RIZE = "RIZE";  //涨幅
-        public static readonly string CANBUY = "CANBUY";  //当天能否买入
+        public static readonly string RIZERATE = "RIZERATE";  //涨幅
+        public static readonly string RIZE_PREEND = "RIZE_PREEND";  //涨幅
+        public static readonly string RIZE_START = "RIZE_START";  //涨幅
+        //public static readonly string CANBUY = "CANBUY";  //当天能否买入
+        public static readonly string BUYPRICE1 = "BUYPRICE1";  //买入价格
+        public static readonly string BUYPRICE2 = "BUYPRICE2";  //买入价格
+        public static readonly string BUYPRICE3 = "BUYPRICE3";  //买入价格
+        public static readonly string BUYPRICE4 = "BUYPRICE4";  //买入价格
+
         public static readonly string AVE5 = "AVE5";
         public static readonly string AVE10 = "AVE10";
+        public static readonly string AVE13 = "AVE13";
         public static readonly string AVE20 = "AVE20";
         public static readonly string AVE30 = "AVE30";
         public static readonly string AVE60 = "AVE60";
@@ -302,12 +336,18 @@ namespace StockAnalysis
  
         public static readonly string AVE_VOLUME10 = "AVE_VOLUME10";
         public static readonly string AVE_VOLUME20 = "AVE_VOLUME20";
+        public static readonly string AVE_VOLUME60 = "AVE_VOLUME60";
+        public static readonly string HIGH5 = "HIGH5";
         public static readonly string HIGH10 = "HIGH10";
+        public static readonly string HIGH13 = "HIGH13";
         public static readonly string HIGH20 = "HIGH20";
         public static readonly string HIGH60 = "HIGH60";
-        public static readonly string HIGH130 = "HIGH130";   
+        public static readonly string HIGH130 = "HIGH130";
+        public static readonly string LOW5 = "LOW5";
         public static readonly string LOW10 = "LOW10";
+        public static readonly string LOW13 = "LOW13";
         public static readonly string LOW20 = "LOW20";
+        public static readonly string LOW60 = "LOW60";
         public static readonly string LOW130 = "LOW130";
         //private static readonly string EMA12 = "EMA12";
         //private static readonly string EMA26 = "EMA26";

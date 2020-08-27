@@ -78,18 +78,25 @@
     <Compile Include="03_AdvancedAnalysis\PanelAnalysis2.Designer.cs">
       <DependentUpon>PanelAnalysis2.cs</DependentUpon>
     </Compile>
-    <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy6RizePreEnd.cs" />
-    <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy6RizePreEnd_Post4_4.cs" />
-    <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy15Rize.cs" />
-    <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy6RizePreEnd_Post4_5.cs" />
+    <Compile Include="20_Rule\Buy\00_Selected\BuyLong.cs" />
+    <Compile Include="20_Rule\Buy\01_Basic\Buy15Rize.cs" />
+    <Compile Include="20_Rule\Buy\00_Selected\Buy6Rize.cs" />
+    <Compile Include="20_Rule\Buy\02_Test\Buy6Rize_3.cs" />
+    <Compile Include="20_Rule\Buy\02_Test\Buy6Rize_2.cs" />
+    <Compile Include="20_Rule\Buy\02_Test\BuyRizeAgain.cs" />
     <Compile Include="20_Rule\Buy\10_抄底\BuyIslandReverse.cs" />
-    <Compile Include="20_Rule\Buy\20_均线上涨\BuyAveRize.cs" />
+    <Compile Include="20_Rule\Buy\20_均线上涨\BuyAveRize_2.cs" />
+    <Compile Include="20_Rule\Buy\20_均线上涨\BuyAveRize_3.cs" />
+    <Compile Include="20_Rule\Buy\20_均线上涨\BuyAveRize_4.cs" />
+    <Compile Include="20_Rule\Buy\20_均线上涨\BuyAveRize_5.cs" />
+    <Compile Include="20_Rule\Buy\20_均线上涨\BuyAveRize_6.cs" />
+    <Compile Include="20_Rule\Buy\00_Selected\BuyAveRize.cs" />
     <Compile Include="20_Rule\Buy\7Down5Rize\Buy7Down5Rize.cs" />
-    <Compile Include="20_Rule\Buy\Jason\BuyJason1_1.cs" />
-    <Compile Include="20_Rule\Buy\Jason\BuyJason1_20.cs" />
-    <Compile Include="20_Rule\Buy\Jason\BuyJason1_10.cs" />
-    <Compile Include="20_Rule\Buy\Jason\BuyJason1_5.cs" />
-    <Compile Include="20_Rule\Sell\SellPureDrop2.cs" />
+    <Compile Include="20_Rule\Buy\80_Other\BuyJason1.cs" />
+    <Compile Include="20_Rule\Buy\80_Other\BuyJason2.cs" />
+    <Compile Include="20_Rule\Sell\SellStartBigDrop.cs" />
+    <Compile Include="20_Rule\Sell\SellBelowAve.cs" />
+    <Compile Include="20_Rule\Sell\SellTrend.cs" />
     <Compile Include="80_Panel\PanelCombineRule.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -115,13 +122,11 @@
       <DependentUpon>PanelDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="20_Rule\Buy\10_抄底\BuyBelow35AVE10.cs" />
-    <Compile Include="20_Rule\Buy\00_Mandatory_Test\Buy4Week.cs" />
-    <Compile Include="20_Rule\Buy\00_Mandatory_Test\BuyBigWin.cs" />
+    <Compile Include="20_Rule\Buy\01_Basic\Buy4Week.cs" />
+    <Compile Include="20_Rule\Buy\01_Basic\BuyBigWin.cs" />
     <Compile Include="20_Rule\Buy\archive\BuyLong2.cs" />
-    <Compile Include="20_Rule\Buy\archive\BuyLong.cs" />
     <Compile Include="20_Rule\Buy\Buy.cs" />
     <Compile Include="20_Rule\Buy\10_抄底\BuyBelowAVE5.cs" />
-    <Compile Include="20_Rule\Sell\SellPureDrop.cs" />
     <Compile Include="20_Rule\Sell\Sell.cs" />
     <Compile Include="04_Simulate\StockSimulateSQL.cs" />
     <Compile Include="03_AdvancedAnalysis\StockAnalysisSQL.cs" />
@@ -133,6 +138,7 @@
     <Compile Include="80_Panel\PanelUtil.Designer.cs">
       <DependentUpon>PanelUtil.cs</DependentUpon>
     </Compile>
+    <Compile Include="90_Util\UtilStock.cs" />
     <Compile Include="StockItem.cs" />
     <Compile Include="20_Rule\Rule.cs" />
     <Compile Include="05_Search\PanelSearch.cs">

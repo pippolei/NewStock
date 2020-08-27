@@ -42,6 +42,7 @@ namespace StockAnalysis.Panel
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnl_buysell = new StockAnalysis.Panel.PanelCombineRule();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.chk_ml = new System.Windows.Forms.CheckBox();
             this.chk_goodscore = new System.Windows.Forms.CheckBox();
             this.chk_hidesold = new System.Windows.Forms.CheckBox();
             this.txt_fromdate = new System.Windows.Forms.DateTimePicker();
@@ -49,7 +50,6 @@ namespace StockAnalysis.Panel
             this.lable1 = new System.Windows.Forms.Label();
             this.btn_search = new System.Windows.Forms.Button();
             this.txt_todate = new System.Windows.Forms.DateTimePicker();
-            this.chk_ml = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dg_list)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -171,6 +171,16 @@ namespace StockAnalysis.Panel
             this.panel2.Size = new System.Drawing.Size(1015, 33);
             this.panel2.TabIndex = 1;
             // 
+            // chk_ml
+            // 
+            this.chk_ml.AutoSize = true;
+            this.chk_ml.Location = new System.Drawing.Point(477, 11);
+            this.chk_ml.Name = "chk_ml";
+            this.chk_ml.Size = new System.Drawing.Size(66, 16);
+            this.chk_ml.TabIndex = 7;
+            this.chk_ml.Text = "ML Data";
+            this.chk_ml.UseVisualStyleBackColor = true;
+            // 
             // chk_goodscore
             // 
             this.chk_goodscore.AutoSize = true;
@@ -236,18 +246,6 @@ namespace StockAnalysis.Panel
             this.txt_todate.Name = "txt_todate";
             this.txt_todate.Size = new System.Drawing.Size(148, 21);
             this.txt_todate.TabIndex = 2;
-            // 
-            // chk_ml
-            // 
-            this.chk_ml.AutoSize = true;
-            this.chk_ml.Checked = true;
-            this.chk_ml.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_ml.Location = new System.Drawing.Point(477, 11);
-            this.chk_ml.Name = "chk_ml";
-            this.chk_ml.Size = new System.Drawing.Size(66, 16);
-            this.chk_ml.TabIndex = 7;
-            this.chk_ml.Text = "ML Data";
-            this.chk_ml.UseVisualStyleBackColor = true;
             // 
             // PanelSearch
             // 

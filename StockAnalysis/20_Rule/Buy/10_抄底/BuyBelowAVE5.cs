@@ -19,7 +19,7 @@ namespace StockAnalysis
         protected override Boolean GetBuy(StockData stock, int index)
         {
             StockItem[] items = stock.items;
-            if (Convert.ToDouble(items[index].attributes[StockAttribute.RIZE]) < 0.03 && items[index].longXiaYing
+            if (Convert.ToDouble(items[index].attributes[StockAttribute.RIZERATE]) < 0.03 && items[index].longXiaYing
                     && items[index - 1].end < (double)items[index - 1].attributes[StockAttribute.AVE10]
                     && items[index - 2].end < (double)items[index - 2].attributes[StockAttribute.AVE10]
                     && items[index - 3].end < (double)items[index - 3].attributes[StockAttribute.AVE10]

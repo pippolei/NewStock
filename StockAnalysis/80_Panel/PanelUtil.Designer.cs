@@ -57,6 +57,7 @@
             // 
             // btn_stockdata
             // 
+            this.btn_stockdata.Enabled = false;
             this.btn_stockdata.Location = new System.Drawing.Point(47, 24);
             this.btn_stockdata.Name = "btn_stockdata";
             this.btn_stockdata.Size = new System.Drawing.Size(160, 23);

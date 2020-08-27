@@ -30,21 +30,30 @@ namespace StockAnalysis
         }
         private void btn_stockfull_Click(object sender, EventArgs e)
         {
+            this.btn_stockfull.Enabled = false;
+            MessageBox.Show("STart TO EXpoRt");
             string sql = "select * from stock_Full  order by code, [index];";
-            Export_To_CSV(sql, "C:/StockAnalysis/py/stock_full.csv");            
+            Export_To_CSV(sql, "C:/StockAnalysis/py/stock_full.csv");
+            this.btn_stockfull.Enabled = true;
         }
 
         private void btn_stockdata_Click(object sender, EventArgs e)
         {
+            this.btn_stockdata.Enabled = false;
             string sql = "select * from stock_item  order by code, [index];";
-            Export_To_CSV(sql, "C:/StockAnalysis/py/stock_item.csv"); 
+            Export_To_CSV(sql, "C:/StockAnalysis/py/stock_item.csv");
+            this.btn_stockdata.Enabled = true;
         }
 
         private void btn_rulefull_Click(object sender, EventArgs e)
         {
+            this.btn_rulefull.Enabled = false;
             string sql = "select * from rule_buy0 where type = '"+Rule.STATUS_BUY+"' order by [id] ;";
             Export_To_CSV(sql, "C:/StockAnalysis/py/rule_full.csv");
+            this.btn_rulefull.Enabled = true;
         }
+
+        
 
         
 

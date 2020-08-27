@@ -29,7 +29,6 @@ namespace StockAnalysis.Panel
         private void InitializeComponent()
         {
             this.pnl_top = new System.Windows.Forms.Panel();
-            this.btn_exportall = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_date = new System.Windows.Forms.DateTimePicker();
             this.lbl_database = new System.Windows.Forms.Label();
@@ -46,7 +45,6 @@ namespace StockAnalysis.Panel
             // pnl_top
             // 
             this.pnl_top.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_top.Controls.Add(this.btn_exportall);
             this.pnl_top.Controls.Add(this.label1);
             this.pnl_top.Controls.Add(this.txt_date);
             this.pnl_top.Controls.Add(this.lbl_database);
@@ -61,21 +59,11 @@ namespace StockAnalysis.Panel
             this.pnl_top.Size = new System.Drawing.Size(850, 47);
             this.pnl_top.TabIndex = 0;
             // 
-            // btn_exportall
-            // 
-            this.btn_exportall.Location = new System.Drawing.Point(593, 17);
-            this.btn_exportall.Name = "btn_exportall";
-            this.btn_exportall.Size = new System.Drawing.Size(75, 21);
-            this.btn_exportall.TabIndex = 17;
-            this.btn_exportall.Text = "ExportAll";
-            this.btn_exportall.UseVisualStyleBackColor = true;
-            this.btn_exportall.Click += new System.EventHandler(this.btn_exportall_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(648, 19);
+            this.label1.Location = new System.Drawing.Point(593, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 18);
             this.label1.TabIndex = 16;
@@ -85,9 +73,9 @@ namespace StockAnalysis.Panel
             // 
             this.txt_date.Enabled = false;
             this.txt_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txt_date.Location = new System.Drawing.Point(733, 18);
+            this.txt_date.Location = new System.Drawing.Point(678, 18);
             this.txt_date.Name = "txt_date";
-            this.txt_date.Size = new System.Drawing.Size(113, 21);
+            this.txt_date.Size = new System.Drawing.Size(168, 21);
             this.txt_date.TabIndex = 15;
             // 
             // lbl_database
@@ -187,6 +175,5 @@ namespace StockAnalysis.Panel
         private System.Windows.Forms.Label lbl_database;
         private System.Windows.Forms.Label label1;
         internal System.Windows.Forms.DateTimePicker txt_date;
-        private System.Windows.Forms.Button btn_exportall;
     }
 }

@@ -13,7 +13,7 @@ namespace StockAnalysis
     /// </summary>
     public class DataManager
     {
-        public static string database = "Test";
+        public static string database = "Live";
         public static string user = "sa";
         public static string server = "localhost";
         public static string password = "Welcome1!";

@@ -78,7 +78,7 @@ namespace StockAnalysis
                     item.end = Convert.ToDouble(s[4]);
                     item.volume = Convert.ToDouble(s[5]) / 1000;
                     //股票数据有误
-                    if (item.volume < 1 || item.high < 0.3)
+                    if (item.volume < 0.1 && item.high < 0.3)
                     {
                         continue;
                     }

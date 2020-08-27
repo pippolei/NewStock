@@ -87,6 +87,7 @@ namespace StockAnalysis.Panel
 
             RuleScore.SetRuleScore();
             RuleScore.SetAllPreScore();
+            lbl_status.Text = "Calculation Done";
             
 
         }
@@ -125,6 +126,12 @@ namespace StockAnalysis.Panel
                         attristrs[13] = item.kpi[StockApp.DEFAULT_SELLs[1] + StockKPI.default_price].ToString(); ;   //medium
                         attristrs[14] = item.kpi[StockApp.DEFAULT_SELLs[2] + StockKPI.default_price].ToString(); ;  //long
                         attristrs[15] = item.kpi[StockApp.DEFAULT_SELLs[3] + StockKPI.default_price].ToString();  //end
+
+                        int nextday = Convert.ToInt32(item.kpi[StockApp.DEFAULT_SELLs[3] + StockKPI.default_date].ToString());
+                        double nextprice = Convert.ToDouble(item.kpi[StockApp.DEFAULT_SELLs[3] + StockKPI.default_price].ToString());
+                        //去除outline
+                        if (nextprice - item.end * 2 > StockApp.MIN_ZERO
+                            || nextday - 3000 - item.date > StockApp.MIN_ZERO) continue;
                         //发出买入信号后1~5天的表现,纯参考,未在任何地方使用
                         attristrs[16] = item.attributes[StockAttribute.POST1].ToString();
                         attristrs[17] = item.attributes[StockAttribute.POST2].ToString(); ;
@@ -230,7 +237,7 @@ namespace StockAnalysis.Panel
             {
                 //如果没有选中"Limit"的情况
                 //保证SQL没有选出数据， 则不会被移除
-                sql += "T1.SEQUENCE > " + StockApp.MAX_VALUE + " and ";
+                sql += "T1.SEQUENCE > " + StockApp.POSITIVE_INF + " and ";
             }
             sql += " [TYPE] > 0;";
             DataTable dt = db.GetTable(sql);
@@ -244,6 +251,7 @@ namespace StockAnalysis.Panel
             
             StockRuleSQL.SetAnalysis();
             MessageBox.Show("Rule Sync Done!");
+            lbl_status.Text = "Sync Done";
         }
        
         //如果stockitem kpi被filter

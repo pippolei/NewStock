@@ -43,6 +43,7 @@ namespace StockAnalysis.Panel
             this.label2 = new System.Windows.Forms.Label();
             this.btn_sync = new System.Windows.Forms.Button();
             this.chk_limited = new System.Windows.Forms.CheckBox();
+            this.lbl_status = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cmb_isKPI)).BeginInit();
             this.SuspendLayout();
             // 
@@ -207,11 +208,21 @@ namespace StockAnalysis.Panel
             this.chk_limited.Text = "Limit";
             this.chk_limited.UseVisualStyleBackColor = true;
             // 
+            // lbl_status
+            // 
+            this.lbl_status.AutoSize = true;
+            this.lbl_status.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lbl_status.Location = new System.Drawing.Point(153, 15);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(0, 12);
+            this.lbl_status.TabIndex = 39;
+            // 
             // PanelCalcSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.chk_limited);
             this.Controls.Add(this.btn_sync);
             this.Controls.Add(this.label2);
@@ -253,5 +264,6 @@ namespace StockAnalysis.Panel
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_sync;
         private System.Windows.Forms.CheckBox chk_limited;
+        private System.Windows.Forms.Label lbl_status;
     }
 }

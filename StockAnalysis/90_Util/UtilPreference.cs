@@ -60,7 +60,7 @@ namespace StockAnalysis
             }
             DataManager.changeDB(list[0].ToString(), list[1].ToString(),
                 list[2].ToString(), list[3].ToString());
-            StockApp.txtSrc = list[4].ToString();
+            //StockApp.txtSrc = list[4].ToString();
             StockApp.STOCK_START_DATE = Convert.ToInt32(list[5].ToString());
             StockApp.isProductive = Convert.ToBoolean(list[6].ToString());
             

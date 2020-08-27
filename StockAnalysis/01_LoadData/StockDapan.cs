@@ -71,9 +71,9 @@ namespace StockAnalysis
             string sql = "IF OBJECT_ID('[stock_DaPan]', 'U') IS NOT NULL drop table [stock_DaPan];";
             db.RunSql(sql);
 
-            sql = "SELECT RANK() over(order by [date]) as seq,[date], isnull(1 + AVG(RIZE),0)  as rize, ";
-            sql += " isnull(SUM(case when ([RIZE] > 0) THEN 1 END),0) AS NUM_RIZE, ";
-            sql += " isnull(SUM(case when ([RIZE] <= 0) THEN 1 END),0) AS NUM_DOWN, ";
+            sql = "SELECT RANK() over(order by [date]) as seq,[date], isnull(1 + AVG(RIZERATE),0)  as rize, ";
+            sql += " isnull(SUM(case when ([RIZERATE] > 0) THEN 1 END),0) AS NUM_RIZE, ";
+            sql += " isnull(SUM(case when ([RIZERATE] <= 0) THEN 1 END),0) AS NUM_DOWN, ";
             sql += StockApp.MIN_ZERO + " as ave1, " + StockApp.MIN_ZERO + " as ave2, " + StockApp.MIN_ZERO + " as ave3, " + StockApp.MIN_ZERO + " as ave4, " + +StockApp.MIN_ZERO + " as ave5,  '                       ' as dapan ";
             sql += " into stock_DaPan ";
             sql += " FROM [stock_Full] ";
@@ -109,7 +109,7 @@ namespace StockAnalysis
                 item.avg5 = 0;
 
                 item.date = Convert.ToInt32(row["date"]);
-                item.rize = Convert.ToDouble(row["rize"]) + 1000 * StockApp.MIN_ZERO; //防止为0
+                item.rize = Convert.ToDouble(row["RIZE"]) + 1000 * StockApp.MIN_ZERO; //防止为0
                                 
                 dapan_items[i] = item;                
             }
@@ -168,7 +168,7 @@ namespace StockAnalysis
             for (int i = 0; i < size; i++)
             {
                 DataRow dr = table.Rows[i];
-                ret = ret * Convert.ToDouble(dr["rize"]);
+                ret = ret * Convert.ToDouble(dr["RIZERATE"]);
             }
             return ret;
             
@@ -229,7 +229,7 @@ namespace StockAnalysis
             string sql = "select * from [stock_DaPan] where [date] = " + intdate + ";";
             DataRow dr = db.GetFirstRow(sql);
             double[] ret = new double[3];
-            ret[0] = Convert.ToDouble(dr["rize"]);
+            ret[0] = Convert.ToDouble(dr["RIZERATE"]);
             int num_rize = Convert.ToInt32(dr["num_rize"]);
             int num_down = Convert.ToInt32(dr["num_down"]);
             ret[1] = (num_rize + 0.00000001) / (num_rize + num_down + 0.00000001);

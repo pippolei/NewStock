@@ -134,6 +134,7 @@ namespace StockAnalysis.Panel
             this.truncateToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.truncateToolStripMenuItem.Text = "Truncate All";
             this.truncateToolStripMenuItem.Click += new System.EventHandler(this.truncateToolStripMenuItem_Click);
+            this.truncateToolStripMenuItem.VisibleChanged += new System.EventHandler(this.truncateToolStripMenuItem_VisibleChanged);
             // 
             // tab_main
             // 

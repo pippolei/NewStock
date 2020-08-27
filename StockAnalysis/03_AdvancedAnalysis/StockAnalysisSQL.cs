@@ -66,7 +66,7 @@ namespace StockAnalysis
             sql += "#TMP1 AS T1 LEFT OUTER JOIN ";
             sql += " #tmp2 as t2 ";
             sql += "ON T1.stockcode = T2.stockcode ";
-            sql += "WHERE T1.date < T2.date ) T3 ";
+            sql += "WHERE T1.date <= T2.date ) T3 ";
             sql += "WHERE T3.SEQUENCE = 1 ";
             sql += "ORDER BY stockcode, BUYDATE; ";
 

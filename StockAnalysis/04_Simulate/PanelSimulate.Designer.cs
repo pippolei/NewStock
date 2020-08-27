@@ -58,6 +58,7 @@ namespace StockAnalysis.Panel
             this.label1 = new System.Windows.Forms.Label();
             this.txt_fromdate = new System.Windows.Forms.DateTimePicker();
             this.pnl_main_top = new System.Windows.Forms.Panel();
+            this.pnl_buysell2 = new StockAnalysis.Panel.PanelCombineRule();
             this.pnl_main_top_bottom = new System.Windows.Forms.Panel();
             this.lbl_growth = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -84,7 +85,6 @@ namespace StockAnalysis.Panel
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnl_buysell2 = new StockAnalysis.Panel.PanelCombineRule();
             ((System.ComponentModel.ISupportInitialize)(this.dg_detail)).BeginInit();
             this.pnl_main_toptop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_interval)).BeginInit();
@@ -340,6 +340,15 @@ namespace StockAnalysis.Panel
             this.pnl_main_top.Size = new System.Drawing.Size(877, 214);
             this.pnl_main_top.TabIndex = 1;
             // 
+            // pnl_buysell2
+            // 
+            this.pnl_buysell2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_buysell2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_buysell2.Location = new System.Drawing.Point(0, 34);
+            this.pnl_buysell2.Name = "pnl_buysell2";
+            this.pnl_buysell2.Size = new System.Drawing.Size(877, 133);
+            this.pnl_buysell2.TabIndex = 2;
+            // 
             // pnl_main_top_bottom
             // 
             this.pnl_main_top_bottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -371,7 +380,6 @@ namespace StockAnalysis.Panel
             // 
             // txt_num
             // 
-            this.txt_num.Enabled = false;
             this.txt_num.Location = new System.Drawing.Point(16, 15);
             this.txt_num.Maximum = new decimal(new int[] {
             100000,
@@ -384,7 +392,6 @@ namespace StockAnalysis.Panel
             0,
             0});
             this.txt_num.Name = "txt_num";
-            this.txt_num.ReadOnly = true;
             this.txt_num.Size = new System.Drawing.Size(36, 21);
             this.txt_num.TabIndex = 4;
             this.txt_num.Value = new decimal(new int[] {
@@ -562,15 +569,6 @@ namespace StockAnalysis.Panel
             // 
             this.Column17.HeaderText = "amount";
             this.Column17.Name = "Column17";
-            // 
-            // pnl_buysell2
-            // 
-            this.pnl_buysell2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_buysell2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_buysell2.Location = new System.Drawing.Point(0, 34);
-            this.pnl_buysell2.Name = "pnl_buysell2";
-            this.pnl_buysell2.Size = new System.Drawing.Size(877, 133);
-            this.pnl_buysell2.TabIndex = 2;
             // 
             // PanelSimulate
             // 
