@@ -45,7 +45,7 @@ namespace StockAnalysis
             if (num_rize >= 16
                 && items[index].end - items[index - checksize].end * 1.2 <= StockApp.MIN_ZERO
                 && items[index - checksize].end - Convert.ToDouble(items[index - checksize].attributes[StockAttribute.AVE20]) <= StockApp.MIN_ZERO
-                && Convert.ToDouble(items[index].attributes[StockAttribute.RIZE]) - 0.02 > StockApp.MIN_ZERO
+                && Convert.ToDouble(items[index].attributes[StockAttribute.RIZERATE]) - 0.02 > StockApp.MIN_ZERO
                 )
             {
                 return true;

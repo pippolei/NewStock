@@ -18,7 +18,7 @@ namespace StockAnalysis
             StockItem yes19 = stock.items[index - 19];
 
 
-            if (Convert.ToDouble(yes4.attributes[StockAttribute.RIZE]) - 0.03 > StockApp.MIN_ZERO
+            if (Convert.ToDouble(yes4.attributes[StockAttribute.RIZERATE]) - 0.03 > StockApp.MIN_ZERO
                 && yes3.end < yes4.end 
                 && yes2.end < yes3.end
                 && yes1.end < yes2.end

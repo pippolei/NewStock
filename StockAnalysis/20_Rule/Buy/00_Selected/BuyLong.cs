@@ -16,7 +16,7 @@ namespace StockAnalysis
     {
         public BuyLong()
         {
-
+            this.defaultSell = StockApp.DEFAULT_SELLs[3];
         }
         private string stockcode = "";
         private double buyprice = 10000, sellprice = 0;
@@ -35,7 +35,7 @@ namespace StockAnalysis
             //判断当前是创高价还是创低价
             int nowstatus = 0;
             //创新高, 等待卖出
-            if (items[index - 1].high + 0.0001 > (double)(items[index - 1].attributes[StockAttribute.HIGH130]))
+            if (items[index - 1].high + 0.0001 > (double)(items[index - 1].attributes[StockAttribute.HIGH60]))
             {
                 nowstatus = Rule.STATUS_SELL;
             }
@@ -64,7 +64,7 @@ namespace StockAnalysis
                 //UtilLog.AddDebug(this.ToString(), stock.code + "High index = " + (index - 1).ToString());
             }*/
             //若为130天低价, 则最低价加上差价为等待买入价, 减去价差为买入后的止损价
-            if (items[index - 1].low - 0.0001 < (double)(items[index - 1].attributes[StockAttribute.LOW130]))
+            if (items[index - 1].low - 0.0001 < (double)(items[index - 1].attributes[StockAttribute.LOW60]))
             {
                 
                 ReGeneratePrice(stock, index);
