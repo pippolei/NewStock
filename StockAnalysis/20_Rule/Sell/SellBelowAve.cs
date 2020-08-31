@@ -11,8 +11,8 @@ namespace StockAnalysis
             StockItem[] items = stock.items;
 
 
-            if (Convert.ToDouble(items[index].attributes[StockAttribute.AVE13]) * 0.98 > items[index].end
-                && Convert.ToDouble(items[index - 1].attributes[StockAttribute.AVE13]) * 0.98 > items[index - 1].end)
+            if (Convert.ToDouble(items[index].attributes[StockAttribute.AVE10]) * 0.98 > items[index].end
+                && Convert.ToDouble(items[index - 1].attributes[StockAttribute.AVE10]) * 0.98 > items[index - 1].end)
             {
                 return true;
             }

@@ -29,14 +29,17 @@ namespace StockAnalysis.Panel
         private void btn_update_Click(object sender, EventArgs e)
         {
             DataManager.changeDB(this.txt_server.Text, this.txt_db.Text,
-                txt_user.Text,txt_password.Text);
+                txt_user.Text, txt_password.Text);
             StockApp.txtSrc = this.txt_dataurl.Text;
             StockApp.STOCK_START_DATE = Convert.ToInt32(this.txt_startdate.Text);
             StockApp.isProductive = this.chk_productive.Checked;
+
             UtilPreference.WriteDB();
             MessageBox.Show(this, "Update Done");
             this.Close();
             Application.Exit();
         }
+
     }
+       
 }

@@ -62,10 +62,17 @@ namespace StockAnalysis
         private void btn_importStockFull_Click(object sender, EventArgs e)
         {
             string sql = "truncate table stock_Full;";
-            string filename = "stock_full_py.txt";
-            if (File.Exists(UtilLog.LOG_FOLDER + filename))
+            sql += "truncate table Stock_header;";
+
+            string filename = Util.GetOpenFile();
+            if (filename.Length > 1)
             {   
-                sql += "BULK INSERT " + StockSQL.TABLE_STOCK_FULL + " FROM '" + UtilLog.LOG_FOLDER + filename + "';";
+                sql += "BULK INSERT " + StockSQL.TABLE_STOCK_FULL + " FROM '" + filename + "';";
+            }
+            else
+            {
+                MessageBox.Show("No file selected! Return!");
+                return;
             }
             db.RunSql(sql);
             sql = "select * from Stock_header order by code";

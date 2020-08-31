@@ -131,7 +131,7 @@ namespace StockAnalysis.Panel
 
         private void btn_export_Click(object sender, EventArgs e)
         {
-            string filename = Util.GetFile();
+            string filename = Util.GetSaveFile();
             Util.ExportCSV(this.dg_detail, filename);
         }
 

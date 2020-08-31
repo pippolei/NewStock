@@ -20,7 +20,21 @@ namespace StockAnalysis
             return "";
         }
         //选择保存文件
-        public static string GetFile()
+        public static string GetOpenFile()
+        {
+            System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
+            //dlg.Filter = "CSV File|*.csv|TXT File|*.txt";
+            dlg.Filter = "TXT File|*.txt";
+            string file = "";
+
+            if (System.Windows.Forms.DialogResult.OK == dlg.ShowDialog())
+            {
+                file = dlg.FileName;
+            }
+            return file;
+        }
+        //选择保存文件
+        public static string GetSaveFile()
         {
             System.Windows.Forms.SaveFileDialog dlg = new System.Windows.Forms.SaveFileDialog();
             dlg.Filter = "CSV File|*.csv";
@@ -100,7 +114,7 @@ namespace StockAnalysis
         }
         public static void ExportCSV(System.Windows.Forms.DataGridView dg)
         {
-            string filename = Util.GetFile();
+            string filename = Util.GetSaveFile();
             ExportCSV(dg, filename);
             System.Windows.Forms.MessageBox.Show("Export Done!");
         }
@@ -114,7 +128,7 @@ namespace StockAnalysis
         }
         public static void ExportCSV(System.Data.DataTable dt)
         {
-            string filename = Util.GetFile();
+            string filename = Util.GetSaveFile();
             ExportCSV(dt, filename, true);
             
         }

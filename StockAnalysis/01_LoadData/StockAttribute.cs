@@ -30,7 +30,6 @@ namespace StockAnalysis
 
             attrList.Add(AVE5);
             attrList.Add(AVE10);
-            attrList.Add(AVE13);
             attrList.Add(AVE20);
             attrList.Add(AVE30);
             attrList.Add(AVE60);
@@ -41,14 +40,12 @@ namespace StockAnalysis
 
             attrList.Add(LOW5);
             attrList.Add(LOW10);
-            attrList.Add(LOW13);
             attrList.Add(LOW20);
             attrList.Add(LOW60);
             attrList.Add(LOW130);
 
             attrList.Add(HIGH5);
             attrList.Add(HIGH10);
-            attrList.Add(HIGH13);
             attrList.Add(HIGH20);
             attrList.Add(HIGH60);
             attrList.Add(HIGH130);
@@ -86,7 +83,6 @@ namespace StockAnalysis
             //必选属性
             InitAverage(AVE5, 5);
             InitAverage(AVE10, 10);
-            InitAverage(AVE13, 13);
             InitAverage(AVE20, 20);
             InitAverage(AVE30, 30);
             InitAverage(AVE60, 60);
@@ -97,14 +93,12 @@ namespace StockAnalysis
 
             InitLowEnd(LOW5, 5);
             InitLowEnd(LOW10, 10);
-            InitLowEnd(LOW13, 13);
             InitLowEnd(LOW20, 20);
             InitLowEnd(LOW60, 60);
             InitLowEnd(LOW130, 130);
 
             InitHighEnd(HIGH5, 5);
             InitHighEnd(HIGH10, 10);  //n日最高, 包含当日的
-            InitHighEnd(HIGH13, 13);
             InitHighEnd(HIGH20, 20);
             InitHighEnd(HIGH60, 60);
             InitHighEnd(HIGH130, 130);
@@ -112,10 +106,7 @@ namespace StockAnalysis
             InitTR();
             InitATR(ATR, 10);
 
-            //macd
-            //InitEMA(EMA12, 12);
-            //InitEMA(EMA26, 26);
-            //InitMACD(EMA12, EMA26, 9);
+
         }
 
         #region reviewed
@@ -328,7 +319,6 @@ namespace StockAnalysis
 
         public static readonly string AVE5 = "AVE5";
         public static readonly string AVE10 = "AVE10";
-        public static readonly string AVE13 = "AVE13";
         public static readonly string AVE20 = "AVE20";
         public static readonly string AVE30 = "AVE30";
         public static readonly string AVE60 = "AVE60";
@@ -339,13 +329,11 @@ namespace StockAnalysis
         public static readonly string AVE_VOLUME60 = "AVE_VOLUME60";
         public static readonly string HIGH5 = "HIGH5";
         public static readonly string HIGH10 = "HIGH10";
-        public static readonly string HIGH13 = "HIGH13";
         public static readonly string HIGH20 = "HIGH20";
         public static readonly string HIGH60 = "HIGH60";
         public static readonly string HIGH130 = "HIGH130";
         public static readonly string LOW5 = "LOW5";
         public static readonly string LOW10 = "LOW10";
-        public static readonly string LOW13 = "LOW13";
         public static readonly string LOW20 = "LOW20";
         public static readonly string LOW60 = "LOW60";
         public static readonly string LOW130 = "LOW130";
