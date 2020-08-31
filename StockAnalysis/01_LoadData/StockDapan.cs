@@ -206,7 +206,7 @@ namespace StockAnalysis
 
         public static int GetLastDate()
         {
-            string sql = "select top 1 [date] from stock_DaPan order by [date] desc";
+            string sql = "select top 1 [date] from stock_full order by [date] desc";
             int id = Convert.ToInt32(db.GetOneValue(sql));
             return id;
         }

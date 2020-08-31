@@ -1,5 +1,5 @@
 localhost
-train2
+live
 sa
 Welcome1!
 C:\StockAnalysis\
