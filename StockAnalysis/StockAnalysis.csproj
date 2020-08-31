@@ -83,7 +83,9 @@
     <Compile Include="20_Rule\Buy\00_Selected\Buy6Rize.cs" />
     <Compile Include="20_Rule\Buy\02_Test\Buy6Rize_3.cs" />
     <Compile Include="20_Rule\Buy\02_Test\Buy6Rize_2.cs" />
+    <Compile Include="20_Rule\Buy\02_Test\BuyAveRize2.cs" />
     <Compile Include="20_Rule\Buy\02_Test\BuyRizeAgain.cs" />
+    <Compile Include="20_Rule\Buy\02_Test\BuyAveRize3.cs" />
     <Compile Include="20_Rule\Buy\10_抄底\BuyIslandReverse.cs" />
     <Compile Include="20_Rule\Buy\20_均线上涨\BuyAveRize_2.cs" />
     <Compile Include="20_Rule\Buy\20_均线上涨\BuyAveRize_3.cs" />
