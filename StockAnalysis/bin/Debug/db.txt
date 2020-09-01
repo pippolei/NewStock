@@ -1,5 +1,5 @@
 localhost
-live
+hs300
 sa
 Welcome1!
 C:\StockAnalysis\

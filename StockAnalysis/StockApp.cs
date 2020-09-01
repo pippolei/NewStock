@@ -53,21 +53,21 @@ namespace StockAnalysis
             "DEF_SELL_SHORT_", "DEF_SELL_MEDIUM_", "DEF_SELL_LONG_","DEF_SELL_END_"
         };
 
-        public static int MAX_HOLD_DAYS_SHORT = 5;
-        public static double HIGH_THRESHOLD_SHORT = 0.05;
-        public static double LOW_THRESHOLD_SHORT = 0.03;
+        public static int MAX_HOLD_DAYS_SHORT = 20;
+        public static double HIGH_THRESHOLD_SHORT = 100;
+        public static double LOW_THRESHOLD_SHORT = 1;
 
         public static int MAX_HOLD_DAYS_MEDIUM = 20;
         public static double HIGH_THRESHOLD_MEDIUM = 100;
-        public static double LOW_THRESHOLD_MEDIUM = 1;
+        public static double LOW_THRESHOLD_MEDIUM = 0.08;
 
-        public static int MAX_HOLD_DAYS_LONG = 20;
+        public static int MAX_HOLD_DAYS_LONG = 40;
         public static double HIGH_THRESHOLD_LONG = 100;  //涨幅百分比
-        public static double LOW_THRESHOLD_LONG = 0.08;   //跌幅百分比
+        public static double LOW_THRESHOLD_LONG = 1;   //跌幅百分比
 
         public static int MAX_HOLD_DAYS_END = 40;
         public static double HIGH_THRESHOLD_END = 100;
-        public static double LOW_THRESHOLD_END = 1;
+        public static double LOW_THRESHOLD_END = 0.08;
         #endregion
 
         public static System.Collections.Hashtable allstock = new System.Collections.Hashtable();       

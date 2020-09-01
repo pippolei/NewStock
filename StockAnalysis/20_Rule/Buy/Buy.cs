@@ -67,7 +67,7 @@ namespace StockAnalysis
     
     public abstract class Buy
     {
-        public string defaultSell = StockApp.DEFAULT_SELLs[1];
+        public string defaultSell = StockApp.DEFAULT_SELLs[0];
         public double minumum_grade = -0.99;
         public string defaultBuyPrice = StockAttribute.BUYPRICE1;
         
