@@ -85,6 +85,10 @@ namespace StockAnalysis
             {
                 return false;
             }
+            if (stock.items[index].end >= 100)
+            {
+                return false;
+            }
             Prepare(stock, index);
             bool getbuy = GetBuy(stock, index);
 
