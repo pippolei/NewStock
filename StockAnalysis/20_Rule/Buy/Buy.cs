@@ -81,7 +81,7 @@ namespace StockAnalysis
             {
                 return false;
             }
-            if ((index < size - 1) && stock.items[index + 1].start >= stock.items[index].end * 1.02)
+            if ((index < size - 1) && stock.items[index + 1].start >= stock.items[index].end * 1.03)
             {
                 return false;
             }

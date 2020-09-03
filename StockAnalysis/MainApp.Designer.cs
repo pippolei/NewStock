@@ -52,21 +52,21 @@ namespace StockAnalysis.Panel
             this.truncateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tab_main = new System.Windows.Forms.TabControl();
             this.tab_database = new System.Windows.Forms.TabPage();
+            this.pnl_database = new StockAnalysis.Panel.PanelLoadData();
             this.tab_calcrule = new System.Windows.Forms.TabPage();
+            this.panelCalculate1 = new StockAnalysis.Panel.PanelRule();
             this.tab_combAnalysis = new System.Windows.Forms.TabPage();
+            this.panelAnalysis21 = new StockAnalysis.Panel.PanelAnalysis2();
             this.tab_simulate = new System.Windows.Forms.TabPage();
+            this.pnl_simulate = new StockAnalysis.Panel.PanelSimulate();
             this.tab_search = new System.Windows.Forms.TabPage();
+            this.pnl_search = new StockAnalysis.Panel.PanelSearch();
             this.tab_util = new System.Windows.Forms.TabPage();
+            this.panelUtil1 = new StockAnalysis.PanelUtil();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.restoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnl_database = new StockAnalysis.Panel.PanelLoadData();
-            this.panelCalculate1 = new StockAnalysis.Panel.PanelRule();
-            this.panelAnalysis21 = new StockAnalysis.Panel.PanelAnalysis2();
-            this.pnl_simulate = new StockAnalysis.Panel.PanelSimulate();
-            this.pnl_search = new StockAnalysis.Panel.PanelSearch();
-            this.panelUtil1 = new StockAnalysis.PanelUtil();
             this.manMenu.SuspendLayout();
             this.tab_main.SuspendLayout();
             this.tab_database.SuspendLayout();
@@ -85,7 +85,7 @@ namespace StockAnalysis.Panel
             this.operationToolStripMenuItem});
             this.manMenu.Location = new System.Drawing.Point(0, 0);
             this.manMenu.Name = "manMenu";
-            this.manMenu.Size = new System.Drawing.Size(892, 25);
+            this.manMenu.Size = new System.Drawing.Size(892, 24);
             this.manMenu.TabIndex = 1;
             this.manMenu.Text = "manMenu";
             // 
@@ -94,13 +94,13 @@ namespace StockAnalysis.Panel
             this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.setDatabaseToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(60, 21);
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.optionToolStripMenuItem.Text = "Option";
             // 
             // setDatabaseToolStripMenuItem
             // 
             this.setDatabaseToolStripMenuItem.Name = "setDatabaseToolStripMenuItem";
-            this.setDatabaseToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.setDatabaseToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.setDatabaseToolStripMenuItem.Text = "SetDatabase";
             this.setDatabaseToolStripMenuItem.Click += new System.EventHandler(this.setDatabaseToolStripMenuItem_Click);
             // 
@@ -111,27 +111,27 @@ namespace StockAnalysis.Panel
             this.resetSimulateToolStripMenuItem,
             this.truncateToolStripMenuItem});
             this.operationToolStripMenuItem.Name = "operationToolStripMenuItem";
-            this.operationToolStripMenuItem.Size = new System.Drawing.Size(50, 21);
+            this.operationToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.operationToolStripMenuItem.Text = "Clear";
             // 
             // resetRuleToolStripMenuItem
             // 
             this.resetRuleToolStripMenuItem.Name = "resetRuleToolStripMenuItem";
-            this.resetRuleToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.resetRuleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.resetRuleToolStripMenuItem.Text = "Reset Rule Filter";
             this.resetRuleToolStripMenuItem.Click += new System.EventHandler(this.resetRuleToolStripMenuItem_Click);
             // 
             // resetSimulateToolStripMenuItem
             // 
             this.resetSimulateToolStripMenuItem.Name = "resetSimulateToolStripMenuItem";
-            this.resetSimulateToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.resetSimulateToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.resetSimulateToolStripMenuItem.Text = "Reset Simulate";
             this.resetSimulateToolStripMenuItem.Click += new System.EventHandler(this.resetSimulateToolStripMenuItem_Click);
             // 
             // truncateToolStripMenuItem
             // 
             this.truncateToolStripMenuItem.Name = "truncateToolStripMenuItem";
-            this.truncateToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.truncateToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.truncateToolStripMenuItem.Text = "Truncate All";
             this.truncateToolStripMenuItem.Click += new System.EventHandler(this.truncateToolStripMenuItem_Click);
             this.truncateToolStripMenuItem.VisibleChanged += new System.EventHandler(this.truncateToolStripMenuItem_VisibleChanged);
@@ -145,10 +145,10 @@ namespace StockAnalysis.Panel
             this.tab_main.Controls.Add(this.tab_search);
             this.tab_main.Controls.Add(this.tab_util);
             this.tab_main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tab_main.Location = new System.Drawing.Point(0, 25);
+            this.tab_main.Location = new System.Drawing.Point(0, 24);
             this.tab_main.Name = "tab_main";
             this.tab_main.SelectedIndex = 0;
-            this.tab_main.Size = new System.Drawing.Size(892, 559);
+            this.tab_main.Size = new System.Drawing.Size(892, 560);
             this.tab_main.TabIndex = 0;
             this.tab_main.SelectedIndexChanged += new System.EventHandler(this.tab_main_SelectedIndexChanged);
             // 
@@ -158,10 +158,18 @@ namespace StockAnalysis.Panel
             this.tab_database.Location = new System.Drawing.Point(4, 22);
             this.tab_database.Name = "tab_database";
             this.tab_database.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_database.Size = new System.Drawing.Size(884, 533);
+            this.tab_database.Size = new System.Drawing.Size(884, 534);
             this.tab_database.TabIndex = 0;
             this.tab_database.Text = "LoadData";
             this.tab_database.UseVisualStyleBackColor = true;
+            // 
+            // pnl_database
+            // 
+            this.pnl_database.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_database.Location = new System.Drawing.Point(3, 3);
+            this.pnl_database.Name = "pnl_database";
+            this.pnl_database.Size = new System.Drawing.Size(878, 528);
+            this.pnl_database.TabIndex = 0;
             // 
             // tab_calcrule
             // 
@@ -173,6 +181,14 @@ namespace StockAnalysis.Panel
             this.tab_calcrule.Text = "CalcRule";
             this.tab_calcrule.UseVisualStyleBackColor = true;
             // 
+            // panelCalculate1
+            // 
+            this.panelCalculate1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCalculate1.Location = new System.Drawing.Point(0, 0);
+            this.panelCalculate1.Name = "panelCalculate1";
+            this.panelCalculate1.Size = new System.Drawing.Size(884, 533);
+            this.panelCalculate1.TabIndex = 0;
+            // 
             // tab_combAnalysis
             // 
             this.tab_combAnalysis.Controls.Add(this.panelAnalysis21);
@@ -182,6 +198,14 @@ namespace StockAnalysis.Panel
             this.tab_combAnalysis.TabIndex = 9;
             this.tab_combAnalysis.Text = "Comb Analysis";
             this.tab_combAnalysis.UseVisualStyleBackColor = true;
+            // 
+            // panelAnalysis21
+            // 
+            this.panelAnalysis21.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelAnalysis21.Location = new System.Drawing.Point(0, 0);
+            this.panelAnalysis21.Name = "panelAnalysis21";
+            this.panelAnalysis21.Size = new System.Drawing.Size(884, 533);
+            this.panelAnalysis21.TabIndex = 0;
             // 
             // tab_simulate
             // 
@@ -193,6 +217,14 @@ namespace StockAnalysis.Panel
             this.tab_simulate.Text = "Simulate";
             this.tab_simulate.UseVisualStyleBackColor = true;
             // 
+            // pnl_simulate
+            // 
+            this.pnl_simulate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_simulate.Location = new System.Drawing.Point(0, 0);
+            this.pnl_simulate.Name = "pnl_simulate";
+            this.pnl_simulate.Size = new System.Drawing.Size(884, 533);
+            this.pnl_simulate.TabIndex = 0;
+            // 
             // tab_search
             // 
             this.tab_search.Controls.Add(this.pnl_search);
@@ -203,6 +235,14 @@ namespace StockAnalysis.Panel
             this.tab_search.Text = "Search";
             this.tab_search.UseVisualStyleBackColor = true;
             // 
+            // pnl_search
+            // 
+            this.pnl_search.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_search.Location = new System.Drawing.Point(0, 0);
+            this.pnl_search.Name = "pnl_search";
+            this.pnl_search.Size = new System.Drawing.Size(884, 533);
+            this.pnl_search.TabIndex = 0;
+            // 
             // tab_util
             // 
             this.tab_util.Controls.Add(this.panelUtil1);
@@ -212,6 +252,14 @@ namespace StockAnalysis.Panel
             this.tab_util.TabIndex = 11;
             this.tab_util.Text = "Utility";
             this.tab_util.UseVisualStyleBackColor = true;
+            // 
+            // panelUtil1
+            // 
+            this.panelUtil1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelUtil1.Location = new System.Drawing.Point(0, 0);
+            this.panelUtil1.Name = "panelUtil1";
+            this.panelUtil1.Size = new System.Drawing.Size(884, 533);
+            this.panelUtil1.TabIndex = 0;
             // 
             // notifyIcon1
             // 
@@ -241,54 +289,6 @@ namespace StockAnalysis.Panel
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // pnl_database
-            // 
-            this.pnl_database.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_database.Location = new System.Drawing.Point(3, 3);
-            this.pnl_database.Name = "pnl_database";
-            this.pnl_database.Size = new System.Drawing.Size(878, 527);
-            this.pnl_database.TabIndex = 0;
-            // 
-            // panelCalculate1
-            // 
-            this.panelCalculate1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCalculate1.Location = new System.Drawing.Point(0, 0);
-            this.panelCalculate1.Name = "panelCalculate1";
-            this.panelCalculate1.Size = new System.Drawing.Size(884, 533);
-            this.panelCalculate1.TabIndex = 0;
-            // 
-            // panelAnalysis21
-            // 
-            this.panelAnalysis21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAnalysis21.Location = new System.Drawing.Point(0, 0);
-            this.panelAnalysis21.Name = "panelAnalysis21";
-            this.panelAnalysis21.Size = new System.Drawing.Size(884, 533);
-            this.panelAnalysis21.TabIndex = 0;
-            // 
-            // pnl_simulate
-            // 
-            this.pnl_simulate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_simulate.Location = new System.Drawing.Point(0, 0);
-            this.pnl_simulate.Name = "pnl_simulate";
-            this.pnl_simulate.Size = new System.Drawing.Size(884, 533);
-            this.pnl_simulate.TabIndex = 0;
-            // 
-            // pnl_search
-            // 
-            this.pnl_search.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_search.Location = new System.Drawing.Point(0, 0);
-            this.pnl_search.Name = "pnl_search";
-            this.pnl_search.Size = new System.Drawing.Size(884, 533);
-            this.pnl_search.TabIndex = 0;
-            // 
-            // panelUtil1
-            // 
-            this.panelUtil1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelUtil1.Location = new System.Drawing.Point(0, 0);
-            this.panelUtil1.Name = "panelUtil1";
-            this.panelUtil1.Size = new System.Drawing.Size(884, 533);
-            this.panelUtil1.TabIndex = 0;
             // 
             // MainApp
             // 

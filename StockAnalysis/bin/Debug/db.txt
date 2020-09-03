@@ -1,5 +1,5 @@
 localhost
-hs300
+train2
 sa
 Welcome1!
 C:\StockAnalysis\

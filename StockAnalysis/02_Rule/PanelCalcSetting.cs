@@ -127,11 +127,11 @@ namespace StockAnalysis.Panel
                         attristrs[14] = item.kpi[StockApp.DEFAULT_SELLs[2] + StockKPI.default_price].ToString(); ;  //long
                         attristrs[15] = item.kpi[StockApp.DEFAULT_SELLs[3] + StockKPI.default_price].ToString();  //end
 
-                        int nextday = Convert.ToInt32(item.kpi[StockApp.DEFAULT_SELLs[3] + StockKPI.default_date].ToString());
-                        double nextprice = Convert.ToDouble(item.kpi[StockApp.DEFAULT_SELLs[3] + StockKPI.default_price].ToString());
+                        int nextday = Convert.ToInt32(item.kpi[StockApp.DEFAULT_SELLs[2] + StockKPI.default_date].ToString());
+                        double nextprice = Convert.ToDouble(item.kpi[StockApp.DEFAULT_SELLs[2] + StockKPI.default_price].ToString());
                         //去除outline
-                        if (nextprice - item.end * 2 > StockApp.MIN_ZERO
-                            || nextday - 3000 - item.date > StockApp.MIN_ZERO) continue;
+                        //if (nextprice - item.end * 2 > StockApp.MIN_ZERO
+                        //    || nextday - 3000 - item.date > StockApp.MIN_ZERO) continue;
                         //发出买入信号后1~5天的表现,纯参考,未在任何地方使用
                         attristrs[16] = item.attributes[StockAttribute.POST1].ToString();
                         attristrs[17] = item.attributes[StockAttribute.POST2].ToString(); ;
