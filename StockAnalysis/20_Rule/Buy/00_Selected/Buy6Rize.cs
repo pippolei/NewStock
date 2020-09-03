@@ -47,6 +47,7 @@ namespace StockAnalysis
                 || yes6.end * 1.14 > today.end)
                 && item.end  - Convert.ToDouble(today.attributes[StockAttribute.LOW130]) * 1.3 > StockApp.MIN_ZERO
                 && today.end - item.end > StockApp.MIN_ZERO
+                && (item.low * 1.01 < item.end && item.high < item.end * 1.03)
                 )
 
                 
