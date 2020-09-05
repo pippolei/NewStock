@@ -8,7 +8,7 @@ namespace StockAnalysis
     {
         public Buy6Rize2()
         {
-            this.defaultSell = StockApp.DEFAULT_SELLs[2];
+            this.defaultSell = StockApp.DEFAULT_SELLs[1];
             //this.defaultBuyPrice = StockAttribute.BUYPRICE2;
         }
         //连续6日小阳线

@@ -4,11 +4,11 @@ using System.Text;
 
 namespace StockAnalysis
 {
-    class Buy6Rize3 : Buy
+    class Buy6Rize4 : Buy
     {
-        public Buy6Rize3()
+        public Buy6Rize4()
         {
-            this.defaultSell = StockApp.DEFAULT_SELLs[2];
+            this.defaultSell = StockApp.DEFAULT_SELLs[3];
             //this.defaultBuyPrice = StockAttribute.BUYPRICE3;
         }
         //连续6日小阳线
