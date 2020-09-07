@@ -164,7 +164,6 @@
             // chk_productive
             // 
             this.chk_productive.AutoSize = true;
-            this.chk_productive.Enabled = false;
             this.chk_productive.Location = new System.Drawing.Point(97, 215);
             this.chk_productive.Name = "chk_productive";
             this.chk_productive.Size = new System.Drawing.Size(15, 14);

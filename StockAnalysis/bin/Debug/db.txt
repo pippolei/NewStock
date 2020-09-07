@@ -4,4 +4,4 @@ sa
 Welcome1!
 C:\StockAnalysis\
 20110101
-False
+True
