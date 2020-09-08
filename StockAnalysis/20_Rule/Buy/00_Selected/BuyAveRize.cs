@@ -37,6 +37,7 @@ namespace StockAnalysis
                 && stock.items[index].end - stock.items[index - 2].end > StockApp.MIN_ZERO
                 && item.end  > Convert.ToDouble(item.attributes[StockAttribute.AVE10])
                 //&& stock.items[index].end - Convert.ToDouble(stock.items[index].attributes[StockAttribute.AVE10]) > StockApp.MIN_ZERO
+                && (item.low * 1.01 < item.end && item.high < item.end * 1.03)
                 )
             {
                 return true;
