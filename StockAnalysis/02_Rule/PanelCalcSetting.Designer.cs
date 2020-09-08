@@ -44,7 +44,9 @@ namespace StockAnalysis.Panel
             this.btn_sync = new System.Windows.Forms.Button();
             this.chk_limited = new System.Windows.Forms.CheckBox();
             this.lbl_status = new System.Windows.Forms.Label();
+            this.num_stock = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.cmb_isKPI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_stock)).BeginInit();
             this.SuspendLayout();
             // 
             // lst_buy
@@ -188,7 +190,7 @@ namespace StockAnalysis.Panel
             // 
             // btn_sync
             // 
-            this.btn_sync.Location = new System.Drawing.Point(705, 6);
+            this.btn_sync.Location = new System.Drawing.Point(535, 7);
             this.btn_sync.Name = "btn_sync";
             this.btn_sync.Size = new System.Drawing.Size(75, 23);
             this.btn_sync.TabIndex = 37;
@@ -201,7 +203,7 @@ namespace StockAnalysis.Panel
             this.chk_limited.AutoSize = true;
             this.chk_limited.Checked = true;
             this.chk_limited.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chk_limited.Location = new System.Drawing.Point(786, 10);
+            this.chk_limited.Location = new System.Drawing.Point(700, 13);
             this.chk_limited.Name = "chk_limited";
             this.chk_limited.Size = new System.Drawing.Size(54, 16);
             this.chk_limited.TabIndex = 38;
@@ -217,11 +219,29 @@ namespace StockAnalysis.Panel
             this.lbl_status.Size = new System.Drawing.Size(0, 12);
             this.lbl_status.TabIndex = 39;
             // 
+            // num_stock
+            // 
+            this.num_stock.Location = new System.Drawing.Point(761, 8);
+            this.num_stock.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.num_stock.Name = "num_stock";
+            this.num_stock.Size = new System.Drawing.Size(46, 21);
+            this.num_stock.TabIndex = 40;
+            this.num_stock.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
             // PanelCalcSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.num_stock);
             this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.chk_limited);
             this.Controls.Add(this.btn_sync);
@@ -242,6 +262,7 @@ namespace StockAnalysis.Panel
             this.Size = new System.Drawing.Size(856, 186);
             this.Load += new System.EventHandler(this.PanelBuySell_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cmb_isKPI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_stock)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,5 +286,6 @@ namespace StockAnalysis.Panel
         private System.Windows.Forms.Button btn_sync;
         private System.Windows.Forms.CheckBox chk_limited;
         private System.Windows.Forms.Label lbl_status;
+        private System.Windows.Forms.NumericUpDown num_stock;
     }
 }

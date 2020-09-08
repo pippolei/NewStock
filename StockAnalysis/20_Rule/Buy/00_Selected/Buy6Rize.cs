@@ -29,7 +29,7 @@ namespace StockAnalysis
             StockItem yes7 = stock.items[index - 7 - n];
 
             //if (stock.code == "s002146" && stock.items[index].index == stock.items.Length - 1)
-            //if (stock.code == "s600410" && stock.items[index].date == 20171116)
+            //if (stock.code == "s002176" && stock.items[index].date == 20180109)
             //{
             //    int abc;
             //    abc = 3;
@@ -48,7 +48,7 @@ namespace StockAnalysis
                 || yes6.end * 1.14 > today.end)
                 && item.end  - Convert.ToDouble(today.attributes[StockAttribute.LOW130]) * 1.3 > StockApp.MIN_ZERO
                 && today.end - item.end > StockApp.MIN_ZERO
-                && (item.low * 1.01 < item.end && item.high < item.end * 1.03)
+                && (today.low * 1.01 < today.end && today.high < today.end * 1.03)
                 )
 
                 

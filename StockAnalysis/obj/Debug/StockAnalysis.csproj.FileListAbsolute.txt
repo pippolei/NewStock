@@ -116,6 +116,5 @@ C:\git\NewStock\StockAnalysis\obj\Debug\StockAnalysis.Panel.PanelSimulate.resour
 C:\git\NewStock\StockAnalysis\obj\Debug\StockAnalysis.Panel.PanelProgress.resources
 C:\git\NewStock\StockAnalysis\obj\Debug\StockAnalysis.Panel.PanelStockList.resources
 C:\git\NewStock\StockAnalysis\obj\Debug\StockAnalysis.Panel.Panel.Properties.Resources.resources
-C:\git\NewStock\StockAnalysis\obj\Debug\ResolveAssemblyReference.cache
-C:\git\NewStock\StockAnalysis\obj\Debug\GenerateResource.read.1.tlog
-C:\git\NewStock\StockAnalysis\obj\Debug\GenerateResource.write.1.tlog
+C:\git\NewStock\StockAnalysis\obj\Debug\StockAnalysis.csprojResolveAssemblyReference.cache
+C:\git\NewStock\StockAnalysis\obj\Debug\StockAnalysis.csproj.GenerateResource.Cache
