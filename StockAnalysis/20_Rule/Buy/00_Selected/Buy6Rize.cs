@@ -29,11 +29,11 @@ namespace StockAnalysis
             StockItem yes7 = stock.items[index - 7 - n];
 
             //if (stock.code == "s002146" && stock.items[index].index == stock.items.Length - 1)
-            //if (stock.code == "s002176" && stock.items[index].date == 20180109)
-            //{
-            //    int abc;
-            //    abc = 3;
-            //}
+            /*if (stock.code == "s002176" && stock.items[index].date == 20180109)
+            {
+                int abc;
+                abc = 3;
+            }*/
             if ((item.end >= yes1.end || item.end >= item.start)
                 && (yes1.end >= yes2.end || yes1.end >= yes1.start)
                 && (yes2.end >= yes3.end || yes2.end >= yes2.start)

@@ -116,7 +116,7 @@ namespace StockAnalysis.Panel
                         attristrs[3] = stock.code;
                         attristrs[4] = item.date.ToString();
                         attristrs[5] = item.index.ToString();
-                        attristrs[6] = item.end.ToString();
+                        attristrs[6] = (i < stock_length - 1) ? Math.Min(item.end, stock.items[i+1].start).ToString() : item.end.ToString();
                         attristrs[7] = "0"; //pregrade
                         attristrs[8] = rule.GetScore(stock, item.index).ToString();
                         attristrs[9] = stock.getKPIs(i);
