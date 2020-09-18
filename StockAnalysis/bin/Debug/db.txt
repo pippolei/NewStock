@@ -1,7 +1,7 @@
 localhost
-live2
+test
 sa
 Welcome1!
 C:\StockAnalysis\
-20150701
+20160101
 False

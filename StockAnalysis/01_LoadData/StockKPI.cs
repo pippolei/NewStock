@@ -160,7 +160,8 @@ namespace StockAnalysis
                 double now = items[i].end;
                 DefaultSell sellitem = new DefaultSell();
                 sellitem.sellindex = i + sellday;
-                sellitem.sellprice = items[i + sellday].end;
+                //sellitem.sellprice = items[i + sellday].end;
+                sellitem.sellprice = (i + sellday < size - 1) ? stock.items[i + sellday + 1].start : items[i + sellday].end;
                 sellitem.selldate = items[i + sellday].date;
 
                 for (int j = i + 1; j < i + sellday; j++)
@@ -170,7 +171,7 @@ namespace StockAnalysis
                         || now * (1 - low_threshold) - later > StockApp.MIN_ZERO)
                     {
                         sellitem.sellindex = j;
-                        sellitem.sellprice = later;
+                        sellitem.sellprice = (j < size - 1) ? stock.items[j + 1].start : items[j].end;
                         sellitem.selldate = items[j].date;
                         break;
                     }

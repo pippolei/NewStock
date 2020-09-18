@@ -104,16 +104,16 @@ namespace StockAnalysis
         {
             StockItem item = stock.items[index];
             double rize;
-            if (index < stock.items.Length)
+            /*if (index < stock.items.Length)
             {
                 rize = (stock.items[index + 1].start / stock.items[index].end) - 1;
             }
             else
             {
                 rize = 0;
-            }
-           
+            }*/
 
+            rize = (stock.items[index].start / stock.items[index - 1].end) - 1;
             //double low60 =  Convert.ToDouble(item.attributes[StockAttribute.LOW60]);
             //return low60 / (item.end - low60) + StockApp.MIN_ZERO ;
             return rize;
