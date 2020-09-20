@@ -128,6 +128,11 @@ namespace StockAnalysis
             int curentdate;
             for (curentdate = startdate; curentdate <= enddate; curentdate = Util.nextDay(curentdate))
             {
+                //if (curentdate == 20180301)
+                //{
+                //    int abc;
+                //    abc = 3;
+                //}
                 //如果有卖出则卖出
                 if (checkSell(curentdate))
                 {

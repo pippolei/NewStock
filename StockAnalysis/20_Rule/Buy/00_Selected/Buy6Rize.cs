@@ -29,7 +29,7 @@ namespace StockAnalysis
             StockItem yes7 = stock.items[index - 7 - n];
 
             //if (stock.code == "s002146" && stock.items[index].index == stock.items.Length - 1)
-            //if (stock.code == "s600141" && stock.items[index].date == 20180103)
+            //if (stock.code == "s603707" && stock.items[index].date == 20180228)
             //{
             //    int abc;
             //    abc = 3;

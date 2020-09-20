@@ -60,7 +60,7 @@ namespace StockAnalysis
             sql += " ) T2;";
             sql += " select * into #tmp1 from (select * from Ope_Analysis where date >= '" + startdate.ToString() + "' and date <= '" + enddate.ToString() + "' and rulename = '" + buyname + "' and type = '" +  buytype + "') T1;  ";
             sql += "SELECT * FROM ( ";
-            sql += "SELECT T1.stockcode, T1.rulename as buyname, t1.[date] as buydate, t1.[index] as buyindex, t1.price as buyprice, t1.pregrade, t1.kpis, t1.dapan, ";
+            sql += "SELECT T1.stockcode, T1.rulename as buyname, t1.[date] as buydate, t1.[index] as buyindex, t1.price as buyprice, t1.pregrade, t1.grade,  t1.kpis, t1.dapan, ";
             sql += "T2.rulename as sellname, t2.[date] as selldate, t2.[index] as sellindex, t2.price as sellprice, ";
             sql += "RANK() OVER (PARTITION BY t1.stockcode, t1.[date] order by t2.[date]) AS SEQUENCE FROM ";
             sql += "#TMP1 AS T1 LEFT OUTER JOIN ";
@@ -88,7 +88,7 @@ namespace StockAnalysis
                 items[i].buyindex = (int)row["buyindex"];
                 items[i].buyprice = (double)row["buyprice"];
                 //items[i].grade = RuleScore.GetRuleScore(items[i].buyrule, items[i].buydate / 100);
-                items[i].grade = (double)row["pregrade"];
+                items[i].grade = (double)row["grade"];
                 items[i].selldate = (int)row["selldate"];
                 items[i].sellindex = (int)row["sellindex"];
                 items[i].sellprice = (double)row["sellprice"];

@@ -1,5 +1,5 @@
 localhost
-test
+live2
 sa
 Welcome1!
 C:\StockAnalysis\
