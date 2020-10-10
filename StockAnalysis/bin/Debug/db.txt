@@ -1,7 +1,7 @@
 localhost
-live2
+train2
 sa
 Welcome1!
 C:\StockAnalysis\
-20160101
+20110101
 False

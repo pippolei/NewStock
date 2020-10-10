@@ -49,16 +49,14 @@ namespace StockAnalysis.Panel
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_main_toptop = new System.Windows.Forms.Panel();
             this.btn_batch = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_status = new System.Windows.Forms.Label();
             this.btn_allresult = new System.Windows.Forms.Button();
-            this.num_interval = new System.Windows.Forms.NumericUpDown();
             this.btn_simulate = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_todate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_fromdate = new System.Windows.Forms.DateTimePicker();
             this.pnl_main_top = new System.Windows.Forms.Panel();
-            this.pnl_buysell2 = new StockAnalysis.Panel.PanelCombineRule();
             this.pnl_main_top_bottom = new System.Windows.Forms.Panel();
             this.lbl_growth = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -85,9 +83,9 @@ namespace StockAnalysis.Panel
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnl_buysell2 = new StockAnalysis.Panel.PanelCombineRule();
             ((System.ComponentModel.ISupportInitialize)(this.dg_detail)).BeginInit();
             this.pnl_main_toptop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_interval)).BeginInit();
             this.pnl_main_top.SuspendLayout();
             this.pnl_main_top_bottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txt_num)).BeginInit();
@@ -222,9 +220,8 @@ namespace StockAnalysis.Panel
             // 
             this.pnl_main_toptop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnl_main_toptop.Controls.Add(this.btn_batch);
-            this.pnl_main_toptop.Controls.Add(this.label4);
+            this.pnl_main_toptop.Controls.Add(this.lbl_status);
             this.pnl_main_toptop.Controls.Add(this.btn_allresult);
-            this.pnl_main_toptop.Controls.Add(this.num_interval);
             this.pnl_main_toptop.Controls.Add(this.btn_simulate);
             this.pnl_main_toptop.Controls.Add(this.label2);
             this.pnl_main_toptop.Controls.Add(this.txt_todate);
@@ -246,15 +243,15 @@ namespace StockAnalysis.Panel
             this.btn_batch.UseVisualStyleBackColor = true;
             this.btn_batch.Click += new System.EventHandler(this.btn_batch_Click);
             // 
-            // label4
+            // lbl_status
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(669, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Interval";
-            this.label4.Visible = false;
+            this.lbl_status.AutoSize = true;
+            this.lbl_status.ForeColor = System.Drawing.Color.Red;
+            this.lbl_status.Location = new System.Drawing.Point(669, 12);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(41, 12);
+            this.lbl_status.TabIndex = 14;
+            this.lbl_status.Text = "Status";
             // 
             // btn_allresult
             // 
@@ -265,25 +262,6 @@ namespace StockAnalysis.Panel
             this.btn_allresult.Text = "GetAllResult";
             this.btn_allresult.UseVisualStyleBackColor = true;
             this.btn_allresult.Click += new System.EventHandler(this.btn_allresult_Click);
-            // 
-            // num_interval
-            // 
-            this.num_interval.Increment = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            this.num_interval.Location = new System.Drawing.Point(727, 7);
-            this.num_interval.Name = "num_interval";
-            this.num_interval.Size = new System.Drawing.Size(64, 21);
-            this.num_interval.TabIndex = 13;
-            this.num_interval.Value = new decimal(new int[] {
-            36,
-            0,
-            0,
-            0});
-            this.num_interval.Visible = false;
-            this.num_interval.ValueChanged += new System.EventHandler(this.num_interval_ValueChanged);
             // 
             // btn_simulate
             // 
@@ -340,15 +318,6 @@ namespace StockAnalysis.Panel
             this.pnl_main_top.Size = new System.Drawing.Size(877, 214);
             this.pnl_main_top.TabIndex = 1;
             // 
-            // pnl_buysell2
-            // 
-            this.pnl_buysell2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnl_buysell2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_buysell2.Location = new System.Drawing.Point(0, 34);
-            this.pnl_buysell2.Name = "pnl_buysell2";
-            this.pnl_buysell2.Size = new System.Drawing.Size(877, 133);
-            this.pnl_buysell2.TabIndex = 2;
-            // 
             // pnl_main_top_bottom
             // 
             this.pnl_main_top_bottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -395,7 +364,7 @@ namespace StockAnalysis.Panel
             this.txt_num.Size = new System.Drawing.Size(36, 21);
             this.txt_num.TabIndex = 4;
             this.txt_num.Value = new decimal(new int[] {
-            5,
+            7,
             0,
             0,
             0});
@@ -570,6 +539,15 @@ namespace StockAnalysis.Panel
             this.Column17.HeaderText = "amount";
             this.Column17.Name = "Column17";
             // 
+            // pnl_buysell2
+            // 
+            this.pnl_buysell2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnl_buysell2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_buysell2.Location = new System.Drawing.Point(0, 34);
+            this.pnl_buysell2.Name = "pnl_buysell2";
+            this.pnl_buysell2.Size = new System.Drawing.Size(877, 133);
+            this.pnl_buysell2.TabIndex = 2;
+            // 
             // PanelSimulate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -582,7 +560,6 @@ namespace StockAnalysis.Panel
             ((System.ComponentModel.ISupportInitialize)(this.dg_detail)).EndInit();
             this.pnl_main_toptop.ResumeLayout(false);
             this.pnl_main_toptop.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_interval)).EndInit();
             this.pnl_main_top.ResumeLayout(false);
             this.pnl_main_top_bottom.ResumeLayout(false);
             this.pnl_main_top_bottom.PerformLayout();
@@ -631,8 +608,7 @@ namespace StockAnalysis.Panel
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem deleteSimulatRecordToolStripMenuItem;
         private System.Windows.Forms.Button btn_batch;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown num_interval;
+        private System.Windows.Forms.Label lbl_status;
         private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;

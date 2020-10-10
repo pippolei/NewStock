@@ -231,7 +231,7 @@ namespace StockAnalysis.Panel
             this.num_stock.Size = new System.Drawing.Size(46, 21);
             this.num_stock.TabIndex = 40;
             this.num_stock.Value = new decimal(new int[] {
-            2,
+            3,
             0,
             0,
             0});

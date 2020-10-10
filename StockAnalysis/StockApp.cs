@@ -11,7 +11,7 @@ namespace StockAnalysis
         //global parameter
         public static int STOCK_START_DATE = 20070101;
         public static int STOCK_START_DATE_SHITE_MONTH = 12;
-        public static int BUY_STOCK_NUM = 5;
+
         //股票数据起始日       
         public static readonly int END_DATE = 99991231;
         public static int getAnalysisStartDate

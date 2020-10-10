@@ -17,7 +17,7 @@ namespace StockAnalysis.Panel
         private DataManager db = new DataManager();
         private SimulateManager sm;
         private int holdstocknum;
-        private  int batch_interval = 36; //批量分析一次的时间间隔
+
         //private PanelProgress prog;
         private System.Collections.ArrayList list = new System.Collections.ArrayList();
 
@@ -55,7 +55,7 @@ namespace StockAnalysis.Panel
             InitializeComponent();
             this.txt_fromdate.Value = Util.getDate(StockApp.getAnalysisStartDate).AddMonths(StockApp.STOCK_START_DATE_SHITE_MONTH); //从起始数据的下一年开始分析
             this.txt_todate.Value = new DateTime(System.DateTime.Now.Year, System.DateTime.Now.Month, 1);
-            this.txt_num.Value = StockApp.BUY_STOCK_NUM;
+
         }
         //双击显示详细
         private void dg_overview_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -95,6 +95,8 @@ namespace StockAnalysis.Panel
             list.Clear();
             Simulate(startdate, enddate);
             MessageBox.Show("Done");
+            this.lbl_status.Text = "Simulate Done";
+            
             
         }
         private void Simulate(int new_startdate, int new_enddate)
@@ -223,15 +225,6 @@ namespace StockAnalysis.Panel
 
 
 
-        private void chk_toend_CheckedChanged(object sender, EventArgs e)
-        {
-            this.num_interval.Enabled = false;
-        }
-
-        private void num_interval_ValueChanged(object sender, EventArgs e)
-        {
-            batch_interval = (int)this.num_interval.Value;
-        }
 
 
         private void btn_batch_Click(object sender, EventArgs e)
@@ -240,8 +233,8 @@ namespace StockAnalysis.Panel
 
             this.btn_batch.Enabled = false;
 
-            int[] startdates = new int[] { 20120101, 20120401, 20120701, 20150101, 20150401, 20150701, 20180101, 20180401, 20180701, 20120101, 20120401, 20120701};
-            int[] enddated = new int[] { 20150101, 20150401, 20150701, 20180101, 20180401, 20180701, 20200101, 20200401, 20200701, 20200101, 20200401, 20200701 };
+            int[] startdates = new int[] { 20120101, 20120401, 20120701, 20150101, 20150401, 20150701, 20180101, 20180401, 20180701, 20181001,20120101, 20120401, 20120701,20160101,20200101};
+            int[] enddated = new int[] { 20150101, 20150401, 20150701, 20180101, 20180401, 20180701, 20200101, 20200401, 20200701, 20201001,20200101, 20200401, 20200701, 20200101,20201001 };
 
             for (int i = 0; i < startdates.Length; i++)
             {
@@ -251,7 +244,8 @@ namespace StockAnalysis.Panel
 
             MessageBox.Show("Done!");
             this.btn_batch.Enabled = true;
-
+            this.lbl_status.Text = "Batch Done";
+            
         }
 
 
